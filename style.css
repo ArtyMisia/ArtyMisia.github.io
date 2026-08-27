@@ -1079,3 +1079,176 @@ button:focus-visible {
   .start-label b { font-size:1.05rem; }
   .start-arrow { font-size:1.45rem; }
 }
+
+/* Numbered vault: the selector is now the door's central mechanism */
+.mechanism-shell {
+  min-height:840px;
+  grid-template-columns:1fr;
+  grid-template-rows:auto minmax(0,1fr);
+  gap:14px;
+  padding:24px;
+  background:radial-gradient(circle at 50% 55%,rgba(213,154,59,.13),transparent 30rem),linear-gradient(135deg,#12140f,#080a08 68%);
+}
+.mechanism-shell::after { display:none; }
+.gear-console {
+  min-width:0;
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) minmax(210px,auto);
+  gap:13px;
+  align-items:stretch;
+  padding:10px;
+  border:1px solid #49381f;
+  background:linear-gradient(#181811,#090b09);
+  box-shadow:inset 0 0 18px #000;
+}
+.console-kicker {
+  min-width:112px;
+  display:grid;
+  place-items:center;
+  margin:0;
+  padding:0 14px;
+  border-right:1px solid rgba(213,154,59,.18);
+}
+.gear-console .active-module {
+  width:auto;
+  max-width:none;
+  min-height:66px;
+  margin:0;
+  padding:11px 15px;
+}
+.gear-console .console-controls {
+  width:auto;
+  min-width:210px;
+  margin:0;
+}
+.archive-viewport {
+  width:100%;
+  height:720px;
+  align-self:stretch;
+}
+.vault-dial-console {
+  position:absolute;
+  z-index:10;
+  left:50%;
+  top:50%;
+  display:grid;
+  justify-items:center;
+  gap:12px;
+  color:#716a56;
+  text-align:center;
+  transform:translate(-50%,-50%);
+  transition:opacity .35s ease,transform .55s cubic-bezier(.2,.85,.3,1);
+}
+.vault-dial-console > p {
+  margin:0;
+  color:var(--brass-hi);
+  font:600 .55rem/1 "IBM Plex Mono",monospace;
+  letter-spacing:.2em;
+  text-shadow:0 0 12px rgba(242,199,109,.28);
+}
+.vault-dial-console > small {
+  max-width:320px;
+  color:#77705c;
+  font:500 .58rem/1.5 "Noto Sans JP",sans-serif;
+  letter-spacing:.08em;
+}
+.vault-dial-console .gear-selector {
+  width:360px;
+  height:360px;
+  background:radial-gradient(circle,#090a08 0 23%,#392b19 24% 27%,#0a0c09 28% 55%,#684a28 56% 58%,#10120e 59%);
+  box-shadow:0 0 0 2px #946832,0 0 0 9px #090a08,0 0 0 10px rgba(213,154,59,.25),inset 0 0 52px #000,0 24px 68px #000;
+}
+.vault-dial-console .gear-selector::after { content:"TURN / ALIGN / PRESS"; bottom:50px; }
+.vault-dial-console .gear-node {
+  width:46px;
+  height:46px;
+  transform:translate(-50%,-50%) rotate(var(--angle)) translateY(-146px);
+  border-width:2px;
+}
+.vault-dial-console .gear-node span { font-size:.66rem; }
+.vault-dial-console .archive-lock {
+  width:150px;
+  height:150px;
+  gap:6px;
+  padding-top:72px;
+  border-width:2px;
+  background:radial-gradient(circle at 50% 40%,#2d291d,#080a08 70%);
+  box-shadow:0 0 0 8px #080907,0 0 0 10px rgba(213,154,59,.38),0 0 55px #000,inset 0 0 35px #000;
+}
+.vault-dial-console .archive-lock b { margin-top:5px; font-size:.72rem; }
+.vault-dial-console .archive-lock small { font-size:.4rem; }
+.vault-dial-console .dial-core {
+  position:absolute;
+  left:50%;
+  top:39%;
+  width:66px;
+  height:66px;
+  animation:none;
+  transform:translate(-50%,-50%) rotate(0deg);
+  transition:transform .7s cubic-bezier(.2,1.25,.35,1);
+}
+.vault-dial-console .dial-core::before { inset:12px; }
+.vault-dial-console .dial-core i {
+  width:auto;
+  height:auto;
+  border:0;
+  color:var(--brass-hi);
+  font:1.05rem/1 "Archivo Black",sans-serif;
+  text-shadow:0 0 12px rgba(242,199,109,.45);
+}
+.is-open .vault-dial-console {
+  opacity:0;
+  pointer-events:none;
+  transform:translate(-50%,-50%) scale(.68) rotate(12deg);
+}
+.is-switching .vault-dial-console {
+  opacity:1;
+  pointer-events:auto;
+  transform:translate(-50%,-50%) scale(1);
+}
+.is-switching .archive-lock { opacity:1; pointer-events:none; }
+
+@media (max-width:700px) {
+  .mechanism-shell {
+    min-height:0;
+    grid-template-rows:auto minmax(0,1fr);
+    gap:10px;
+    padding:12px 9px 10px;
+  }
+  .gear-console {
+    grid-template-columns:1fr auto;
+    gap:7px;
+    padding:7px;
+  }
+  .console-kicker { display:none; }
+  .gear-console .active-module {
+    width:auto;
+    min-height:58px;
+    padding:9px 10px;
+  }
+  .gear-console .active-module strong { font-size:.75rem; }
+  .gear-console .console-controls {
+    width:116px;
+    min-width:116px;
+    gap:4px;
+  }
+  .gear-console .console-controls button { min-height:50px; }
+  .gear-console .console-controls button span { display:none; }
+  .archive-viewport { height:760px; }
+  .vault-dial-console { top:48%; gap:9px; }
+  .vault-dial-console .gear-selector { width:min(88vw,330px); height:min(88vw,330px); }
+  .vault-dial-console .gear-node { width:44px; height:44px; transform:translate(-50%,-50%) rotate(var(--angle)) translateY(-132px); }
+  .vault-dial-console .archive-lock { width:132px; height:132px; }
+  .vault-dial-console .archive-lock { padding-top:64px; }
+  .vault-dial-console .dial-core { width:58px; height:58px; }
+  .vault-dial-console > small { max-width:270px; font-size:.52rem; }
+}
+
+@media (max-width:390px) {
+  .vault-dial-console .gear-selector { width:300px; height:300px; }
+  .vault-dial-console .gear-node { transform:translate(-50%,-50%) rotate(var(--angle)) translateY(-118px); }
+  .vault-dial-console .archive-lock { width:120px; height:120px; }
+  .vault-dial-console .archive-lock { padding-top:58px; }
+  .vault-dial-console .archive-lock b { font-size:.64rem; }
+  .vault-dial-console > small { max-width:240px; }
+}

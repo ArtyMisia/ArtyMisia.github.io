@@ -250,6 +250,7 @@ function updateModuleLabels() {
   const project = projects[activeIndex];
   document.getElementById("module-count").textContent = `${String(activeIndex + 1).padStart(2, "0")} / ${String(projects.length).padStart(2, "0")}`;
   document.getElementById("module-title").textContent = project.title;
+  document.getElementById("dial-number").textContent = String(activeIndex + 1).padStart(2, "0");
   document.querySelectorAll(".gear-node").forEach((button, index) => {
     button.classList.toggle("active", index === activeIndex);
     button.setAttribute("aria-selected", String(index === activeIndex));
@@ -268,32 +269,38 @@ function revealArchive() {
 }
 
 function selectProject(index) {
-  if (!projects.length || switching || index === activeIndex) {
-    if (!archiveOpen) revealArchive();
-    return;
-  }
-  if (!archiveOpen) revealArchive();
+  if (!projects.length || switching) return;
+  const targetIndex = (index + projects.length) % projects.length;
   switching = true;
   const shell = document.getElementById("mechanism-shell");
+  const toggle = document.getElementById("archive-toggle");
+  const dialNumber = document.getElementById("dial-number");
+  shell.classList.remove("is-open");
   shell.classList.add("is-switching");
-  gearTurns += index > activeIndex ? 72 : -72;
+  archiveOpen = false;
+  toggle.setAttribute("aria-expanded", "false");
+  toggle.querySelector("b").textContent = "番号照合中";
+  toggle.querySelector("small").textContent = "DIALING MODULE";
+  dialNumber.textContent = String(targetIndex + 1).padStart(2, "0");
+  const step = targetIndex === activeIndex ? 1 : targetIndex - activeIndex;
+  gearTurns += step * (360 / projects.length);
   document.getElementById("gear-core").style.transform = `translate(-50%, -50%) rotate(${gearTurns}deg)`;
   machineClack("heavy");
 
   window.setTimeout(() => {
-    activeIndex = (index + projects.length) % projects.length;
+    activeIndex = targetIndex;
     document.getElementById("project-stage").innerHTML = projectCard(projects[activeIndex], activeIndex);
     updateModuleLabels();
     window.setTimeout(() => {
       shell.classList.remove("is-switching");
-      switching = false;
+      revealArchive();
       machineClack("light");
-    }, 60);
-  }, 360);
+      window.setTimeout(() => { switching = false; }, 850);
+    }, 90);
+  }, 430);
 }
 
 function moveProject(direction) {
-  if (!archiveOpen) revealArchive();
   selectProject((activeIndex + direction + projects.length) % projects.length);
 }
 
@@ -319,7 +326,7 @@ async function init() {
     renderGearNodes();
     updateModuleLabels();
 
-    document.getElementById("archive-toggle").addEventListener("click", revealArchive);
+    document.getElementById("archive-toggle").addEventListener("click", () => selectProject(activeIndex));
     document.getElementById("prev-project").addEventListener("click", () => moveProject(-1));
     document.getElementById("next-project").addEventListener("click", () => moveProject(1));
     document.getElementById("mechanism-shell").addEventListener("keydown", event => {

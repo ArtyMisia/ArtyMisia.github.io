@@ -173,11 +173,7 @@
       <div class="depth-grid" aria-hidden="true"></div>
       <div class="archive-camshaft" aria-hidden="true"><i></i><b></b><span></span></div>
       <div class="gear-console">
-        <p class="console-kicker">MODULE SELECTOR</p>
-        <div id="gear-selector" class="gear-selector" role="tablist" aria-label="実績モジュールを選択">
-          <div id="gear-nodes" class="gear-nodes"></div>
-          <div id="gear-core" class="selector-core" aria-hidden="true"><span>EA</span></div>
-        </div>
+        <p class="console-kicker">VAULT INDEX</p>
         <div class="active-module">
           <span id="module-count">01 / 01</span>
           <strong id="module-title">読み込み中</strong>
@@ -194,10 +190,17 @@
         <div id="project-stage" class="project-stage" aria-live="polite"></div>
         <div class="door door-left" aria-hidden="true"><span></span></div>
         <div class="door door-right" aria-hidden="true"><span></span></div>
-        <button id="archive-toggle" class="archive-lock" type="button" aria-expanded="false">
-          <span class="lock-gear"><i></i></span>
-          <b>記憶庫を開錠</b><small>UNSEAL THE ARCHIVE</small>
-        </button>
+        <div class="vault-dial-console">
+          <p>SELECT MODULE NUMBER</p>
+          <div id="gear-selector" class="gear-selector" role="tablist" aria-label="開錠する実績番号を選択">
+            <div id="gear-nodes" class="gear-nodes"></div>
+            <button id="archive-toggle" class="archive-lock" type="button" aria-expanded="false">
+              <span id="gear-core" class="lock-gear dial-core"><i id="dial-number">01</i></span>
+              <b>指定番号を開錠</b><small>PRESS TO UNSEAL</small>
+            </button>
+          </div>
+          <small>番号を選択すると歯車が照合し、中央扉が開きます</small>
+        </div>
       </div>
     </section>
     <noscript>このページの表示にはJavaScriptが必要です。</noscript>
