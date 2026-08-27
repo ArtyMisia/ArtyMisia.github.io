@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "lastReviewed": "2026-08-27",
+  "profile": {
+    "name": "Eugene / ArtyMisia",
+    "headline": "未実装の未来を、動くものにする。",
+    "summary": "横浜を拠点に、会社経営、AI開発、映像制作、ゲーム、コミュニティ運営を横断。構想を言葉だけで終わらせず、手で触れられるプロトタイプへ変換し、現実の人と場所で確かめています。",
+    "activities": ["会社経営・FPS学院運営", "プロトタイプ開発", "Lesathチャンネルプロデュース"]
+  },
+  "modes": {
+    "all": { "label": "総合", "archiveTitle": "総合実績機関", "order": ["Business", "Community", "Video", "Tech", "Poker"] },
+    "poker": { "label": "Poker", "archiveTitle": "ポーカー応募機関", "order": ["Poker", "Community", "Tech", "Video", "Business"] },
+    "video": { "label": "Video", "archiveTitle": "映像制作機関", "order": ["Video", "Business", "Community", "Tech", "Poker"] },
+    "tech": { "label": "Tech", "archiveTitle": "技術開発機関", "order": ["Tech", "Business", "Community", "Poker", "Video"] }
+  },
+  "projects": [
+    {
+      "id": "fps-academy",
+      "title": "FPS学院 — AIと学ぶ地域コミュニティ",
+      "description": "AIと一緒にゲームや仕組みを作り、自分のペースで技術を磨く学びの場を設計・運営。近隣の子どもとの実地活動までつなげています。",
+      "category": "Community",
+      "technologies": ["AI-assisted development", "Community Design", "Game Design"],
+      "evidence": [
+        { "label": "FPS学院 公式サイト", "url": "https://eiq-fps.github.io/FPS/" }
+      ],
+      "verification": "linked",
+      "publicationStatus": "published",
+      "featured": true
+    },
+    {
+      "id": "project-luna",
+      "title": "Project LUNA — VR空間のAIインターフェース",
+      "description": "UnityとVRMを使い、AIに視線・姿勢・リップシンクなどの身体性を与えるVR/MRプロジェクト。ローカル保存とBYOKを軸に、関係性が成長する体験を試作しています。",
+      "category": "Tech",
+      "technologies": ["Unity", "VR", "VRM", "LLM", "Local JSON", "BYOK"],
+      "evidence": [],
+      "evidenceNote": "Privateリポジトリで開発中。公開できるデモまたは外部共有版を準備中",
+      "verification": "drive-documented-private-repository",
+      "publicationStatus": "published",
+      "featured": true
+    },
+    {
+      "id": "poamy",
+      "title": "POAMY — 動画制作自動化パイプライン",
+      "description": "テーマと本数から台本・音声・字幕・背景を統合し、縦型動画を一括生成するローカルシステム。公開版のLimited Editionでは、manifestを正本とした最大10本のバッチ生成、3種のテンプレート、音声差し替え、失敗ジョブの再実行を利用できます。",
+      "category": "Tech",
+      "technologies": ["Python", "FFmpeg", "Pillow", "Manifest JSON", "Premiere XML", "SRT", "Batch Rendering"],
+      "evidence": [
+        { "label": "GitHub — POAMY Limited Edition", "url": "https://github.com/EugeneNumata/POAMY-Limited" }
+      ],
+      "verification": "linked-and-locally-verified",
+      "publicationStatus": "published",
+      "featured": true
+    },
+    {
+      "id": "vtuber-editing",
+      "title": "Lesath — VTuber動画編集",
+      "description": "個人VTuber・Lesathのチャンネルで13本以上の動画編集を担当。企画意図を踏まえた構成、カット、映像演出まで制作しています。代表作として4本を掲載しています。",
+      "category": "Video",
+      "technologies": ["DaVinci Resolve", "Video Editing", "YouTube"],
+      "evidence": [
+        { "label": "Lesath チャンネル", "url": "https://www.youtube.com/@lesath_sco0" },
+        { "label": "担当動画 1", "url": "https://youtu.be/V_FLtAP93jk" },
+        { "label": "担当動画 2", "url": "https://youtu.be/GEZ1UGtK5J8" },
+        { "label": "担当動画 3", "url": "https://youtu.be/-DslflOkpBU" },
+        { "label": "担当動画 4", "url": "https://youtu.be/mx1ylmMTD84" }
+      ],
+      "verification": "user-confirmed-samples-linked",
+      "publicationStatus": "published",
+      "featured": true
+    },
+    {
+      "id": "channel-production",
+      "title": "Lesath — YouTubeチャンネルプロデュース",
+      "description": "2024年1月頃、登録者500人未満の段階から個人VTuber・Lesathのチャンネルをプロデュース。企画、動画編集、運用改善を横断し、YouTube収益化を達成。2026年8月時点で登録者約888人まで成長しています。",
+      "category": "Video",
+      "technologies": ["Channel Produce", "YouTube Monetization", "Content Planning", "Video Production", "YouTube Analytics"],
+      "evidence": [
+        { "label": "Lesath チャンネル", "url": "https://www.youtube.com/@lesath_sco0" }
+      ],
+      "evidenceNote": "登録者数は変動するため約888人として掲載",
+      "verification": "user-confirmed-and-linked",
+      "publicationStatus": "published",
+      "featured": true
+    },
+    {
+      "id": "local-device-communication",
+      "title": "Delta DQ9 — iPhone–Macローカル通信PoC",
+      "description": "iPhone版DeltaとmacOS版melonDS 1.1を接続し、Dragon Quest IXのローカル通信を橋渡しする実験的PoC。認証・アソシエーション・マルチプレイ世界への参加と継続的なフレーム交換まで動作し、長時間安定性と音声・映像の滑らかさを継続調整しています。",
+      "category": "Tech",
+      "technologies": ["iOS", "macOS", "Delta", "melonDS", "ENet", "802.11", "Local Networking"],
+      "media": {
+        "src": "assets/iphone-mac-local-communication.png",
+        "alt": "携帯ゲーム機風の画面で動作するローカル通信プロトタイプ",
+        "caption": "iPhone–Mac間ローカル通信プロトタイプの動作画面"
+      },
+      "evidence": [
+        { "label": "GitHub — working proof of concept", "url": "https://github.com/EugeneNumata/delta-dq9-local-multiplayer" }
+      ],
+      "verification": "linked-working-poc",
+      "publicationStatus": "published",
+      "featured": true
+    },
+    {
+      "id": "business-launch",
+      "title": "FPS学院 — 会社経営・ゼロイチ立ち上げ",
+      "description": "会社経営の実践として、AIと一緒にゲームや仕組みを作る学びの場をゼロから立ち上げ。コンセプト設計、教育方針、Web導線、日々の運営、地域での実地活動まで一貫して担っています。",
+      "category": "Business",
+      "technologies": ["Business Design", "Education Design", "Community Operations", "Project Management"],
+      "evidence": [
+        { "label": "FPS学院 公式サイト", "url": "https://eiq-fps.github.io/FPS/" }
+      ],
+      "verification": "linked",
+      "publicationStatus": "published",
+      "featured": true
+    },
+    {
+      "id": "online-community",
+      "title": "FPS学院 — オンライン／地域コミュニティ運営",
+      "description": "FPS学院として、AIを活用したゲーム制作と技術学習のコミュニティを運営。オンラインでの交流と、地域の子どもとの実地活動をつないでいます。",
+      "category": "Community",
+      "technologies": ["Community Operations", "Education Design", "Facilitation"],
+      "evidence": [
+        { "label": "FPS学院 公式サイト", "url": "https://eiq-fps.github.io/FPS/" }
+      ],
+      "verification": "linked",
+      "publicationStatus": "published",
+      "featured": false
+    }
+  ]
+}

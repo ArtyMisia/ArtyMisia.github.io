@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#090a09">
+  <meta name="description" content="Eugene / ArtyMisiaのポートフォリオ">
+  <link rel="canonical" href="https://artymisia.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="Eugene / ArtyMisia">
+  <meta property="og:title" content="Eugene / ArtyMisia — Possibility Engine">
+  <meta property="og:description" content="会社経営、AI開発、映像制作、ゲーム、コミュニティ運営を横断する機械式ポートフォリオ。">
+  <meta property="og:url" content="https://artymisia.github.io/">
+  <meta property="og:image" content="https://artymisia.github.io/assets/kugutsu-haguruma.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Eugene / ArtyMisia — Possibility Engine">
+  <meta name="twitter:description" content="未実装の未来を、動くものにする。">
+  <meta name="twitter:image" content="https://artymisia.github.io/assets/kugutsu-haguruma.jpg">
+  <link rel="icon" href="assets/gear-wheel-pixabay.png">
+  <title>Eugene / ArtyMisia — Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="steam steam-a" aria-hidden="true"></div>
+  <div class="steam steam-b" aria-hidden="true"></div>
+  <aside class="power-spine" aria-label="ページ動力伝達率">
+    <div class="spine-wheel"><img src="assets/gear-rust-pixabay.png" alt=""></div>
+    <div class="spine-shaft"><i></i><b></b></div>
+    <div class="spine-counter"><span id="scroll-percent">000</span><small>%<br>TRAVEL</small></div>
+  </aside>
+
+  <header class="hero">
+    <nav class="nav wrap" aria-label="表示モード">
+      <a class="brand" href="?mode=all" aria-label="総合ポートフォリオへ"><span>EA</span><small>EST. NOW</small></a>
+      <p class="system-id">POSSIBILITY ENGINE <b>№ 001</b></p>
+      <div id="mode-nav" class="mode-nav"></div>
+    </nav>
+
+    <div class="hero-inner wrap">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="signal"></span> MECHANICAL ARCHIVE · YOKOHAMA</p>
+        <p class="hero-name">EUGENE <i>/</i> ARTYMISIA</p>
+        <h1 id="headline">読み込み中...</h1>
+        <p id="summary" class="lead"></p>
+        <ul id="activities" class="activity-list"></ul>
+        <a class="start-lever" href="#works"><span class="lever-knob"></span><b>実績機関を起動</b><small>ENGAGE THE ARCHIVE</small></a>
+      </div>
+
+      <div id="movement-rig" class="movement-rig" aria-label="操作できる自動巻き式可能性機関">
+        <div class="instrument-rail" aria-label="機関計器">
+          <div class="instrument instrument-idea">
+            <span>IDEA PRESSURE</span>
+            <div class="instrument-face"><i></i><b>93</b><small>%</small></div>
+          </div>
+          <div class="instrument instrument-output">
+            <span>OUTPUT</span>
+            <div class="instrument-face"><i></i><b>88</b><small>RPM</small></div>
+          </div>
+          <div class="instrument instrument-sync">
+            <span>SYNC RATE</span>
+            <div class="instrument-face"><i></i><b>∞</b><small>LIVE</small></div>
+          </div>
+        </div>
+
+        <div class="calibre-window">
+          <span class="calibre-rivet cr1"></span><span class="calibre-rivet cr2"></span><span class="calibre-rivet cr3"></span><span class="calibre-rivet cr4"></span>
+          <img class="calibre-art" src="assets/kugutsu-haguruma.jpg" alt="歯車や時計、建築物をまとった機械仕掛けの傀儡獣" fetchpriority="high">
+          <img class="stock-mechanism stock-clockwork" src="assets/clockwork-pixabay.png" alt="" aria-hidden="true">
+          <img class="stock-mechanism stock-gear-bed" src="assets/gears-steampunk-pixabay.png" alt="" aria-hidden="true">
+          <div class="crystal-glare" aria-hidden="true"></div>
+          <div class="movement-bridge bridge-a" aria-hidden="true"></div>
+          <div class="movement-bridge bridge-b" aria-hidden="true"></div>
+          <div class="movement-bridge bridge-c" aria-hidden="true"></div>
+          <img class="stock-wheel stock-wheel-main" src="assets/gear-rust-pixabay.png" alt="" aria-hidden="true">
+          <img class="stock-wheel stock-wheel-train" src="assets/gear-rust-pixabay.png" alt="" aria-hidden="true">
+          <img class="stock-wheel stock-wheel-crown" src="assets/gear-wheel-pixabay.png" alt="" aria-hidden="true">
+          <div class="ratchet-wheel" aria-hidden="true"><i></i></div>
+          <div class="click-hammer" aria-hidden="true"><i></i><b></b></div>
+          <div class="balance-assembly" aria-hidden="true"><div class="balance-wheel"><i></i></div><span></span></div>
+          <div class="escapement" aria-hidden="true"><i></i><b></b></div>
+          <div class="automatic-rotor" aria-hidden="true"><span>AUTOMATIC<br>EA–001</span></div>
+          <div class="power-route route-a" aria-hidden="true"></div>
+          <div class="power-route route-b" aria-hidden="true"></div>
+          <span class="jewel jewel-a" aria-hidden="true"></span><span class="jewel jewel-b" aria-hidden="true"></span><span class="jewel jewel-c" aria-hidden="true"></span><span class="jewel jewel-d" aria-hidden="true"></span>
+          <div class="calibre-core"><small>CALIBRE</small><b>EA–001</b><span id="movement-state">RUNNING</span></div>
+          <div class="calibre-serial">KUGUTSU AUTOMATON<br><b>TWENTY-ONE CONCEPTUAL JEWELS</b></div>
+        </div>
+
+        <div class="control-deck">
+          <button id="wind-control" class="wind-control" type="button" aria-pressed="false">
+            <span class="lever-track"><i class="lever-shaft"><b></b></i></span>
+            <span><b>主ゼンマイを巻く</b><small>PULL TO OVERDRIVE</small></span>
+          </button>
+          <div class="toggle-bank" aria-label="機関表示制御">
+            <button type="button" data-rig-action="expose" aria-pressed="true"><i></i><span>EXPOSE</span></button>
+            <button type="button" data-rig-action="rotor" aria-pressed="true"><i></i><span>ROTOR</span></button>
+            <button type="button" data-rig-action="pulse" aria-pressed="true"><i></i><span>PULSE</span></button>
+            <button id="sound-toggle" type="button" aria-pressed="false"><i></i><span>SOUND</span></button>
+          </div>
+          <div class="mechanical-log" aria-live="polite"><span>POWER RESERVE</span><b id="reserve-value">42 H</b><small id="mechanical-status">機関同調。創作回路は正常です。</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticker" aria-hidden="true"><div>AI DEVELOPMENT　◆　VIDEO PRODUCTION　◆　COMMUNITY DESIGN　◆　POKER STRATEGY　◆　LOCAL NETWORKING　◆　WORLD BUILDING　◆　AI DEVELOPMENT　◆　VIDEO PRODUCTION　◆　COMMUNITY DESIGN　◆　POKER STRATEGY　◆　LOCAL NETWORKING　◆　WORLD BUILDING　◆　</div></div>
+  </header>
+
+  <section id="transmission" class="transmission-bay wrap machine-chamber" aria-labelledby="transmission-title">
+    <div class="transmission-heading">
+      <div>
+        <p class="eyebrow"><span class="signal"></span> POWER DISTRIBUTION CHAMBER</p>
+        <h2 id="transmission-title">発想から現実へ、<br>動力を伝える。</h2>
+      </div>
+      <div class="chamber-readout"><span>MASTER PRESSURE</span><b id="master-pressure">088.8</b><small>kgf / cm²</small></div>
+    </div>
+
+    <div id="drive-train" class="drive-train">
+      <div class="drive-grid" aria-hidden="true"></div>
+      <div class="power-belt belt-one" aria-hidden="true"><i></i></div>
+      <div class="power-belt belt-two" aria-hidden="true"><i></i></div>
+      <img class="drive-wheel drive-wheel-a" src="assets/gear-rust-pixabay.png" alt="" aria-hidden="true" loading="lazy">
+      <img class="drive-wheel drive-wheel-b" src="assets/gear-wheel-pixabay.png" alt="" aria-hidden="true" loading="lazy">
+      <img class="drive-wheel drive-wheel-c" src="assets/gear-rust-pixabay.png" alt="" aria-hidden="true" loading="lazy">
+      <div class="flywheel" aria-hidden="true"><i></i><b></b><span></span></div>
+      <div class="piston-bank" aria-label="実装工程ピストン">
+        <div class="piston piston-a"><span>01</span><i></i><b>IDEA</b></div>
+        <div class="piston piston-b"><span>02</span><i></i><b>BUILD</b></div>
+        <div class="piston piston-c"><span>03</span><i></i><b>VERIFY</b></div>
+        <div class="piston piston-d"><span>04</span><i></i><b>RECORD</b></div>
+      </div>
+      <div class="pressure-pipe pipe-a" aria-hidden="true"><i></i></div>
+      <div class="pressure-pipe pipe-b" aria-hidden="true"><i></i></div>
+      <div class="pressure-pipe pipe-c" aria-hidden="true"><i></i></div>
+      <div class="chamber-core"><span>EA</span><b>TRANSMISSION</b><small id="transmission-status">ALL CHANNELS COUPLED</small></div>
+    </div>
+
+    <div class="routing-console">
+      <div class="crank-console">
+        <button id="manual-crank" class="manual-crank" type="button" aria-label="手回しクランクで動力を注入">
+          <span class="crank-ring"><i class="crank-arm"><b></b></i></span>
+          <span><small>MANUAL IMPULSE</small><b>手回し動力注入</b></span>
+        </button>
+        <div class="crank-counter"><span>RATCHET</span><b id="crank-count">000</b><small>CLICKS</small></div>
+      </div>
+      <div class="channel-levers" aria-label="動力系統操作">
+        <button type="button" data-channel="thought" aria-pressed="true"><i><b></b></i><span>THOUGHT<small>発想入力</small></span></button>
+        <button type="button" data-channel="craft" aria-pressed="true"><i><b></b></i><span>CRAFT<small>制作変換</small></span></button>
+        <button type="button" data-channel="proof" aria-pressed="true"><i><b></b></i><span>PROOF<small>現実検証</small></span></button>
+      </div>
+      <div class="route-monitor"><span>ROUTE STATUS</span><b id="route-status">FULL POWER</b><div><i></i><i></i><i></i><i></i><i></i></div></div>
+    </div>
+  </section>
+
+  <section class="manifesto wrap machine-chamber" aria-label="制作姿勢">
+    <p class="manifesto-number">01</p>
+    <p>まだ名前のないものを見つけ、<br><strong>仕組みにし、動かし、現実へ渡す。</strong></p>
+    <div class="coordinates"><span>THOUGHT → STRUCTURE</span><span>STRUCTURE → EXPERIENCE</span><span>EXPERIENCE → RECORD</span></div>
+  </section>
+
+  <main id="works" class="wrap machine-chamber">
+    <section class="section-heading">
+      <div><p class="eyebrow"><span class="signal"></span> ACTIVE MECHANISMS</p><h2 id="work-title">実績</h2></div>
+    </section>
+
+    <section id="mechanism-shell" class="mechanism-shell" aria-label="機械式実績アーカイブ">
+      <div class="depth-grid" aria-hidden="true"></div>
+      <div class="archive-camshaft" aria-hidden="true"><i></i><b></b><span></span></div>
+      <div class="gear-console">
+        <p class="console-kicker">MODULE SELECTOR</p>
+        <div id="gear-selector" class="gear-selector" role="tablist" aria-label="実績モジュールを選択">
+          <div id="gear-nodes" class="gear-nodes"></div>
+          <div id="gear-core" class="selector-core" aria-hidden="true"><span>EA</span></div>
+        </div>
+        <div class="active-module">
+          <span id="module-count">01 / 01</span>
+          <strong id="module-title">読み込み中</strong>
+        </div>
+        <div class="console-controls">
+          <button id="prev-project" type="button" aria-label="前の実績">← <span>PREV</span></button>
+          <button id="next-project" type="button" aria-label="次の実績"><span>NEXT</span> →</button>
+        </div>
+      </div>
+
+      <div id="archive-viewport" class="archive-viewport">
+        <div class="archive-depth depth-back" aria-hidden="true"></div>
+        <div class="archive-depth depth-mid" aria-hidden="true"></div>
+        <div id="project-stage" class="project-stage" aria-live="polite"></div>
+        <div class="door door-left" aria-hidden="true"><span></span></div>
+        <div class="door door-right" aria-hidden="true"><span></span></div>
+        <button id="archive-toggle" class="archive-lock" type="button" aria-expanded="false">
+          <span class="lock-gear"><i></i></span>
+          <b>記憶庫を開錠</b><small>UNSEAL THE ARCHIVE</small>
+        </button>
+      </div>
+    </section>
+    <noscript>このページの表示にはJavaScriptが必要です。</noscript>
+  </main>
+
+  <footer class="footer wrap">
+    <div><p class="footer-mark">EUGENE / ARTYMISIA</p><p>未来は、待つものではなく試作するもの。</p></div>
+    <div class="footer-status"><span class="signal"></span><b>ENGINE ONLINE</b><small>© <span id="year"></span></small></div>
+  </footer>
+</body>
+</html>
