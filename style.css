@@ -1514,3 +1514,103 @@ h1 {
   :root { --paper:#fff5da; --dim:#c8bea1; --hairline:rgba(243,206,126,.42); }
   .card > p,.lead { color:#d4cbb2; }
 }
+
+/* Information hierarchy: put the archive first and keep the reading layer clear */
+main#works {
+  padding:clamp(68px,7vw,96px) 0 clamp(92px,9vw,128px);
+  scroll-margin-top:18px;
+}
+
+.section-heading {
+  display:grid;
+  grid-template-columns:minmax(260px,.86fr) minmax(330px,.64fr);
+  align-items:end;
+  gap:clamp(24px,5vw,72px);
+  margin-bottom:34px;
+}
+.section-heading::after {
+  grid-column:1 / -1;
+  width:100%;
+  min-width:0;
+  background:linear-gradient(90deg,var(--brass),rgba(216,161,74,.14) 42%,transparent);
+}
+.section-intro {
+  max-width:590px;
+  margin:0 0 3px;
+  padding:12px 0 12px 18px;
+  border-left:2px solid rgba(118,199,176,.72);
+  background:linear-gradient(90deg,rgba(118,199,176,.045),transparent 82%);
+  color:#c1b89f;
+  font-size:clamp(.9rem,1.2vw,1rem);
+  line-height:1.95;
+}
+
+.eyebrow { color:#dda752; }
+.system-id { color:#8a836e; }
+.hero .lead {
+  max-width:64ch;
+  color:#c8bea6;
+  font-size:clamp(.96rem,1.35vw,1.06rem);
+}
+.activity-list li { color:#b4aa91; }
+
+.console-kicker { color:#91866d; }
+.active-module span { color:#c7754d; }
+.active-module strong {
+  color:#eee3c8;
+  font-size:.96rem;
+  line-height:1.5;
+}
+.archive-viewport::before { color:#807660; }
+.vault-dial-console { top:41%; }
+.door::before { top:41%; }
+.vault-dial-console > small { color:#9c9279; }
+
+.module-serial { color:#8d846f; }
+.category { color:#e2ad55; }
+.category::before { color:#837a66; }
+.archive-viewport .card h3 {
+  max-width:90%;
+  font-size:clamp(1.55rem,2.3vw,2.2rem);
+}
+.card > p {
+  color:#c0b79e;
+  font-size:clamp(.94rem,1.05vw,1rem);
+  line-height:2;
+}
+.tech-list span { color:#aaa189; }
+.evidence-label { color:#a19881; }
+.card-media figcaption { color:#928a75; }
+
+.transmission-heading .eyebrow,
+.section-heading .eyebrow { margin-bottom:12px; }
+.transmission-heading h2 { line-height:1.04; }
+.chamber-readout span,
+.chamber-readout small { color:#76988c; }
+.manifesto > p:nth-child(2) {
+  color:#bbb29a;
+  line-height:1.65;
+}
+.coordinates span { color:#928a75; }
+
+@media (max-width:700px) {
+  main#works { padding:56px 0 88px; }
+  .section-heading {
+    grid-template-columns:1fr;
+    gap:17px;
+    margin-bottom:25px;
+  }
+  .section-heading::after { grid-column:1; }
+  .section-intro {
+    max-width:none;
+    padding:10px 0 10px 14px;
+    font-size:.9rem;
+    line-height:1.85;
+  }
+  .vault-dial-console { top:39%; }
+  .door::before { top:39%; }
+  .gear-console .active-module strong { font-size:.78rem; line-height:1.45; }
+  .archive-viewport .card h3 { max-width:100%; font-size:1.5rem; line-height:1.35; }
+  .card > p { font-size:.94rem; line-height:1.9; }
+  .manifesto > p:nth-child(2) { font-size:clamp(1.18rem,6vw,1.7rem); }
+}
