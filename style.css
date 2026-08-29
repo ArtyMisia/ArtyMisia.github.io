@@ -3040,3 +3040,148 @@ body[data-mode="poker"] .door-surface { box-shadow:inset 0 0 0 2px #9e6d32,inset
 @media (prefers-reduced-motion:reduce) {
   .crosslock-ring,.crosslock-ring .door-wheel-e { animation:none !important; }
 }
+
+/* Scientia crest master drive: aged-brass standby / verdigris overdrive */
+.archive-header .crest-control {
+  position:relative;
+  width:76px;
+  height:76px;
+  padding:0;
+  appearance:none;
+  overflow:visible;
+  border:0;
+  border-radius:50%;
+  background:transparent;
+  color:inherit;
+  cursor:pointer;
+  isolation:isolate;
+  transition:transform .18s ease,filter .3s ease;
+}
+.archive-header .crest-control::before {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:5px;
+  width:auto;
+  height:auto;
+  border:1px solid rgba(177,119,55,.72);
+  border-radius:50%;
+  background:
+    repeating-conic-gradient(from 2deg,rgba(184,124,55,.72) 0 3deg,transparent 3deg 12deg),
+    radial-gradient(circle,#16130e 0 56%,#070907 57% 100%);
+  box-shadow:0 0 0 4px #070907,0 0 0 5px rgba(202,145,67,.24),inset 0 0 18px #000,0 8px 18px #000;
+  opacity:.88;
+  transform:none;
+  animation:crest-index 24s steps(48,end) infinite;
+}
+.archive-header .crest-control::after {
+  content:"";
+  position:absolute;
+  z-index:3;
+  left:50%;
+  top:50%;
+  width:8px;
+  height:8px;
+  border:1px solid #c38a43;
+  border-radius:50%;
+  background:#22170e;
+  box-shadow:0 -34px #8c602e,0 34px #8c602e,34px 0 #8c602e,-34px 0 #8c602e,inset 0 0 4px #000;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.archive-header .crest-control img {
+  position:relative;
+  z-index:2;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:0;
+  filter:sepia(.82) saturate(.66) hue-rotate(-7deg) brightness(.67) contrast(1.34) drop-shadow(0 8px 8px #000) drop-shadow(0 0 6px rgba(209,151,70,.25));
+  transition:filter .42s ease,transform .34s cubic-bezier(.2,.9,.3,1.3);
+}
+.crest-status {
+  position:absolute;
+  z-index:5;
+  left:50%;
+  bottom:-15px;
+  min-width:68px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  padding:3px 6px;
+  border:1px solid rgba(165,113,50,.46);
+  background:#080a08;
+  color:#8f856d;
+  box-shadow:0 5px 11px #000,inset 0 0 8px #000;
+  transform:translateX(-50%);
+  white-space:nowrap;
+  pointer-events:none;
+}
+.crest-status i {
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#654322;
+  box-shadow:inset 0 0 2px #000;
+}
+.crest-status b { font:600 .39rem/1 "IBM Plex Mono",monospace; letter-spacing:.11em; }
+.archive-header .crest-control:hover { transform:translateY(-2px); filter:brightness(1.08); }
+.archive-header .crest-control:active { transform:translateY(1px) scale(.97); }
+.archive-header .crest-control:focus-visible { outline:2px solid #76c7b0; outline-offset:7px; }
+.archive-header .crest-control[aria-pressed="true"] img {
+  filter:sepia(.42) saturate(1.18) hue-rotate(78deg) brightness(.9) contrast(1.2) drop-shadow(0 8px 8px #000) drop-shadow(0 0 13px rgba(118,199,176,.68));
+  transform:scale(1.045);
+}
+.archive-header .crest-control[aria-pressed="true"]::before {
+  border-color:#68b69f;
+  box-shadow:0 0 0 4px #070907,0 0 0 5px rgba(118,199,176,.5),inset 0 0 20px #000,0 0 22px rgba(118,199,176,.32);
+  animation-duration:2.4s;
+}
+.archive-header .crest-control[aria-pressed="true"] .crest-status {
+  color:#c9f5e8;
+  border-color:#68b69f;
+}
+.archive-header .crest-control[aria-pressed="true"] .crest-status i {
+  background:#76c7b0;
+  box-shadow:0 0 10px #76c7b0;
+}
+
+.crest-overdrive .mechanism-shell {
+  border-color:#776a3b;
+  box-shadow:inset 0 0 0 7px #080907,inset 0 0 0 8px rgba(118,199,176,.28),0 35px 110px #000,0 0 34px rgba(118,199,176,.1);
+}
+.crest-overdrive .archive-powerhead { border-color:#7aa996; box-shadow:inset 0 0 0 5px #080a08,inset 0 0 0 6px rgba(118,199,176,.28),inset 0 0 34px #000,0 12px 28px rgba(0,0,0,.5),0 0 24px rgba(118,199,176,.12); }
+.crest-overdrive .powerhead-wheel { animation-duration:calc(var(--wheel-speed,12s) * .28); filter:saturate(.95) contrast(1.16) brightness(.93) drop-shadow(5px 8px 7px #000) drop-shadow(0 0 7px rgba(118,199,176,.22)); }
+.crest-overdrive .archive-gear-cluster img { animation-duration:calc(var(--wheel-speed,18s) * .3); }
+.crest-overdrive .door-wheel { animation-duration:calc(var(--door-speed,18s) * .3); filter:saturate(.98) contrast(1.2) brightness(.94) drop-shadow(0 0 9px rgba(118,199,176,.22)); }
+.crest-overdrive .crosslock-ring { animation-duration:8s; filter:drop-shadow(0 0 10px rgba(118,199,176,.2)); }
+.crest-overdrive .crosslock-ring .door-wheel-e { animation-duration:2.1s; }
+.crest-overdrive .powerhead-balance,.crest-overdrive .archive-balance > i { animation-duration:.22s; }
+.crest-overdrive .archive-escapement > i { animation-duration:1.05s; }
+.crest-overdrive .archive-escapement > b { animation-duration:.12s; }
+.crest-overdrive .powerhead-pulse i { background:#94e2cc; box-shadow:0 0 13px #76c7b0; animation-duration:.34s; }
+.crest-overdrive .powerhead-readout b { color:#c9f5e8; text-shadow:0 0 9px rgba(118,199,176,.7); }
+.crest-impulse { animation:crest-machine-kick .42s steps(3,end); }
+
+@keyframes crest-index {
+  from { transform:rotate(0deg); }
+  to { transform:rotate(360deg); }
+}
+@keyframes crest-machine-kick {
+  0%,100% { transform:translateX(0); }
+  30% { transform:translateX(-2px); }
+  60% { transform:translateX(2px); }
+}
+
+@media (max-width:700px) {
+  .archive-header .crest-control { width:60px; height:60px; }
+  .archive-header .crest-control::after { box-shadow:0 -26px #8c602e,0 26px #8c602e,26px 0 #8c602e,-26px 0 #8c602e,inset 0 0 4px #000; }
+  .crest-status { bottom:-13px; min-width:58px; padding:2px 4px; }
+  .crest-status b { font-size:.34rem; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .archive-header .crest-control::before { animation:none !important; }
+  .crest-impulse { animation:none !important; }
+}

@@ -28,7 +28,10 @@
   <div class="steam steam-b" aria-hidden="true"></div>
   <header class="archive-header">
     <nav class="nav wrap" aria-label="表示モード">
-      <a class="brand" href="?mode=all" aria-label="総合ポートフォリオへ"><img src="assets/scientia-est-arma-logo.png" alt="Scientia Est Arma"><small>EST. NOW</small></a>
+      <button id="crest-control" class="brand crest-control" type="button" aria-pressed="false" aria-label="SCIENTIA主動力を起動">
+        <img src="assets/scientia-est-arma-logo.png" alt="Scientia Est Arma">
+        <span class="crest-status"><i></i><b>STANDBY</b></span>
+      </button>
       <p class="system-id">INTEGRATED ACHIEVEMENT ARCHIVE <b>№ EA–001</b></p>
       <div id="mode-nav" class="mode-nav"></div>
     </nav>
@@ -78,8 +81,8 @@
           <div class="powerhead-pulse"><i></i><i></i><i></i><i></i><i></i></div>
         </div>
         <div class="powerhead-readout">
-          <small>MAINSPRING</small><b>WOUND</b>
-          <small>ESCAPEMENT</small><b>RUNNING</b>
+          <small>MAINSPRING</small><b id="mainspring-state">WOUND</b>
+          <small>ESCAPEMENT</small><b id="escapement-state">RUNNING</b>
           <button id="sound-toggle" type="button" aria-pressed="false" aria-label="機械音を入れる"><i></i>SOUND</button>
         </div>
       </div>

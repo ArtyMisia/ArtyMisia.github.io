@@ -81,6 +81,35 @@ function initMechanicalAudio() {
   });
 }
 
+function initCrestControl() {
+  const control = document.getElementById("crest-control");
+  const shell = document.getElementById("mechanism-shell");
+  const status = control?.querySelector(".crest-status b");
+  const mainspring = document.getElementById("mainspring-state");
+  const escapement = document.getElementById("escapement-state");
+  let impulseTimer;
+  if (!control || !shell) return;
+
+  const setPower = engaged => {
+    document.body.classList.toggle("crest-overdrive", engaged);
+    control.setAttribute("aria-pressed", String(engaged));
+    control.setAttribute("aria-label", engaged ? "SCIENTIA主動力を通常出力へ戻す" : "SCIENTIA主動力を起動");
+    status.textContent = engaged ? "OVERDRIVE" : "STANDBY";
+    if (mainspring) mainspring.textContent = engaged ? "MAX TORQUE" : "WOUND";
+    if (escapement) escapement.textContent = engaged ? "HIGH BEAT" : "RUNNING";
+
+    shell.classList.remove("crest-impulse");
+    window.requestAnimationFrame(() => shell.classList.add("crest-impulse"));
+    window.clearTimeout(impulseTimer);
+    impulseTimer = window.setTimeout(() => shell.classList.remove("crest-impulse"), 820);
+
+    machineClack("heavy");
+    if (engaged) [85, 160, 235, 310].forEach(delay => window.setTimeout(() => machineClack("switch"), delay));
+  };
+
+  control.addEventListener("click", () => setPower(control.getAttribute("aria-pressed") !== "true"));
+}
+
 function initMovementRig() {
   const rig = document.getElementById("movement-rig");
   const windControl = document.getElementById("wind-control");
@@ -360,6 +389,7 @@ async function init() {
 }
 
 initMechanicalAudio();
+initCrestControl();
 initMovementRig();
 initPageMachine();
 init();
