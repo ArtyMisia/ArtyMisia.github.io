@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastReviewed": "2026-08-27",
+  "lastReviewed": "2026-08-29",
   "profile": {
     "name": "Eugene / ArtyMisia",
     "headline": "未実装の未来を、動くものにする。",
@@ -47,6 +47,7 @@
   "projects": [
     {
       "id": "fps-academy",
+      "slotNumber": 2,
       "title": "FPS学院 — AIと学ぶ地域コミュニティ",
       "description": "AIと一緒にゲームや仕組みを作り、自分のペースで技術を磨く学びの場を設計・運営。近隣の子どもとの実地活動までつなげています。",
       "category": "Community",
@@ -60,6 +61,7 @@
     },
     {
       "id": "project-luna",
+      "slotNumber": 6,
       "title": "Project LUNA — VR空間のAIインターフェース",
       "description": "UnityとVRMを使い、AIに視線・姿勢・リップシンクなどの身体性を与えるVR/MRプロジェクト。ローカル保存とBYOKを軸に、関係性が成長する体験を試作しています。",
       "category": "Tech",
@@ -72,6 +74,7 @@
     },
     {
       "id": "poamy",
+      "slotNumber": 7,
       "title": "POAMY — 動画制作自動化パイプライン",
       "description": "テーマと本数から台本・音声・字幕・背景を統合し、縦型動画を一括生成するローカルシステム。公開版のLimited Editionでは、manifestを正本とした最大10本のバッチ生成、3種のテンプレート、音声差し替え、失敗ジョブの再実行を利用できます。",
       "category": "Tech",
@@ -85,6 +88,7 @@
     },
     {
       "id": "vtuber-editing",
+      "slotNumber": 4,
       "title": "Lesath — VTuber動画編集",
       "description": "個人VTuber・Lesathのチャンネルで13本以上の動画編集を担当。企画意図を踏まえた構成、カット、映像演出まで制作しています。代表作として4本を掲載しています。",
       "category": "Video",
@@ -102,6 +106,7 @@
     },
     {
       "id": "channel-production",
+      "slotNumber": 5,
       "title": "Lesath — YouTubeチャンネルプロデュース",
       "description": "2024年1月頃、登録者500人未満の段階から個人VTuber・Lesathのチャンネルをプロデュース。企画、動画編集、運用改善を横断し、YouTube収益化を達成。2026年8月時点で登録者約888人まで成長しています。",
       "category": "Video",
@@ -116,6 +121,7 @@
     },
     {
       "id": "local-device-communication",
+      "slotNumber": 8,
       "title": "Delta DQ9 — iPhone–Macローカル通信PoC",
       "description": "iPhone版DeltaとmacOS版melonDS 1.1を接続し、Dragon Quest IXのローカル通信を橋渡しする実験的PoC。認証・アソシエーション・マルチプレイ世界への参加と継続的なフレーム交換まで動作し、長時間安定性と音声・映像の滑らかさを継続調整しています。",
       "category": "Tech",
@@ -134,6 +140,7 @@
     },
     {
       "id": "business-launch",
+      "slotNumber": 1,
       "title": "FPS学院 — 会社経営・ゼロイチ立ち上げ",
       "description": "会社経営の実践として、AIと一緒にゲームや仕組みを作る学びの場をゼロから立ち上げ。コンセプト設計、教育方針、Web導線、日々の運営、地域での実地活動まで一貫して担っています。",
       "category": "Business",
@@ -147,6 +154,7 @@
     },
     {
       "id": "online-community",
+      "slotNumber": 3,
       "title": "FPS学院 — オンライン／地域コミュニティ運営",
       "description": "FPS学院として、AIを活用したゲーム制作と技術学習のコミュニティを運営。オンラインでの交流と、地域の子どもとの実地活動をつないでいます。",
       "category": "Community",
@@ -159,7 +167,22 @@
       "featured": false
     },
     {
+      "id": "fretmapper",
+      "slotNumber": 10,
+      "title": "FretMapper — 楽器の耳・ポジショントレーナー",
+      "description": "ギター、ベース、ウクレレ、ピアノに対応した、ブラウザ内完結型の耳とポジションのトレーニングアプリ。Web Audio APIで楽器音を合成し、アカウント・APIキー・バックエンドなしで練習できます。",
+      "category": "Tech",
+      "technologies": ["React", "TypeScript", "Vite", "Web Audio API", "Tailwind CSS", "Motion"],
+      "evidence": [
+        { "label": "GitHub — FretMapper", "url": "https://github.com/ArtyMisia/FretMapper" }
+      ],
+      "verification": "public-repository-source-reviewed",
+      "publicationStatus": "published",
+      "featured": true
+    },
+    {
       "id": "application-archive-gateway",
+      "slotNumber": 9,
       "entryType": "passphrase",
       "title": "合言葉",
       "description": "",

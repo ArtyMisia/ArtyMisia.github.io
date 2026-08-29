@@ -300,6 +300,12 @@ function initPageMachine() {
   }
 }
 
+function mechanismNumber(project, index) {
+  const configured = Number(project?.slotNumber);
+  const number = Number.isInteger(configured) && configured > 0 ? configured : index + 1;
+  return String(number).padStart(2, "0");
+}
+
 function projectCard(project, index) {
   if (project.entryType === "passphrase") return passphraseCard(project, index);
   const media = project.media
@@ -310,7 +316,7 @@ function projectCard(project, index) {
     : `<p class="evidence-note">${escapeHtml(project.evidenceNote || "証拠リンク準備中")}</p>`;
 
   return `<article class="card mechanism-card ${project.publicationStatus === "draft" ? "draft" : ""}">
-    <div class="module-serial">MECHANISM ${String(index + 1).padStart(2, "0")} <i></i> ${escapeHtml(project.verification || "recorded")}</div>
+    <div class="module-serial">MECHANISM ${mechanismNumber(project, index)} <i></i> ${escapeHtml(project.verification || "recorded")}</div>
     <div class="card-top"><span class="category">${escapeHtml(project.category)}</span>${project.publicationStatus === "draft" ? '<span class="status">要確認・非公開</span>' : ""}</div>
     <h3>${escapeHtml(project.title)}</h3>
     ${media}
@@ -322,7 +328,7 @@ function projectCard(project, index) {
 
 function passphraseCard(project, index) {
   return `<article class="card mechanism-card passphrase-card">
-    <div class="module-serial">MECHANISM ${String(index + 1).padStart(2, "0")} <i></i> ACCESS TERMINAL</div>
+    <div class="module-serial">MECHANISM ${mechanismNumber(project, index)} <i></i> ACCESS TERMINAL</div>
     <h3>${escapeHtml(project.title)}</h3>
     <form id="passphrase-form" class="passphrase-console" autocomplete="off">
       <div class="passphrase-reader" aria-hidden="true"><i></i><b></b><span>EA–009 / PHRASE READER</span></div>
@@ -385,16 +391,16 @@ function renderGearNodes() {
   const nodes = document.getElementById("gear-nodes");
   nodes.innerHTML = projects.map((project, index) => {
     const angle = (360 / projects.length) * index;
-    return `<button type="button" role="tab" class="gear-node ${index === activeIndex ? "active" : ""}" style="--angle:${angle}deg;--counter:${-angle}deg" aria-selected="${index === activeIndex}" aria-label="${escapeHtml(project.title)}" data-index="${index}"><span>${String(index + 1).padStart(2, "0")}</span></button>`;
+    return `<button type="button" role="tab" class="gear-node ${index === activeIndex ? "active" : ""}" style="--angle:${angle}deg;--counter:${-angle}deg" aria-selected="${index === activeIndex}" aria-label="${escapeHtml(project.title)}" data-index="${index}"><span>${mechanismNumber(project, index)}</span></button>`;
   }).join("");
   nodes.querySelectorAll(".gear-node").forEach(button => button.addEventListener("click", () => selectProject(Number(button.dataset.index))));
 }
 
 function updateModuleLabels() {
   const project = projects[activeIndex];
-  document.getElementById("module-count").textContent = `${String(activeIndex + 1).padStart(2, "0")} / ${String(projects.length).padStart(2, "0")}`;
+  document.getElementById("module-count").textContent = `${mechanismNumber(project, activeIndex)} / ${String(projects.length).padStart(2, "0")}`;
   document.getElementById("module-title").textContent = project.title;
-  document.getElementById("dial-number").textContent = String(activeIndex + 1).padStart(2, "0");
+  document.getElementById("dial-number").textContent = mechanismNumber(project, activeIndex);
   document.querySelectorAll(".gear-node").forEach((button, index) => {
     button.classList.toggle("active", index === activeIndex);
     button.setAttribute("aria-selected", String(index === activeIndex));
@@ -443,7 +449,7 @@ function selectProject(index) {
   toggle.setAttribute("aria-expanded", "false");
   toggle.querySelector("b").textContent = "番号照合中";
   toggle.querySelector("small").textContent = "DIALING MODULE";
-  dialNumber.textContent = String(targetIndex + 1).padStart(2, "0");
+  dialNumber.textContent = mechanismNumber(projects[targetIndex], targetIndex);
   const step = targetIndex === activeIndex ? 1 : targetIndex - activeIndex;
   gearTurns += step * (360 / projects.length);
   document.getElementById("gear-core").style.transform = `translate(-50%, -50%) rotate(${gearTurns}deg)`;
