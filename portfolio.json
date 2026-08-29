@@ -199,6 +199,24 @@
       "featured": true
     },
     {
+      "id": "scientia-horologium-perpetuum",
+      "slotNumber": 12,
+      "title": "SCIENTIA Horologium Perpetuum — デジタル永久機械式時計",
+      "description": "一本のゼンマイから香箱・輪列・脱進機・9軸トゥールビヨン・永久カレンダー・宝石オーラリー・自動巻き機構へ動力を伝える、スケルトン機械式時計のデジタル作品。各機能輪は歯数・半径・軸位置・回転方向・減速比を持ち、針と天体表示を共通のシミュレーション時刻から同期させています。",
+      "category": "Tech",
+      "technologies": ["React", "TypeScript", "SVG", "Vite", "Kinematic Simulation", "Gear Ratio Modeling", "DeviceMotion"],
+      "primaryLink": {
+        "label": "Horologium Perpetuumを起動",
+        "url": "horologium/"
+      },
+      "evidence": [
+        { "label": "時計機構を観察する", "url": "horologium/" }
+      ],
+      "verification": "branch-static-build-verified",
+      "publicationStatus": "published",
+      "featured": true
+    },
+    {
       "id": "application-archive-gateway",
       "slotNumber": 9,
       "entryType": "passphrase",
