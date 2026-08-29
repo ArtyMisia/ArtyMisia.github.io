@@ -163,6 +163,37 @@ function initSecretLatch() {
   window.requestAnimationFrame(monitorLatch);
 }
 
+function initHorologiumRoute() {
+  const transition = document.getElementById("horologium-transition");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let navigating = false;
+  if (!transition) return;
+
+  document.addEventListener("click", event => {
+    const link = event.target.closest?.('a[href*="horologium/"]');
+    if (!link || event.defaultPrevented || link.target === "_blank" || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const destination = new URL(link.href, window.location.href);
+    if (destination.origin !== window.location.origin || !destination.pathname.endsWith("/horologium/")) return;
+    destination.searchParams.set("from", document.body.dataset.mode || selectedMode || "all");
+    link.href = destination.href;
+    if (reducedMotion.matches || navigating) return;
+
+    event.preventDefault();
+    navigating = true;
+    transition.setAttribute("aria-hidden", "false");
+    document.body.classList.add("horologium-route-engaged");
+    machineClack("heavy");
+    [120, 240, 390, 560].forEach(delay => window.setTimeout(() => machineClack("switch"), delay));
+    window.setTimeout(() => window.location.assign(destination), 1050);
+  });
+
+  window.addEventListener("pageshow", () => {
+    navigating = false;
+    document.body.classList.remove("horologium-route-engaged");
+    transition.setAttribute("aria-hidden", "true");
+  });
+}
+
 function initMovementRig() {
   const rig = document.getElementById("movement-rig");
   const windControl = document.getElementById("wind-control");
@@ -314,8 +345,10 @@ function projectCard(project, index) {
   const evidence = project.evidence?.length
     ? `<div class="evidence-links">${project.evidence.map(link => `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.label)} ↗</a>`).join("")}</div>`
     : `<p class="evidence-note">${escapeHtml(project.evidenceNote || "証拠リンク準備中")}</p>`;
-  const primaryLink = project.primaryLink?.url
-    ? `<a class="primary-project-link" href="${escapeHtml(project.primaryLink.url)}" target="_blank" rel="noopener noreferrer"><span>EXTERNAL SITE</span><b>${escapeHtml(project.primaryLink.label || "サイトを開く")}</b><i aria-hidden="true">↗</i></a>`
+  const primaryUrl = project.primaryLink?.url || "";
+  const primaryTarget = /^https?:\/\//i.test(primaryUrl) ? ' target="_blank" rel="noopener noreferrer"' : "";
+  const primaryLink = primaryUrl
+    ? `<a class="primary-project-link" href="${escapeHtml(primaryUrl)}"${primaryTarget}><span>EXTERNAL SITE</span><b>${escapeHtml(project.primaryLink.label || "サイトを開く")}</b><i aria-hidden="true">↗</i></a>`
     : "";
 
   return `<article class="card mechanism-card ${project.publicationStatus === "draft" ? "draft" : ""}">
@@ -517,6 +550,7 @@ async function init() {
 initMechanicalAudio();
 initCrestControl();
 initSecretLatch();
+initHorologiumRoute();
 initMovementRig();
 initPageMachine();
 initPassphraseGateway();

@@ -212,7 +212,7 @@
       "evidence": [
         { "label": "時計機構を観察する", "url": "horologium/" }
       ],
-      "verification": "branch-static-build-verified",
+      "verification": "standalone-static-build-verified",
       "publicationStatus": "published",
       "featured": true
     },
