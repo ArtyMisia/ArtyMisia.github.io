@@ -258,14 +258,32 @@ function updateModuleLabels() {
 }
 
 function revealArchive() {
-  archiveOpen = true;
   const shell = document.getElementById("mechanism-shell");
   const toggle = document.getElementById("archive-toggle");
-  shell.classList.add("is-open");
-  toggle.setAttribute("aria-expanded", "true");
-  toggle.querySelector("b").textContent = "記憶庫 稼働中";
-  toggle.querySelector("small").textContent = "ARCHIVE ONLINE";
+  shell.classList.remove("is-switching", "is-open", "is-unbolted");
+  shell.classList.add("is-unlocking");
+  toggle.setAttribute("aria-expanded", "false");
+  toggle.querySelector("b").textContent = "主錠解除中";
+  toggle.querySelector("small").textContent = "RETRACTING BOLTS";
   machineClack("heavy");
+  [120, 240, 360, 480].forEach(delay => window.setTimeout(() => machineClack("switch"), delay));
+
+  window.setTimeout(() => {
+    shell.classList.add("is-unbolted");
+    toggle.querySelector("b").textContent = "開扉機関 接続";
+    toggle.querySelector("small").textContent = "HINGE DRIVE ENGAGED";
+    machineClack("heavy");
+  }, 520);
+
+  window.setTimeout(() => {
+    archiveOpen = true;
+    shell.classList.remove("is-unlocking", "is-unbolted");
+    shell.classList.add("is-open");
+    toggle.setAttribute("aria-expanded", "true");
+    toggle.querySelector("b").textContent = "記憶庫 稼働中";
+    toggle.querySelector("small").textContent = "ARCHIVE ONLINE";
+    machineClack("heavy");
+  }, 880);
 }
 
 function selectProject(index) {
@@ -275,7 +293,7 @@ function selectProject(index) {
   const shell = document.getElementById("mechanism-shell");
   const toggle = document.getElementById("archive-toggle");
   const dialNumber = document.getElementById("dial-number");
-  shell.classList.remove("is-open");
+  shell.classList.remove("is-open", "is-unlocking", "is-unbolted");
   shell.classList.add("is-switching");
   archiveOpen = false;
   toggle.setAttribute("aria-expanded", "false");
@@ -292,12 +310,11 @@ function selectProject(index) {
     document.getElementById("project-stage").innerHTML = projectCard(projects[activeIndex], activeIndex);
     updateModuleLabels();
     window.setTimeout(() => {
-      shell.classList.remove("is-switching");
       revealArchive();
       machineClack("light");
-      window.setTimeout(() => { switching = false; }, 850);
-    }, 90);
-  }, 430);
+      window.setTimeout(() => { switching = false; }, 1450);
+    }, 120);
+  }, 760);
 }
 
 function moveProject(direction) {

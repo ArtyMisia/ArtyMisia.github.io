@@ -24,3 +24,10 @@
   - 公開日: 2022-05-02
 
 ライセンス概要: https://pixabay.com/service/license-summary/
+
+## ユーザー制作素材
+
+- `scientia-est-arma-logo.jpeg`
+  - SCIENTIA EST ARMA カラー紋章
+  - Eugene / ArtyMisiaによる過去の自作デザイン
+  - サイト上部の識別章および統合実績機関の認証紋章として使用
