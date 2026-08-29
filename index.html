@@ -28,10 +28,15 @@
   <div class="steam steam-b" aria-hidden="true"></div>
   <header class="archive-header">
     <nav class="nav wrap" aria-label="表示モード">
-      <button id="crest-control" class="brand crest-control" type="button" aria-pressed="false" aria-label="SCIENTIA主動力を起動">
-        <img src="assets/scientia-est-arma-logo.png" alt="Scientia Est Arma">
-        <span class="crest-status"><i></i><b>STANDBY</b></span>
-      </button>
+      <div class="brand-switcher">
+        <a id="horologium-launch" class="brand crest-control crest-route" href="horologium/" aria-label="SCIENTIA Horologium Perpetuumへ移動">
+          <img src="assets/scientia-est-arma-logo.png" alt="Scientia Est Arma">
+          <span class="crest-status"><i></i><b>CLOCK</b></span>
+        </a>
+        <button id="crest-control" class="archive-power-toggle" type="button" aria-pressed="false" aria-label="SCIENTIA主動力を起動">
+          <i></i><b>O/D</b><span id="crest-power-state" class="visually-hidden">STANDBY</span>
+        </button>
+      </div>
       <p class="system-id">INTEGRATED ACHIEVEMENT ARCHIVE <b>№ EA–001</b></p>
       <div id="mode-nav" class="mode-nav"></div>
     </nav>
@@ -74,7 +79,6 @@
           <small>MAINSPRING</small><b id="mainspring-state">WOUND</b>
           <small>ESCAPEMENT</small><b id="escapement-state">RUNNING</b>
           <button id="sound-toggle" type="button" aria-pressed="false" aria-label="機械音を入れる"><i></i>SOUND</button>
-          <a id="horologium-launch" class="horologium-launch" href="horologium/" aria-label="SCIENTIA Horologium Perpetuumを起動"><i></i><span>CAL. DH–A9P</span><b>HOROLOGIUM</b></a>
         </div>
       </div>
 

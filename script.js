@@ -85,7 +85,7 @@ function initMechanicalAudio() {
 function initCrestControl() {
   const control = document.getElementById("crest-control");
   const shell = document.getElementById("mechanism-shell");
-  const status = control?.querySelector(".crest-status b");
+  const status = document.getElementById("crest-power-state");
   const mainspring = document.getElementById("mainspring-state");
   const escapement = document.getElementById("escapement-state");
   let impulseTimer;
@@ -95,7 +95,7 @@ function initCrestControl() {
     document.body.classList.toggle("crest-overdrive", engaged);
     control.setAttribute("aria-pressed", String(engaged));
     control.setAttribute("aria-label", engaged ? "SCIENTIA主動力を通常出力へ戻す" : "SCIENTIA主動力を起動");
-    status.textContent = engaged ? "OVERDRIVE" : "STANDBY";
+    if (status) status.textContent = engaged ? "OVERDRIVE" : "STANDBY";
     if (mainspring) mainspring.textContent = engaged ? "MAX TORQUE" : "WOUND";
     if (escapement) escapement.textContent = engaged ? "HIGH BEAT" : "RUNNING";
 
