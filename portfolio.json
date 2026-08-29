@@ -174,9 +174,24 @@
       "category": "Tech",
       "technologies": ["React", "TypeScript", "Vite", "Web Audio API", "Tailwind CSS", "Motion"],
       "evidence": [
-        { "label": "GitHub — FretMapper", "url": "https://github.com/ArtyMisia/FretMapper" }
+        { "label": "Live Demo — FretMapper", "url": "https://eugenenumata.github.io/FretMapper/" },
+        { "label": "GitHub — FretMapper", "url": "https://github.com/EugeneNumata/FretMapper" }
       ],
-      "verification": "public-repository-source-reviewed",
+      "verification": "live-demo-and-public-repository",
+      "publicationStatus": "published",
+      "featured": true
+    },
+    {
+      "id": "gas-sheet-server-byok",
+      "slotNumber": 11,
+      "title": "GAS Sheet Server BYOK — Google Sheets JSONバックエンド",
+      "description": "Google Apps ScriptとGoogle Sheetsだけで動く、小規模用途向けのJSON CRUDバックエンド。可変スキーマ、論理削除・復元、差分同期、シート許可リスト、書き込み競合防止、監査ログを備え、利用者自身がデータと秘密トークンを管理するBYOK型で公開しています。",
+      "category": "Tech",
+      "technologies": ["Google Apps Script", "Google Sheets", "JavaScript", "JSON API", "BYOK", "LockService", "Audit Logging"],
+      "evidence": [
+        { "label": "GitHub — GAS Sheet Server BYOK", "url": "https://github.com/EugeneNumata/GAS-Sheet-Server-BYOK" }
+      ],
+      "verification": "public-repository-documented",
       "publicationStatus": "published",
       "featured": true
     },
