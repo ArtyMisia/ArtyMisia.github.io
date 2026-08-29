@@ -3185,3 +3185,81 @@ body[data-mode="poker"] .door-surface { box-shadow:inset 0 0 0 2px #9e6d32,inset
   .archive-header .crest-control::before { animation:none !important; }
   .crest-impulse { animation:none !important; }
 }
+
+/* Door authorization seal: recess the crest into the right-hand metalwork */
+.door-seal {
+  right:38px;
+  bottom:24px;
+  z-index:3;
+  width:150px;
+  height:142px;
+  display:grid;
+  place-items:center;
+  gap:0;
+  color:#655537;
+  text-align:center;
+  text-shadow:-1px -1px rgba(218,170,87,.1),1px 1px #000;
+  isolation:isolate;
+}
+.door-seal::before {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:2px 8px 4px;
+  border:1px solid rgba(139,96,45,.52);
+  background:
+    repeating-linear-gradient(0deg,rgba(255,255,255,.012) 0 1px,transparent 1px 4px),
+    radial-gradient(circle at 46% 39%,#2a291f,#11130f 64%,#090b09 100%);
+  clip-path:polygon(16px 0,calc(100% - 16px) 0,100% 16px,100% calc(100% - 16px),calc(100% - 16px) 100%,16px 100%,0 calc(100% - 16px),0 16px);
+  box-shadow:inset 0 0 0 4px #0a0c09,inset 0 0 0 5px rgba(182,127,57,.2),inset 9px 12px 24px #000,inset -1px -1px rgba(227,179,89,.16);
+}
+.door-seal::after {
+  content:"AUTH · EA–001";
+  position:absolute;
+  z-index:2;
+  left:50%;
+  bottom:9px;
+  color:#796541;
+  font:600 .34rem/1 "IBM Plex Mono",monospace;
+  letter-spacing:.14em;
+  transform:translateX(-50%);
+  white-space:nowrap;
+}
+.door-seal img {
+  width:112px;
+  height:112px;
+  padding:0;
+  border:0;
+  border-radius:0;
+  object-fit:contain;
+  background:transparent;
+  opacity:.43;
+  mix-blend-mode:luminosity;
+  filter:grayscale(.72) sepia(.82) saturate(.5) brightness(.62) contrast(1.42);
+  transform:translateY(-7px);
+}
+.door-seal small {
+  position:absolute;
+  left:50%;
+  bottom:21px;
+  width:max-content;
+  max-width:none;
+  color:#655537;
+  font:600 .28rem/1.35 "IBM Plex Mono",monospace;
+  letter-spacing:.1em;
+  transform:translateX(-50%);
+  opacity:.62;
+}
+
+@media (max-width:700px) {
+  .door-seal { right:10px; bottom:17px; width:86px; height:88px; }
+  .door-seal::before { inset:1px 3px 2px; }
+  .door-seal::after { bottom:6px; font-size:.25rem; }
+  .door-seal img { width:70px; height:70px; transform:translateY(-5px); }
+  .door-seal small { display:none; }
+}
+
+@media (max-width:390px) {
+  .door-seal { right:8px; bottom:15px; width:74px; height:78px; }
+  .door-seal img { width:62px; height:62px; }
+}
