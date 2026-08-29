@@ -8,10 +8,34 @@
     "activities": ["会社経営・FPS学院運営", "プロトタイプ開発", "Lesathチャンネルプロデュース"]
   },
   "modes": {
-    "all": { "label": "総合", "archiveTitle": "総合実績機関", "order": ["Business", "Community", "Video", "Tech", "Poker"] },
-    "poker": { "label": "Poker", "archiveTitle": "ポーカー応募機関", "order": ["Poker", "Community", "Tech", "Video", "Business"] },
-    "video": { "label": "Video", "archiveTitle": "映像制作機関", "order": ["Video", "Business", "Community", "Tech", "Poker"] },
-    "tech": { "label": "Tech", "archiveTitle": "技術開発機関", "order": ["Tech", "Business", "Community", "Poker", "Video"] }
+    "all": {
+      "label": "総合",
+      "archiveTitle": "総合実績機関",
+      "route": "GENERAL ARCHIVE ROUTE",
+      "intro": "番号を選び、中央機構を開錠してください。各記録には、制作内容・使用技術・確認できる証拠リンクを格納しています。",
+      "order": ["Business", "Community", "Video", "Tech", "Poker"]
+    },
+    "poker": {
+      "label": "Poker",
+      "archiveTitle": "ポーカー応募機関",
+      "route": "POKER ROOM APPLICATION ROUTE",
+      "intro": "ポーカールームで活かせる、場づくり・初心者対応・映像発信・技術実装の実績を優先表示。未完成の構想は実績に混ぜず、確認できる活動から開錠します。",
+      "order": ["Poker", "Community", "Tech", "Video", "Business"]
+    },
+    "video": {
+      "label": "Video",
+      "archiveTitle": "映像制作機関",
+      "route": "VIDEO PRODUCTION ROUTE",
+      "intro": "動画編集とチャンネルプロデュースを先頭に、企画から公開までの制作記録を表示します。",
+      "order": ["Video", "Business", "Community", "Tech", "Poker"]
+    },
+    "tech": {
+      "label": "Tech",
+      "archiveTitle": "技術開発機関",
+      "route": "TECHNICAL DEVELOPMENT ROUTE",
+      "intro": "動作するプロトタイプと制作自動化を先頭に、実装内容と公開可能な証拠を表示します。",
+      "order": ["Tech", "Business", "Community", "Poker", "Video"]
+    }
   },
   "projects": [
     {

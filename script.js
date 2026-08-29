@@ -316,6 +316,9 @@ async function init() {
     document.getElementById("summary").textContent = data.profile.summary;
     document.getElementById("activities").innerHTML = data.profile.activities.map(item => `<li>${escapeHtml(item)}</li>`).join("");
     document.getElementById("work-title").textContent = mode.archiveTitle || `${mode.label}実績機関`;
+    document.getElementById("mode-route").textContent = mode.route || "GENERAL ARCHIVE ROUTE";
+    document.getElementById("section-intro").textContent = mode.intro || "番号を選び、中央機構を開錠してください。";
+    document.body.dataset.mode = modeKey;
     document.getElementById("year").textContent = new Date().getFullYear();
     document.title = `${data.profile.name} — ${mode.label} Portfolio`;
     document.getElementById("mode-nav").innerHTML = Object.entries(data.modes).map(([key, item]) => `<a class="mode-link" href="?mode=${encodeURIComponent(key)}" ${key === modeKey ? 'aria-current="page"' : ""}>${escapeHtml(item.label)}</a>`).join("");

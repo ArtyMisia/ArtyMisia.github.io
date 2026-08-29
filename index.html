@@ -53,59 +53,14 @@
         </a>
       </div>
 
-      <div id="movement-rig" class="movement-rig" aria-label="操作できる自動巻き式可能性機関">
-        <div class="instrument-rail" aria-label="機関計器">
-          <div class="instrument instrument-idea">
-            <span>IDEA PRESSURE</span>
-            <div class="instrument-face"><i></i><b>93</b><small>%</small></div>
-          </div>
-          <div class="instrument instrument-output">
-            <span>OUTPUT</span>
-            <div class="instrument-face"><i></i><b>88</b><small>RPM</small></div>
-          </div>
-          <div class="instrument instrument-sync">
-            <span>SYNC RATE</span>
-            <div class="instrument-face"><i></i><b>∞</b><small>LIVE</small></div>
-          </div>
-        </div>
-
-        <div class="calibre-window">
-          <span class="calibre-rivet cr1"></span><span class="calibre-rivet cr2"></span><span class="calibre-rivet cr3"></span><span class="calibre-rivet cr4"></span>
-          <img class="calibre-art" src="assets/kugutsu-haguruma.jpg" alt="歯車や時計、建築物をまとった機械仕掛けの傀儡獣" fetchpriority="high">
-          <img class="stock-mechanism stock-clockwork" src="assets/clockwork-pixabay.png" alt="" aria-hidden="true">
-          <img class="stock-mechanism stock-gear-bed" src="assets/gears-steampunk-pixabay.png" alt="" aria-hidden="true">
-          <div class="crystal-glare" aria-hidden="true"></div>
-          <div class="movement-bridge bridge-a" aria-hidden="true"></div>
-          <div class="movement-bridge bridge-b" aria-hidden="true"></div>
-          <div class="movement-bridge bridge-c" aria-hidden="true"></div>
-          <img class="stock-wheel stock-wheel-main" src="assets/gear-rust-pixabay.png" alt="" aria-hidden="true">
-          <img class="stock-wheel stock-wheel-train" src="assets/gear-rust-pixabay.png" alt="" aria-hidden="true">
-          <img class="stock-wheel stock-wheel-crown" src="assets/gear-wheel-pixabay.png" alt="" aria-hidden="true">
-          <div class="ratchet-wheel" aria-hidden="true"><i></i></div>
-          <div class="click-hammer" aria-hidden="true"><i></i><b></b></div>
-          <div class="balance-assembly" aria-hidden="true"><div class="balance-wheel"><i></i></div><span></span></div>
-          <div class="escapement" aria-hidden="true"><i></i><b></b></div>
-          <div class="automatic-rotor" aria-hidden="true"><span>AUTOMATIC<br>EA–001</span></div>
-          <div class="power-route route-a" aria-hidden="true"></div>
-          <div class="power-route route-b" aria-hidden="true"></div>
-          <span class="jewel jewel-a" aria-hidden="true"></span><span class="jewel jewel-b" aria-hidden="true"></span><span class="jewel jewel-c" aria-hidden="true"></span><span class="jewel jewel-d" aria-hidden="true"></span>
-          <div class="calibre-core"><small>CALIBRE</small><b>EA–001</b><span id="movement-state">RUNNING</span></div>
-          <div class="calibre-serial">KUGUTSU AUTOMATON<br><b>TWENTY-ONE CONCEPTUAL JEWELS</b></div>
-        </div>
-
-        <div class="control-deck">
-          <button id="wind-control" class="wind-control" type="button" aria-pressed="false">
-            <span class="lever-track"><i class="lever-shaft"><b></b></i></span>
-            <span><b>主ゼンマイを巻く</b><small>PULL TO OVERDRIVE</small></span>
-          </button>
-          <div class="toggle-bank" aria-label="機関表示制御">
-            <button type="button" data-rig-action="expose" aria-pressed="true"><i></i><span>EXPOSE</span></button>
-            <button type="button" data-rig-action="rotor" aria-pressed="true"><i></i><span>ROTOR</span></button>
-            <button type="button" data-rig-action="pulse" aria-pressed="true"><i></i><span>PULSE</span></button>
-            <button id="sound-toggle" type="button" aria-pressed="false"><i></i><span>SOUND</span></button>
-          </div>
-          <div class="mechanical-log" aria-live="polite"><span>POWER RESERVE</span><b id="reserve-value">42 H</b><small id="mechanical-status">機関同調。創作回路は正常です。</small></div>
-        </div>
+      <div class="hero-watch-preview" aria-hidden="true">
+        <img class="preview-bed" src="assets/clockwork-pixabay.png" alt="">
+        <img class="preview-wheel preview-wheel-a" src="assets/gear-rust-pixabay.png" alt="">
+        <img class="preview-wheel preview-wheel-b" src="assets/gear-wheel-pixabay.png" alt="">
+        <img class="preview-wheel preview-wheel-c" src="assets/gear-rust-pixabay.png" alt="">
+        <div class="preview-balance"><i></i><b></b></div>
+        <div class="preview-bridge"></div>
+        <div class="preview-readout"><small>CALIBRE EA–001</small><b>ARCHIVE READY</b><span>08 RECORDS / VERIFIED ROUTE</span></div>
       </div>
     </div>
 
@@ -115,12 +70,26 @@
   <main id="works" class="wrap machine-chamber">
     <section class="section-heading">
       <div><p class="eyebrow"><span class="signal"></span> ACTIVE MECHANISMS</p><h2 id="work-title">実績</h2></div>
-      <p class="section-intro">番号を選び、中央機構を開錠してください。各記録には、制作内容・使用技術・確認できる証拠リンクを格納しています。</p>
+      <div class="section-guide">
+        <span id="mode-route" class="mode-route">GENERAL ARCHIVE ROUTE</span>
+        <p id="section-intro" class="section-intro">番号を選び、中央機構を開錠してください。各記録には、制作内容・使用技術・確認できる証拠リンクを格納しています。</p>
+      </div>
     </section>
 
     <section id="mechanism-shell" class="mechanism-shell" aria-label="機械式実績アーカイブ">
       <div class="depth-grid" aria-hidden="true"></div>
+      <img class="archive-material archive-clockwork-bed" src="assets/clockwork-pixabay.png" alt="" aria-hidden="true">
+      <img class="archive-material archive-steam-crown" src="assets/gears-steampunk-pixabay.png" alt="" aria-hidden="true">
       <div class="archive-camshaft" aria-hidden="true"><i></i><b></b><span></span></div>
+      <div class="archive-gear-cluster archive-gears-left" aria-hidden="true">
+        <img src="assets/gear-rust-pixabay.png" alt=""><img src="assets/gear-wheel-pixabay.png" alt=""><img src="assets/gear-rust-pixabay.png" alt=""><i></i><b></b><span>BARREL · CENTER · THIRD</span>
+      </div>
+      <div class="archive-gear-cluster archive-gears-right" aria-hidden="true">
+        <img src="assets/gear-wheel-pixabay.png" alt=""><img src="assets/gear-rust-pixabay.png" alt=""><img src="assets/gear-wheel-pixabay.png" alt=""><i></i><b></b><span>FOURTH · ESCAPE · BALANCE</span>
+      </div>
+      <div class="archive-ratchet-track" aria-hidden="true"><i></i><b></b><span></span></div>
+      <div class="archive-balance" aria-hidden="true"><i><b></b></i><span>FREE-SPRUNG<br>BALANCE</span></div>
+      <div class="archive-escapement" aria-hidden="true"><i></i><b></b><span>PALLET FORK<br>LOCK / IMPULSE</span></div>
       <div class="gear-console">
         <p class="console-kicker">VAULT INDEX</p>
         <div class="active-module">
@@ -142,6 +111,7 @@
         <div class="vault-dial-console">
           <p>SELECT MODULE NUMBER</p>
           <div id="gear-selector" class="gear-selector" role="tablist" aria-label="開錠する実績番号を選択">
+            <div class="dial-ratchet" aria-hidden="true"><i></i><b></b></div>
             <div id="gear-nodes" class="gear-nodes"></div>
             <button id="archive-toggle" class="archive-lock" type="button" aria-expanded="false">
               <span id="gear-core" class="lock-gear dial-core"><i id="dial-number">01</i></span>
@@ -154,6 +124,68 @@
     </section>
     <noscript>このページの表示にはJavaScriptが必要です。</noscript>
   </main>
+
+  <section class="movement-showcase wrap machine-chamber" aria-labelledby="movement-title">
+    <div class="movement-showcase-heading">
+      <div><p class="eyebrow"><span class="signal"></span> SKELETON CALIBRE</p><h2 id="movement-title">可能性を巻き上げる、<br>自動巻き機関。</h2></div>
+      <p>実績を生んだ制作回路を、ローター・輪列・テンプ・アンクルとして可視化。各操作が機関の状態へ連動します。</p>
+    </div>
+
+    <div id="movement-rig" class="movement-rig" aria-label="操作できる自動巻き式可能性機関">
+      <div class="instrument-rail" aria-label="機関計器">
+        <div class="instrument instrument-idea">
+          <span>IDEA PRESSURE</span>
+          <div class="instrument-face"><i></i><b>93</b><small>%</small></div>
+        </div>
+        <div class="instrument instrument-output">
+          <span>OUTPUT</span>
+          <div class="instrument-face"><i></i><b>88</b><small>RPM</small></div>
+        </div>
+        <div class="instrument instrument-sync">
+          <span>SYNC RATE</span>
+          <div class="instrument-face"><i></i><b>∞</b><small>LIVE</small></div>
+        </div>
+      </div>
+
+      <div class="calibre-window">
+        <span class="calibre-rivet cr1"></span><span class="calibre-rivet cr2"></span><span class="calibre-rivet cr3"></span><span class="calibre-rivet cr4"></span>
+        <img class="calibre-art" src="assets/kugutsu-haguruma.jpg" alt="歯車や時計、建築物をまとった機械仕掛けの傀儡獣" loading="lazy">
+        <img class="stock-mechanism stock-clockwork" src="assets/clockwork-pixabay.png" alt="" aria-hidden="true">
+        <img class="stock-mechanism stock-gear-bed" src="assets/gears-steampunk-pixabay.png" alt="" aria-hidden="true">
+        <div class="crystal-glare" aria-hidden="true"></div>
+        <div class="movement-bridge bridge-a" aria-hidden="true"></div>
+        <div class="movement-bridge bridge-b" aria-hidden="true"></div>
+        <div class="movement-bridge bridge-c" aria-hidden="true"></div>
+        <img class="stock-wheel stock-wheel-main" src="assets/gear-rust-pixabay.png" alt="" aria-hidden="true">
+        <img class="stock-wheel stock-wheel-train" src="assets/gear-rust-pixabay.png" alt="" aria-hidden="true">
+        <img class="stock-wheel stock-wheel-crown" src="assets/gear-wheel-pixabay.png" alt="" aria-hidden="true">
+        <div class="ratchet-wheel" aria-hidden="true"><i></i></div>
+        <div class="click-hammer" aria-hidden="true"><i></i><b></b></div>
+        <div class="balance-assembly" aria-hidden="true"><div class="balance-wheel"><i></i></div><span></span></div>
+        <div class="escapement" aria-hidden="true"><i></i><b></b></div>
+        <div class="automatic-rotor" aria-hidden="true"><span>AUTOMATIC<br>EA–001</span></div>
+        <div class="power-route route-a" aria-hidden="true"></div>
+        <div class="power-route route-b" aria-hidden="true"></div>
+        <span class="jewel jewel-a" aria-hidden="true"></span><span class="jewel jewel-b" aria-hidden="true"></span><span class="jewel jewel-c" aria-hidden="true"></span><span class="jewel jewel-d" aria-hidden="true"></span>
+        <div class="calibre-core"><small>CALIBRE</small><b>EA–001</b><span id="movement-state">RUNNING</span></div>
+        <div class="calibre-serial">KUGUTSU AUTOMATON<br><b>TWENTY-ONE CONCEPTUAL JEWELS</b></div>
+      </div>
+
+      <div class="control-deck">
+        <button id="wind-control" class="wind-control" type="button" aria-pressed="false">
+          <span class="lever-track"><i class="lever-shaft"><b></b></i></span>
+          <span><b>主ゼンマイを巻く</b><small>PULL TO OVERDRIVE</small></span>
+        </button>
+        <div class="toggle-bank" aria-label="機関表示制御">
+          <button type="button" data-rig-action="expose" aria-pressed="true"><i></i><span>EXPOSE</span></button>
+          <button type="button" data-rig-action="rotor" aria-pressed="true"><i></i><span>ROTOR</span></button>
+          <button type="button" data-rig-action="pulse" aria-pressed="true"><i></i><span>PULSE</span></button>
+          <button id="sound-toggle" type="button" aria-pressed="false"><i></i><span>SOUND</span></button>
+        </div>
+        <div class="mechanical-log" aria-live="polite"><span>POWER RESERVE</span><b id="reserve-value">42 H</b><small id="mechanical-status">機関同調。創作回路は正常です。</small></div>
+      </div>
+    </div>
+  </section>
 
   <section id="transmission" class="transmission-bay wrap machine-chamber" aria-labelledby="transmission-title">
     <div class="transmission-heading">
