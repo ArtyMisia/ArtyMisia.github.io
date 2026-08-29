@@ -314,11 +314,15 @@ function projectCard(project, index) {
   const evidence = project.evidence?.length
     ? `<div class="evidence-links">${project.evidence.map(link => `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.label)} ↗</a>`).join("")}</div>`
     : `<p class="evidence-note">${escapeHtml(project.evidenceNote || "証拠リンク準備中")}</p>`;
+  const primaryLink = project.primaryLink?.url
+    ? `<a class="primary-project-link" href="${escapeHtml(project.primaryLink.url)}" target="_blank" rel="noopener noreferrer"><span>EXTERNAL SITE</span><b>${escapeHtml(project.primaryLink.label || "サイトを開く")}</b><i aria-hidden="true">↗</i></a>`
+    : "";
 
   return `<article class="card mechanism-card ${project.publicationStatus === "draft" ? "draft" : ""}">
     <div class="module-serial">MECHANISM ${mechanismNumber(project, index)} <i></i> ${escapeHtml(project.verification || "recorded")}</div>
     <div class="card-top"><span class="category">${escapeHtml(project.category)}</span>${project.publicationStatus === "draft" ? '<span class="status">要確認・非公開</span>' : ""}</div>
     <h3>${escapeHtml(project.title)}</h3>
+    ${primaryLink}
     ${media}
     <p>${escapeHtml(project.description)}</p>
     <div class="tech-list">${project.technologies.map(tech => `<span>${escapeHtml(tech)}</span>`).join("")}</div>

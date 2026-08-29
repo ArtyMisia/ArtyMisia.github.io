@@ -173,8 +173,11 @@
       "description": "ギター、ベース、ウクレレ、ピアノに対応した、ブラウザ内完結型の耳とポジションのトレーニングアプリ。Web Audio APIで楽器音を合成し、アカウント・APIキー・バックエンドなしで練習できます。",
       "category": "Tech",
       "technologies": ["React", "TypeScript", "Vite", "Web Audio API", "Tailwind CSS", "Motion"],
+      "primaryLink": {
+        "label": "FretMapperを開く",
+        "url": "https://eugenenumata.github.io/FretMapper/"
+      },
       "evidence": [
-        { "label": "Live Demo — FretMapper", "url": "https://eugenenumata.github.io/FretMapper/" },
         { "label": "GitHub — FretMapper", "url": "https://github.com/EugeneNumata/FretMapper" }
       ],
       "verification": "live-demo-and-public-repository",
