@@ -19,7 +19,7 @@ GitHub Pages: https://artymisia.github.io/
 
 ## SCIENTIA Horologium Perpetuum
 
-独立作品「SCIENTIA Horologium Perpetuum」の静的ビルドを `horologium/` 配下へ収録しています。金庫と時計の左上にある共通の`SCIENTIA EST ARMA`紋章、または`MECHANISM 12`から、時計専用の全画面ページと総合実績金庫を往復します。金庫側の小型`O/D`ラチェットは、ページ移動とは独立した主動力スイッチです。
+独立作品「SCIENTIA Horologium Perpetuum」の静的ビルドを `horologium/` 配下へ収録しています。金庫と時計の左上にある共通の`SCIENTIA EST ARMA`紋章、または`MECHANISM 12`から、時計専用の全画面ページと総合実績金庫を往復します。金庫から時計へは歯車式アイリス、時計から金庫へは左右の装甲扉と中央錠が噛み合う逆方向トランジションを使用します。金庫側の小型`O/D`ラチェットは、ページ移動とは独立した主動力スイッチです。
 
 - エクスポート元: `digital-mechanical-watch`
 - エクスポート元コミット: `c4100c2`

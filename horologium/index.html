@@ -17,8 +17,24 @@
       .archive-return:hover{transform:translateY(-2px);filter:brightness(1.1) drop-shadow(0 8px 9px #000)}.archive-return:focus-visible{outline:2px solid #69b5a3;outline-offset:7px}
       @keyframes archive-index{to{transform:rotate(360deg)}}
       .calibre-menu-trigger{transform:translateX(78px)}
+      .archive-return-transition{position:fixed;z-index:10000;inset:0;overflow:hidden;background:#020504;opacity:0;visibility:hidden;pointer-events:none;isolation:isolate;transition:opacity .18s ease,visibility 0s linear 1.25s}
+      .archive-return-transition::before{content:"";position:absolute;z-index:0;inset:0;background:radial-gradient(circle at 50% 50%,rgba(106,181,161,.15),transparent 24rem),repeating-linear-gradient(90deg,transparent 0 42px,rgba(228,200,117,.025) 43px 44px),#030606}
+      .return-door{position:absolute;z-index:1;top:0;bottom:0;width:50.5%;overflow:hidden;background:radial-gradient(circle at 100% 50%,rgba(185,131,61,.16),transparent 35%),repeating-linear-gradient(0deg,rgba(255,255,255,.015) 0 1px,transparent 1px 5px),linear-gradient(115deg,#17140e,#050807 62%);box-shadow:inset 0 0 0 8px #050706,inset 0 0 0 9px rgba(185,131,61,.38),inset 0 0 80px #000;transition:transform .72s cubic-bezier(.72,0,.2,1)}
+      .return-door::before{content:"";position:absolute;top:50%;width:min(44vw,520px);aspect-ratio:1;border:18px double #805b30;border-radius:50%;background:repeating-conic-gradient(#17110b 0 7deg,#a97537 7deg 9deg,#050706 9deg 18deg);box-shadow:0 0 0 12px #050706,0 0 0 13px rgba(105,181,163,.22),inset 0 0 65px #000;transform:translateY(-50%) rotate(0deg);transition:transform 1.12s cubic-bezier(.2,.9,.25,1)}
+      .return-door::after{content:"";position:absolute;top:0;bottom:0;width:24px;background:repeating-linear-gradient(0deg,#17110b 0 12px,#b47d38 12px 18px,#060807 18px 30px);box-shadow:0 0 28px #000}
+      .return-door-left{left:0;border-right:3px solid #a57539;transform:translateX(-102%)}.return-door-left::before{right:-28%}.return-door-left::after{right:0}
+      .return-door-right{right:0;border-left:3px solid #a57539;transform:translateX(102%)}.return-door-right::before{left:-28%;transform:translateY(-50%) rotate(20deg)}.return-door-right::after{left:0}
+      .return-coupler{position:absolute;z-index:4;left:50%;top:50%;width:clamp(160px,22vw,250px);aspect-ratio:1;display:grid;place-items:center;border:14px double #9b733b;border-radius:50%;background:radial-gradient(circle,#13231f 0 12%,#070a09 13% 55%,#73502a 56% 61%,#050706 62%);box-shadow:0 0 0 9px #030606,0 0 0 10px rgba(105,181,163,.38),0 0 72px rgba(105,181,163,.28),inset 0 0 38px #000;opacity:0;transform:translate(-50%,-50%) scale(.18) rotate(135deg);transition:transform .62s cubic-bezier(.16,.88,.2,1.18) .5s,opacity .16s linear .5s}
+      .return-coupler::before,.return-coupler::after{content:"";position:absolute;left:50%;top:50%;width:132%;height:10px;background:linear-gradient(90deg,#17110b,#c18a42 48%,#17110b);box-shadow:0 6px 11px #000;transform:translate(-50%,-50%) rotate(45deg)}.return-coupler::after{transform:translate(-50%,-50%) rotate(-45deg)}
+      .return-coupler img{position:relative;z-index:2;width:64%;height:70%;object-fit:contain;filter:sepia(.35) saturate(.82) brightness(.76) contrast(1.25) drop-shadow(0 0 8px rgba(228,200,117,.32))}
+      .return-lock-pins{position:absolute;z-index:3;inset:9%;border:2px dotted rgba(228,200,117,.7);border-radius:50%;animation:return-pin-index 2.8s steps(12,end) infinite}
+      .return-lock-pins::before,.return-lock-pins::after{content:"";position:absolute;left:50%;top:-8px;width:11px;height:11px;border:1px solid #b58543;border-radius:50%;background:#69b5a3;box-shadow:0 0 13px #69b5a3;transform:translateX(-50%)}.return-lock-pins::after{top:auto;bottom:-8px;background:#b58543;box-shadow:0 0 10px #b58543}
+      .archive-return-transition p{position:absolute;z-index:5;left:50%;top:calc(50% + clamp(112px,15vw,160px));margin:0;color:#88b8ab;font:700 clamp(8px,1vw,11px)/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.18em;white-space:nowrap;opacity:0;transform:translate(-50%,14px);transition:opacity .2s linear .86s,transform .25s ease .86s}
+      .return-route-engaged{overflow:hidden}.return-route-engaged .archive-return-transition{opacity:1;visibility:visible;transition-delay:0s}.return-route-engaged .return-door{transform:translateX(0)}.return-route-engaged .return-door-left::before{transform:translateY(-50%) rotate(86deg)}.return-route-engaged .return-door-right::before{transform:translateY(-50%) rotate(-72deg)}.return-route-engaged .return-coupler{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(0deg)}.return-route-engaged .archive-return-transition p{opacity:1;transform:translate(-50%,0)}
+      @keyframes return-pin-index{to{transform:rotate(360deg)}}
       @media(max-width:680px){.archive-return{left:7px;top:7px;width:56px;height:61px}.archive-return span{bottom:-8px;min-width:49px;font-size:7px}.calibre-menu-trigger{transform:translateX(58px)}}
-      @media(prefers-reduced-motion:reduce){.archive-return::before{animation:none}}
+      @media(max-width:680px){.return-door::before{width:84vw;border-width:11px}.return-door-left::before{right:-55%}.return-door-right::before{left:-55%}.return-door::after{width:17px}.return-coupler{width:145px;border-width:10px}.archive-return-transition p{top:calc(50% + 105px);font-size:7px}}
+      @media(prefers-reduced-motion:reduce){.archive-return::before,.return-lock-pins{animation:none}.archive-return-transition,.return-door,.return-coupler,.archive-return-transition p{transition-duration:.01ms!important;transition-delay:0s!important}}
     </style>
   </head>
   <body>
@@ -27,12 +43,40 @@
       <img src="./scientia-emblem.png" alt="">
       <span>EA–001</span>
     </a>
+    <div id="archive-return-transition" class="archive-return-transition" aria-hidden="true">
+      <div class="return-door return-door-left" aria-hidden="true"></div>
+      <div class="return-door return-door-right" aria-hidden="true"></div>
+      <div class="return-coupler" aria-hidden="true">
+        <img src="./scientia-emblem.png" alt="">
+        <i class="return-lock-pins"></i>
+      </div>
+      <p>CALIBRE EA–001 // VAULT RE-ENGAGED</p>
+    </div>
     <script>
       (() => {
+        const returnLink = document.getElementById('archive-return');
+        const transition = document.getElementById('archive-return-transition');
+        const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+        let navigating = false;
         const mode = new URLSearchParams(location.search).get('from');
         if (['all', 'poker', 'video', 'tech'].includes(mode)) {
-          document.getElementById('archive-return').href = `../?mode=${mode}#works`;
+          returnLink.href = `../?mode=${mode}#works`;
         }
+        returnLink.addEventListener('click', event => {
+          if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || navigating) return;
+          const destination = new URL(returnLink.href, location.href);
+          if (destination.origin !== location.origin || reducedMotion.matches) return;
+          event.preventDefault();
+          navigating = true;
+          transition.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('return-route-engaged');
+          setTimeout(() => location.assign(destination), 1320);
+        });
+        addEventListener('pageshow', () => {
+          navigating = false;
+          document.body.classList.remove('return-route-engaged');
+          transition.setAttribute('aria-hidden', 'true');
+        });
       })();
     </script>
   </body>
