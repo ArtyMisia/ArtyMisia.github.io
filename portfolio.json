@@ -17,9 +17,9 @@
     },
     "poker": {
       "label": "Poker",
-      "archiveTitle": "ポーカー応募機関",
-      "route": "POKER ROOM APPLICATION ROUTE",
-      "intro": "ポーカールームで活かせる、場づくり・初心者対応・映像発信・技術実装の実績を優先表示。未完成の構想は実績に混ぜず、確認できる活動から開錠します。",
+      "archiveTitle": "体験設計・場づくり機関",
+      "route": "EXPERIENCE & COMMUNITY ROUTE",
+      "intro": "場づくり・初心者対応・映像発信・技術実装の実績を優先表示。未完成の構想は実績に混ぜず、確認できる活動から開錠します。",
       "order": ["Poker", "Community", "Tech", "Video", "Business"]
     },
     "video": {
