@@ -2811,3 +2811,232 @@ body[data-mode="poker"] .door-surface { box-shadow:inset 0 0 0 2px #9e6d32,inset
   .archive-kugutsu-bed,.archive-clockwork-bed,.archive-steam-crown,.powerhead-bed,.powerhead-wheel,.powerhead-balance,.powerhead-pulse i,.door-wheel,.door-surface::after { animation:none !important; }
   .vault-door { transition-duration:.01ms; }
 }
+
+/* Split vault revision: central gear lock, two geared doors, transparent crest */
+.archive-header .brand {
+  width:72px;
+  height:72px;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+.archive-header .brand img {
+  border-radius:0;
+  object-fit:contain;
+  filter:drop-shadow(0 7px 8px #000) drop-shadow(0 0 7px rgba(243,206,126,.22));
+}
+
+.vault-door-assembly { overflow:visible; }
+.vault-door {
+  inset:0 auto 0;
+  width:calc(50% + 1px);
+  transform:translateZ(24px) rotateY(0deg);
+  backface-visibility:hidden;
+  transition:transform 1.16s cubic-bezier(.55,.02,.19,1),filter .5s ease;
+}
+.vault-door-left {
+  left:0;
+  transform-origin:1.5% 50%;
+}
+.vault-door-right {
+  right:0;
+  transform-origin:98.5% 50%;
+}
+.vault-door-left .door-surface {
+  border-right:2px solid #a07036;
+  box-shadow:inset 0 0 0 2px #8b6230,inset 0 0 0 10px #0a0c09,inset 0 0 0 11px rgba(243,206,126,.2),inset -30px 0 52px rgba(0,0,0,.64),inset 0 0 95px #000;
+}
+.vault-door-right .door-surface {
+  border-left:2px solid #a07036;
+  box-shadow:inset 0 0 0 2px #8b6230,inset 0 0 0 10px #0a0c09,inset 0 0 0 11px rgba(243,206,126,.2),inset 30px 0 52px rgba(0,0,0,.64),inset 0 0 95px #000;
+}
+.vault-door .door-surface::before { inset:25px 18px; }
+.vault-door .door-surface::after {
+  top:50%;
+  width:580px;
+  height:580px;
+  inset:auto;
+  border-width:18px;
+  transform:translateY(-50%);
+  animation:none;
+}
+.vault-door-left .door-surface::after { right:-290px; }
+.vault-door-right .door-surface::after { left:-290px; }
+
+.vault-crosslock {
+  position:absolute;
+  z-index:15;
+  inset:0;
+  transform:translateZ(54px) scale(1) rotate(0deg);
+  transform-style:preserve-3d;
+  pointer-events:none;
+  transition:opacity .42s ease,transform .7s cubic-bezier(.18,.9,.24,1),filter .35s ease;
+}
+.crosslock-ring {
+  position:absolute;
+  z-index:3;
+  left:50%;
+  top:51%;
+  width:440px;
+  height:440px;
+  border:16px double rgba(159,109,51,.92);
+  border-radius:50%;
+  background:
+    repeating-conic-gradient(from 2deg,rgba(213,154,59,.78) 0 3deg,#16120d 3deg 9deg,rgba(93,60,28,.85) 9deg 12deg),
+    radial-gradient(circle,transparent 0 58%,#090b09 59% 72%,transparent 73%);
+  box-shadow:0 0 0 8px #090b09,0 0 0 10px rgba(243,206,126,.3),inset 0 0 35px #000,0 22px 35px rgba(0,0,0,.76);
+  transform:translate(-50%,-50%);
+  animation:crosslock-index 40s steps(80,end) infinite;
+  pointer-events:none;
+}
+.crosslock-ring::before,
+.crosslock-ring::after {
+  content:"";
+  position:absolute;
+  z-index:4;
+  top:50%;
+  width:86px;
+  height:18px;
+  border:2px solid #aa7435;
+  background:linear-gradient(#bd8540,#2c1c11 47%,#17110d 52%,#8a5b2c);
+  box-shadow:0 6px 10px #000;
+}
+.crosslock-ring::before { left:-76px; transform:translateY(-50%); }
+.crosslock-ring::after { right:-76px; transform:translateY(-50%); }
+.crosslock-ring .door-wheel-e {
+  left:50%;
+  top:50%;
+  bottom:auto;
+  width:165px;
+  opacity:.58;
+  transform:translate(-50%,-50%);
+  animation:crosslock-wheel 8s linear infinite reverse;
+}
+.vault-crosslock .door-inscription { z-index:7; }
+.vault-crosslock .vault-dial-console { z-index:9; pointer-events:auto; }
+
+.vault-door-left .door-wheel-a { left:-14%; top:4%; width:260px; }
+.vault-door-left .door-wheel-c { left:3%; bottom:-9%; width:235px; }
+.door-wheel-f { right:-22%; top:31%; width:165px; --door-speed:9s; animation-direction:reverse; }
+.vault-door-right .door-wheel-b { right:-15%; top:7%; width:220px; }
+.vault-door-right .door-wheel-d { right:1%; bottom:-10%; width:205px; }
+.door-wheel-g { left:-21%; top:34%; width:150px; --door-speed:7s; }
+
+.vault-door-left .bar-left {
+  right:0;
+  left:auto;
+  width:56%;
+}
+.vault-door-right .bar-right {
+  right:auto;
+  left:0;
+  width:56%;
+}
+.vault-door-left .bar-left::after { right:-17px; }
+.vault-door-right .bar-right::after { left:-17px; }
+.door-bolts-left,
+.door-bolts-right { inset:18px; }
+.door-bolts-left i:nth-child(1),.door-bolts-right i:nth-child(1) { left:10px; top:10px; }
+.door-bolts-left i:nth-child(2),.door-bolts-right i:nth-child(2) { right:10px; top:10px; left:auto; }
+.door-bolts-left i:nth-child(3),.door-bolts-right i:nth-child(3) { right:10px; bottom:10px; top:auto; }
+.door-bolts-left i:nth-child(4),.door-bolts-right i:nth-child(4) { left:10px; bottom:10px; top:auto; right:auto; }
+
+.door-seal {
+  right:30px;
+  bottom:26px;
+  z-index:12;
+  color:#79603b;
+  text-shadow:1px 1px #000;
+}
+.door-seal img {
+  width:94px;
+  height:102px;
+  padding:0;
+  border:0;
+  border-radius:0;
+  object-fit:contain;
+  background:transparent;
+  box-shadow:none;
+  filter:drop-shadow(0 8px 8px #000) drop-shadow(0 0 7px rgba(243,206,126,.22));
+}
+
+.vault-hinge-right { right:-9px; left:auto; transform:scaleX(-1); }
+.vault-hinge-right i { left:0; }
+
+.is-unlocking .vault-crosslock {
+  transform:translateZ(54px) scale(.97) rotate(4deg);
+  filter:brightness(1.15);
+}
+.is-unbolted .vault-crosslock {
+  opacity:.72;
+  transform:translateZ(-90px) scale(.48) rotate(28deg);
+}
+.is-open .vault-crosslock {
+  opacity:0;
+  transform:translateZ(-180px) scale(.2) rotate(55deg);
+  pointer-events:none;
+}
+.is-open .vault-door-left {
+  transform:translateZ(30px) rotateY(108deg);
+  filter:drop-shadow(40px 25px 34px rgba(0,0,0,.9));
+}
+.is-open .vault-door-right {
+  transform:translateZ(30px) rotateY(-108deg);
+  filter:drop-shadow(-40px 25px 34px rgba(0,0,0,.9));
+}
+.is-switching .vault-door-left,
+.is-switching .vault-door-right {
+  transform:translateZ(24px) rotateY(0deg);
+  transition-duration:.72s;
+}
+.is-switching .vault-crosslock {
+  opacity:1;
+  transform:translateZ(54px) scale(1) rotate(0deg);
+  transition-delay:.24s;
+}
+.is-unlocking .crosslock-ring { animation-duration:1.2s; }
+.is-unlocking .crosslock-ring .door-wheel-e { animation-duration:.48s; }
+
+@keyframes crosslock-index {
+  from { transform:translate(-50%,-50%) rotate(0deg); }
+  to { transform:translate(-50%,-50%) rotate(360deg); }
+}
+@keyframes crosslock-wheel {
+  from { transform:translate(-50%,-50%) rotate(0deg); }
+  to { transform:translate(-50%,-50%) rotate(360deg); }
+}
+
+@media (max-width:700px) {
+  .archive-header .brand { width:58px; height:58px; padding:0; }
+  .vault-door .door-surface::before { inset:13px 8px; }
+  .vault-door .door-surface::after { width:360px; height:360px; border-width:11px; }
+  .vault-door-left .door-surface::after { right:-180px; }
+  .vault-door-right .door-surface::after { left:-180px; }
+  .crosslock-ring { width:300px; height:300px; border-width:10px; }
+  .crosslock-ring::before,.crosslock-ring::after { width:48px; height:13px; }
+  .crosslock-ring::before { left:-41px; }
+  .crosslock-ring::after { right:-41px; }
+  .crosslock-ring .door-wheel-e { width:112px; }
+  .vault-door-left .door-wheel-a { left:-40%; top:7%; width:170px; }
+  .vault-door-left .door-wheel-c { left:-27%; bottom:-3%; width:165px; }
+  .door-wheel-f { right:-40%; top:28%; width:112px; }
+  .vault-door-right .door-wheel-b { right:-39%; top:9%; width:155px; }
+  .vault-door-right .door-wheel-d { right:-28%; bottom:-5%; width:145px; }
+  .door-wheel-g { left:-38%; top:31%; width:104px; }
+  .vault-door-left .bar-left,.vault-door-right .bar-right { width:42%; }
+  .door-seal { right:13px; bottom:18px; }
+  .door-seal img { width:54px; height:60px; }
+  .vault-hinge-right { right:-7px; }
+}
+
+@media (max-width:390px) {
+  .crosslock-ring { width:268px; height:268px; }
+  .crosslock-ring .door-wheel-e { width:98px; }
+  .door-seal img { width:46px; height:52px; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .crosslock-ring,.crosslock-ring .door-wheel-e { animation:none !important; }
+}

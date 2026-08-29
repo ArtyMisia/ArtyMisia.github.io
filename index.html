@@ -12,11 +12,11 @@
   <meta property="og:title" content="Eugene / ArtyMisia — Possibility Engine">
   <meta property="og:description" content="会社経営、AI開発、映像制作、ゲーム、コミュニティ運営を横断する機械式ポートフォリオ。">
   <meta property="og:url" content="https://artymisia.github.io/">
-  <meta property="og:image" content="https://artymisia.github.io/assets/scientia-est-arma-logo.jpeg">
+  <meta property="og:image" content="https://artymisia.github.io/assets/scientia-est-arma-logo.png">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Eugene / ArtyMisia — Possibility Engine">
   <meta name="twitter:description" content="未実装の未来を、動くものにする。">
-  <meta name="twitter:image" content="https://artymisia.github.io/assets/scientia-est-arma-logo.jpeg">
+  <meta name="twitter:image" content="https://artymisia.github.io/assets/scientia-est-arma-logo.png">
   <link rel="icon" href="assets/gear-wheel-pixabay.png">
   <title>Eugene / ArtyMisia — Portfolio</title>
   <link rel="stylesheet" href="style.css">
@@ -28,7 +28,7 @@
   <div class="steam steam-b" aria-hidden="true"></div>
   <header class="archive-header">
     <nav class="nav wrap" aria-label="表示モード">
-      <a class="brand" href="?mode=all" aria-label="総合ポートフォリオへ"><img src="assets/scientia-est-arma-logo.jpeg" alt="Scientia Est Arma"><small>EST. NOW</small></a>
+      <a class="brand" href="?mode=all" aria-label="総合ポートフォリオへ"><img src="assets/scientia-est-arma-logo.png" alt="Scientia Est Arma"><small>EST. NOW</small></a>
       <p class="system-id">INTEGRATED ACHIEVEMENT ARCHIVE <b>№ EA–001</b></p>
       <div id="mode-nav" class="mode-nav"></div>
     </nav>
@@ -100,38 +100,50 @@
         <div class="archive-depth depth-back" aria-hidden="true"></div>
         <div class="archive-depth depth-mid" aria-hidden="true"></div>
         <div id="project-stage" class="project-stage" aria-live="polite"></div>
-        <div class="vault-hinge" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="vault-hinge vault-hinge-left" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="vault-hinge vault-hinge-right" aria-hidden="true"><i></i><i></i><i></i></div>
         <div class="vault-door-assembly">
-          <div class="vault-door">
+          <div class="vault-door vault-door-left" aria-hidden="true">
             <div class="door-surface">
-              <div class="door-inscription" aria-hidden="true">
-                <small>INTEGRATED ACHIEVEMENT ARCHIVE</small>
-                <b>統合実績機関</b>
-                <span>EUGENE / ARTYMISIA · CALIBRE EA–001</span>
-              </div>
               <div class="door-gearwork" aria-hidden="true">
                 <img class="door-wheel door-wheel-a" src="assets/gear-rust-pixabay.png" alt="">
-                <img class="door-wheel door-wheel-b" src="assets/gear-wheel-pixabay.png" alt="">
                 <img class="door-wheel door-wheel-c" src="assets/gear-rust-pixabay.png" alt="">
-                <img class="door-wheel door-wheel-d" src="assets/gear-wheel-pixabay.png" alt="">
-                <img class="door-wheel door-wheel-e" src="assets/gear-rust-pixabay.png" alt="">
+                <img class="door-wheel door-wheel-f" src="assets/gear-wheel-pixabay.png" alt="">
               </div>
               <div class="door-locking-bar bar-left" aria-hidden="true"><i></i><b></b></div>
-              <div class="door-locking-bar bar-right" aria-hidden="true"><i></i><b></b></div>
-              <div class="door-bolts" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-              <div class="vault-dial-console">
-                <p>SELECT MODULE NUMBER</p>
-                <div id="gear-selector" class="gear-selector" role="tablist" aria-label="開錠する実績番号を選択">
-                  <div class="dial-ratchet" aria-hidden="true"><i></i><b></b></div>
-                  <div id="gear-nodes" class="gear-nodes"></div>
-                  <button id="archive-toggle" class="archive-lock" type="button" aria-expanded="false">
-                    <span id="gear-core" class="lock-gear dial-core"><i id="dial-number">01</i></span>
-                    <b>指定番号を開錠</b><small>PRESS TO UNSEAL</small>
-                  </button>
-                </div>
-                <small>番号を選択すると輪列が照合し、主錠ボルトを解除します</small>
+              <div class="door-bolts door-bolts-left" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <div class="vault-door vault-door-right" aria-hidden="true">
+            <div class="door-surface">
+              <div class="door-gearwork" aria-hidden="true">
+                <img class="door-wheel door-wheel-b" src="assets/gear-wheel-pixabay.png" alt="">
+                <img class="door-wheel door-wheel-d" src="assets/gear-wheel-pixabay.png" alt="">
+                <img class="door-wheel door-wheel-g" src="assets/gear-rust-pixabay.png" alt="">
               </div>
-              <div class="door-seal" aria-hidden="true"><img src="assets/scientia-est-arma-logo.jpeg" alt=""><small>SCIENTIA EST ARMA<br>AUTHORIZED ARCHIVE</small></div>
+              <div class="door-locking-bar bar-right" aria-hidden="true"><i></i><b></b></div>
+              <div class="door-bolts door-bolts-right" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+              <div class="door-seal" aria-hidden="true"><img src="assets/scientia-est-arma-logo.png" alt=""><small>SCIENTIA EST ARMA<br>AUTHORIZED ARCHIVE</small></div>
+            </div>
+          </div>
+          <div class="vault-crosslock">
+            <div class="crosslock-ring" aria-hidden="true"><img class="door-wheel door-wheel-e" src="assets/gear-rust-pixabay.png" alt=""></div>
+            <div class="door-inscription" aria-hidden="true">
+              <small>INTEGRATED ACHIEVEMENT ARCHIVE</small>
+              <b>統合実績機関</b>
+              <span>EUGENE / ARTYMISIA · CALIBRE EA–001</span>
+            </div>
+            <div class="vault-dial-console">
+              <p>SELECT MODULE NUMBER</p>
+              <div id="gear-selector" class="gear-selector" role="tablist" aria-label="開錠する実績番号を選択">
+                <div class="dial-ratchet" aria-hidden="true"><i></i><b></b></div>
+                <div id="gear-nodes" class="gear-nodes"></div>
+                <button id="archive-toggle" class="archive-lock" type="button" aria-expanded="false">
+                  <span id="gear-core" class="lock-gear dial-core"><i id="dial-number">01</i></span>
+                  <b>指定番号を開錠</b><small>PRESS TO UNSEAL</small>
+                </button>
+              </div>
+              <small>番号を選択すると中央輪列が照合し、左右の主錠を解除します</small>
             </div>
           </div>
         </div>

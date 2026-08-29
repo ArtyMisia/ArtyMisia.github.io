@@ -27,7 +27,8 @@
 
 ## ユーザー制作素材
 
-- `scientia-est-arma-logo.jpeg`
+- `scientia-est-arma-logo.png`
   - SCIENTIA EST ARMA カラー紋章
   - Eugene / ArtyMisiaによる過去の自作デザイン
+  - 背景透過版
   - サイト上部の識別章および統合実績機関の認証紋章として使用
