@@ -11,6 +11,7 @@ let archiveOpen = false;
 let switching = false;
 let gearTurns = 0;
 let scrollTicking = false;
+let accessRoutes = [];
 
 function machineClack(kind = "light") {
   document.dispatchEvent(new CustomEvent("machine-clack", { detail: { kind } }));
@@ -108,6 +109,58 @@ function initCrestControl() {
   };
 
   control.addEventListener("click", () => setPower(control.getAttribute("aria-pressed") !== "true"));
+}
+
+function initSecretLatch() {
+  const shell = document.getElementById("mechanism-shell");
+  const ring = document.querySelector(".crosslock-ring");
+  const toggle = document.getElementById("archive-toggle");
+  const live = document.getElementById("secret-live");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let latchReady = false;
+  let secretNavigating = false;
+  let lastSignal = 0;
+  if (!shell || !ring || !toggle) return;
+
+  const horizontalDistance = () => {
+    if (reducedMotion.matches) return 0;
+    const transform = window.getComputedStyle(ring).transform;
+    if (!transform || transform === "none") return 180;
+    const matrix = new DOMMatrixReadOnly(transform);
+    const angle = (Math.atan2(matrix.b, matrix.a) * 180 / Math.PI + 360) % 360;
+    return Math.min(angle, Math.abs(angle - 180), 360 - angle);
+  };
+
+  const monitorLatch = now => {
+    const nextReady = document.body.classList.contains("crest-overdrive") && horizontalDistance() <= 11;
+    if (nextReady !== latchReady) {
+      latchReady = nextReady;
+      shell.classList.toggle("secret-latch-ready", latchReady);
+      if (latchReady && now - lastSignal > 650) {
+        lastSignal = now;
+        machineClack("light");
+      }
+    }
+    window.requestAnimationFrame(monitorLatch);
+  };
+
+  toggle.addEventListener("click", event => {
+    if (!latchReady || switching || secretNavigating) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    secretNavigating = true;
+    document.body.classList.add("secret-route-engaged");
+    shell.classList.add("secret-latch-coupled");
+    toggle.querySelector("b").textContent = "第零機関 接続";
+    toggle.querySelector("small").textContent = "UNLISTED ROUTE FOUND";
+    if (live) live.textContent = "隠しラッチが接続されました。第零書庫へ移動します。";
+    try { window.sessionStorage.setItem("ea000-entry", "horizontal-latch"); } catch (_) { /* Storage is optional. */ }
+    machineClack("heavy");
+    [110, 220, 330, 470, 620].forEach(delay => window.setTimeout(() => machineClack("switch"), delay));
+    window.setTimeout(() => window.location.assign(new URL("null-archive/", window.location.href)), 1450);
+  }, true);
+
+  window.requestAnimationFrame(monitorLatch);
 }
 
 function initMovementRig() {
@@ -248,6 +301,7 @@ function initPageMachine() {
 }
 
 function projectCard(project, index) {
+  if (project.entryType === "passphrase") return passphraseCard(project, index);
   const media = project.media
     ? `<figure class="card-media"><img src="${escapeHtml(project.media.src)}" alt="${escapeHtml(project.media.alt)}" loading="lazy"><figcaption>${escapeHtml(project.media.caption || "")}</figcaption></figure>`
     : "";
@@ -264,6 +318,69 @@ function projectCard(project, index) {
     <div class="tech-list">${project.technologies.map(tech => `<span>${escapeHtml(tech)}</span>`).join("")}</div>
     <div class="evidence"><span class="evidence-label">EVIDENCE PORT</span>${evidence}</div>
   </article>`;
+}
+
+function passphraseCard(project, index) {
+  return `<article class="card mechanism-card passphrase-card">
+    <div class="module-serial">MECHANISM ${String(index + 1).padStart(2, "0")} <i></i> ACCESS TERMINAL</div>
+    <div class="card-top"><span class="category">${escapeHtml(project.category)}</span><span class="status">STANDBY</span></div>
+    <h3>${escapeHtml(project.title)}</h3>
+    <p>${escapeHtml(project.description)}</p>
+    <form id="passphrase-form" class="passphrase-console" autocomplete="off">
+      <div class="passphrase-reader" aria-hidden="true"><i></i><b></b><span>PHRASE READER / EA–009</span></div>
+      <label for="passphrase-input">合言葉</label>
+      <div class="passphrase-entry">
+        <input id="passphrase-input" name="passphrase" type="password" inputmode="text" autocapitalize="characters" spellcheck="false" required aria-describedby="passphrase-status">
+        <button type="submit"><i></i><span>照合</span><small>VERIFY</small></button>
+      </div>
+      <p id="passphrase-status" class="passphrase-status" aria-live="polite">専用書庫の接続符号を待機しています。</p>
+    </form>
+    <div class="tech-list">${project.technologies.map(tech => `<span>${escapeHtml(tech)}</span>`).join("")}</div>
+  </article>`;
+}
+
+function initPassphraseGateway() {
+  const stage = document.getElementById("project-stage");
+  if (!stage) return;
+
+  stage.addEventListener("submit", async event => {
+    if (event.target.id !== "passphrase-form") return;
+    event.preventDefault();
+    const form = event.target;
+    const input = form.elements.passphrase;
+    const status = form.querySelector(".passphrase-status");
+    const phrase = input.value.trim().normalize("NFKC").toUpperCase();
+    if (!phrase) return;
+
+    form.classList.add("is-reading");
+    status.textContent = "接続符号を照合中…";
+    machineClack("heavy");
+
+    let digest = "";
+    if (window.crypto?.subtle) {
+      const bytes = new TextEncoder().encode(phrase);
+      const result = await window.crypto.subtle.digest("SHA-256", bytes);
+      digest = [...new Uint8Array(result)].map(value => value.toString(16).padStart(2, "0")).join("");
+    }
+    const route = accessRoutes.find(item => item.digest?.toLowerCase() === digest);
+
+    window.setTimeout(() => {
+      form.classList.remove("is-reading", "is-accepted", "is-denied");
+      if (route?.destination) {
+        form.classList.add("is-accepted");
+        status.textContent = `${route.label || "専用書庫"}を確認。接続します。`;
+        machineClack("heavy");
+        window.setTimeout(() => window.location.assign(new URL(route.destination, window.location.href)), 900);
+        return;
+      }
+      form.classList.add("is-denied");
+      status.textContent = accessRoutes.length
+        ? "符号が一致しません。合言葉を確認してください。"
+        : "企業別書庫は現在準備中です。接続符号はまだ登録されていません。";
+      machineClack("switch");
+      input.select();
+    }, 680);
+  });
 }
 
 function renderGearNodes() {
@@ -357,6 +474,7 @@ async function init() {
     const data = await response.json();
     const modeKey = data.modes[selectedMode] ? selectedMode : "all";
     const mode = data.modes[modeKey];
+    accessRoutes = Array.isArray(data.accessRoutes) ? data.accessRoutes : [];
 
     document.getElementById("headline").textContent = data.profile.headline;
     document.getElementById("summary").textContent = data.profile.summary;
@@ -390,6 +508,8 @@ async function init() {
 
 initMechanicalAudio();
 initCrestControl();
+initSecretLatch();
 initMovementRig();
 initPageMachine();
+initPassphraseGateway();
 init();

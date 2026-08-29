@@ -7,31 +7,32 @@
     "summary": "横浜を拠点に、会社経営、AI開発、映像制作、ゲーム、コミュニティ運営を横断。構想を言葉だけで終わらせず、手で触れられるプロトタイプへ変換し、現実の人と場所で確かめています。",
     "activities": ["会社経営・FPS学院運営", "プロトタイプ開発", "Lesathチャンネルプロデュース"]
   },
+  "accessRoutes": [],
   "modes": {
     "all": {
       "label": "総合",
-      "archiveTitle": "総合実績機関",
+      "archiveTitle": "総合実績金庫",
       "route": "GENERAL ARCHIVE ROUTE",
       "intro": "番号を選び、中央機構を開錠してください。各記録には、制作内容・使用技術・確認できる証拠リンクを格納しています。",
       "order": ["Business", "Community", "Video", "Tech", "Poker"]
     },
     "poker": {
       "label": "Poker",
-      "archiveTitle": "体験設計・場づくり機関",
+      "archiveTitle": "総合実績金庫",
       "route": "EXPERIENCE & COMMUNITY ROUTE",
       "intro": "場づくり・初心者対応・映像発信・技術実装の実績を優先表示。未完成の構想は実績に混ぜず、確認できる活動から開錠します。",
       "order": ["Poker", "Community", "Tech", "Video", "Business"]
     },
     "video": {
       "label": "Video",
-      "archiveTitle": "映像制作機関",
+      "archiveTitle": "総合実績金庫",
       "route": "VIDEO PRODUCTION ROUTE",
       "intro": "動画編集とチャンネルプロデュースを先頭に、企画から公開までの制作記録を表示します。",
       "order": ["Video", "Business", "Community", "Tech", "Poker"]
     },
     "tech": {
       "label": "Tech",
-      "archiveTitle": "技術開発機関",
+      "archiveTitle": "総合実績金庫",
       "route": "TECHNICAL DEVELOPMENT ROUTE",
       "intro": "動作するプロトタイプと制作自動化を先頭に、実装内容と公開可能な証拠を表示します。",
       "order": ["Tech", "Business", "Community", "Poker", "Video"]
@@ -148,6 +149,19 @@
         { "label": "FPS学院 公式サイト", "url": "https://eiq-fps.github.io/FPS/" }
       ],
       "verification": "linked",
+      "publicationStatus": "published",
+      "featured": false
+    },
+    {
+      "id": "application-archive-gateway",
+      "entryType": "passphrase",
+      "title": "合言葉入力 — 志望先別書庫",
+      "description": "応募先ごとに編集した志望動機・関連実績・提案を格納する独立書庫への接続端子です。URLとともに伝えられた合言葉を入力すると、対応する専用ページへ接続します。",
+      "category": "Access",
+      "technologies": ["Application Archive", "Passphrase Routing", "GitHub Pages"],
+      "evidence": [],
+      "evidenceNote": "企業別書庫は個別に接続予定",
+      "verification": "access-terminal",
       "publicationStatus": "published",
       "featured": false
     }

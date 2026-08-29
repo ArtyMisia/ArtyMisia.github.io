@@ -3263,3 +3263,159 @@ body[data-mode="poker"] .door-surface { box-shadow:inset 0 0 0 2px #9e6d32,inset
   .door-seal { right:8px; bottom:15px; width:74px; height:78px; }
   .door-seal img { width:62px; height:62px; }
 }
+
+/* EA-000 hidden latch: the crosslock only couples on a horizontal overdrive pass */
+.secret-latch-indicator {
+  position:absolute;
+  z-index:8;
+  left:50%;
+  top:51%;
+  width:min(78%,590px);
+  height:28px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  color:#355349;
+  font:600 .38rem/1 "IBM Plex Mono",monospace;
+  letter-spacing:.18em;
+  opacity:.12;
+  transform:translate(-50%,-50%);
+  transition:opacity .08s linear,color .08s linear,filter .08s linear;
+  pointer-events:none;
+}
+.secret-latch-indicator i,
+.secret-latch-indicator b {
+  width:13px;
+  height:13px;
+  border:2px solid #5c482a;
+  border-radius:50%;
+  background:#151711;
+  box-shadow:inset 0 0 6px #000,0 0 0 4px rgba(7,9,7,.82);
+}
+.secret-latch-indicator span {
+  padding:4px 8px;
+  border:1px solid rgba(78,116,103,.18);
+  background:rgba(7,9,7,.82);
+}
+.secret-latch-ready .secret-latch-indicator {
+  color:#cdf8eb;
+  opacity:1;
+  filter:drop-shadow(0 0 8px rgba(118,199,176,.72));
+}
+.secret-latch-ready .secret-latch-indicator i,
+.secret-latch-ready .secret-latch-indicator b {
+  border-color:#8fe0c8;
+  background:#76c7b0;
+  box-shadow:inset 0 0 5px #e2fff7,0 0 0 4px rgba(7,9,7,.9),0 0 16px #76c7b0;
+}
+.secret-latch-ready .archive-lock { border-color:#81d4bc; box-shadow:0 0 0 9px #080907,0 0 0 10px rgba(118,199,176,.62),0 0 72px rgba(118,199,176,.52),inset 0 0 35px #000; }
+.secret-latch-coupled .crosslock-ring { animation-direction:reverse; animation-duration:.48s !important; filter:brightness(1.22) drop-shadow(0 0 22px #76c7b0); }
+.secret-latch-coupled .vault-door-left { transform:translateZ(44px) rotateY(-4deg); }
+.secret-latch-coupled .vault-door-right { transform:translateZ(44px) rotateY(4deg); }
+
+.secret-transition {
+  position:fixed;
+  z-index:200;
+  inset:0;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  background:#020303;
+  color:#a8e5d4;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .38s ease,visibility 0s linear .38s;
+  pointer-events:none;
+}
+.secret-transition::before,
+.secret-transition::after {
+  content:"";
+  position:absolute;
+  inset:-35vmax;
+  border-radius:50%;
+  background:repeating-conic-gradient(#080b09 0 6deg,#2b2116 6deg 8deg,#050706 8deg 18deg);
+  -webkit-mask:radial-gradient(circle,transparent 0 18%,#000 18.5% 100%);
+  mask:radial-gradient(circle,transparent 0 18%,#000 18.5% 100%);
+  transform:scale(2.6) rotate(0deg);
+  transition:transform 1.2s cubic-bezier(.72,0,.23,1);
+}
+.secret-transition::after { inset:-17vmax; opacity:.58; transform:scale(3.1) rotate(18deg); transition-delay:.12s; }
+.secret-transition-iris {
+  position:relative;
+  z-index:3;
+  width:180px;
+  height:180px;
+  display:grid;
+  place-items:center;
+  border:10px double #8a6130;
+  border-radius:50%;
+  background:radial-gradient(circle,#76c7b0 0 3%,#152922 4% 17%,#050706 18% 61%,#7b572c 62% 65%,#050706 66%);
+  box-shadow:0 0 0 9px #020303,0 0 0 10px rgba(118,199,176,.38),0 0 50px rgba(118,199,176,.42),inset 0 0 32px #000;
+  transform:scale(.2) rotate(-70deg);
+  transition:transform 1.1s cubic-bezier(.18,.9,.2,1.1) .18s;
+}
+.secret-transition-iris::before { content:""; position:absolute; inset:22px; border:1px dashed #76c7b0; border-radius:50%; animation:crosslock-wheel 3s linear infinite; }
+.secret-transition-iris i,.secret-transition-iris b { position:absolute; width:125%; height:8px; background:linear-gradient(90deg,#16110c,#bd8540,#16110c); box-shadow:0 5px 10px #000; }
+.secret-transition-iris b { transform:rotate(90deg); }
+.secret-transition-iris span { position:relative; z-index:2; color:#d6fff4; font:700 .75rem/1 "IBM Plex Mono",monospace; letter-spacing:.13em; }
+.secret-transition > p { position:absolute; z-index:4; left:50%; top:calc(50% + 122px); margin:0; color:#6d9e90; font:600 .45rem/1 "IBM Plex Mono",monospace; letter-spacing:.18em; transform:translateX(-50%); white-space:nowrap; }
+.secret-route-engaged { overflow:hidden; }
+.secret-route-engaged .secret-transition { opacity:1; visibility:visible; transition-delay:0s; }
+.secret-route-engaged .secret-transition::before { transform:scale(.16) rotate(95deg); }
+.secret-route-engaged .secret-transition::after { transform:scale(.11) rotate(-62deg); }
+.secret-route-engaged .secret-transition-iris { transform:scale(1) rotate(0deg); }
+.visually-hidden { position:absolute !important; width:1px !important; height:1px !important; padding:0 !important; margin:-1px !important; overflow:hidden !important; clip:rect(0 0 0 0) !important; white-space:nowrap !important; border:0 !important; }
+
+@media (max-width:700px) {
+  .secret-latch-indicator { width:94%; }
+  .secret-latch-indicator span { font-size:.3rem; }
+  .secret-transition-iris { width:142px; height:142px; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .secret-transition::before,.secret-transition::after,.secret-transition-iris { transition-duration:.01ms; }
+  .secret-transition-iris::before { animation:none; }
+}
+
+/* EA-009 / company-specific application archive terminal */
+.passphrase-card {
+  background:
+    radial-gradient(circle at 78% 28%,rgba(97,193,169,.1),transparent 15rem),
+    linear-gradient(145deg,rgba(215,159,70,.08),transparent 38%),#10120f;
+}
+.passphrase-card::after { border-color:rgba(112,201,177,.2); }
+.passphrase-console {
+  position:relative; z-index:2; margin:24px 0 4px; padding:20px;
+  border:1px solid #5e4828; border-radius:3px 14px 3px 14px;
+  background:linear-gradient(180deg,rgba(33,37,31,.96),rgba(7,9,8,.98));
+  box-shadow:inset 0 0 0 5px #090b09,inset 0 0 0 6px rgba(215,159,70,.15),0 12px 28px #000;
+}
+.passphrase-reader { display:flex; align-items:center; gap:9px; margin-bottom:17px; color:#81775e; font:600 .5rem/1 "IBM Plex Mono",monospace; letter-spacing:.14em; }
+.passphrase-reader::after { content:""; height:1px; flex:1; background:linear-gradient(90deg,#63502f,transparent); }
+.passphrase-reader i,.passphrase-reader b { width:9px; height:9px; border:1px solid #6b5634; border-radius:50%; background:#241d12; box-shadow:inset 0 0 4px #000; }
+.passphrase-reader b { background:#19352f; border-color:#447d70; box-shadow:0 0 10px rgba(112,201,177,.28),inset 0 0 4px #000; }
+.passphrase-console label { display:block; margin-bottom:8px; color:#c9b88e; font:700 .66rem/1 "IBM Plex Mono",monospace; letter-spacing:.15em; }
+.passphrase-entry { display:grid; grid-template-columns:minmax(0,1fr) 92px; gap:10px; }
+.passphrase-entry input {
+  min-width:0; height:54px; padding:0 16px; border:1px solid #64502f; border-radius:2px;
+  outline:none; background:repeating-linear-gradient(0deg,rgba(112,201,177,.025) 0 1px,transparent 1px 4px),#070a08;
+  color:#a9ead8; caret-color:#e5bb67; font:700 1rem/1 "IBM Plex Mono",monospace; letter-spacing:.18em;
+  box-shadow:inset 0 0 18px #000;
+}
+.passphrase-entry input:focus { border-color:#74b9a6; box-shadow:0 0 0 2px rgba(116,185,166,.12),inset 0 0 18px #000; }
+.passphrase-entry button { position:relative; display:grid; place-content:center; height:54px; border:1px solid #8f6934; border-radius:2px 9px 2px 9px; background:linear-gradient(#40331f,#17130d); color:#ead7a8; cursor:pointer; box-shadow:inset 0 0 0 3px #0b0c09; }
+.passphrase-entry button i { position:absolute; left:8px; top:8px; width:6px; height:6px; border-radius:50%; background:#6d6045; }
+.passphrase-entry button span { font:800 .72rem/1 sans-serif; letter-spacing:.12em; }
+.passphrase-entry button small { margin-top:4px; color:#8c8066; font:.43rem/1 "IBM Plex Mono",monospace; }
+.passphrase-status { min-height:2.8em; margin:12px 0 0!important; color:#817a66!important; font:.6rem/1.5 "IBM Plex Mono",monospace!important; }
+.passphrase-console.is-reading .passphrase-reader b { animation:secret-sensor .3s steps(2) infinite; background:#d69c46; border-color:#f0c977; }
+.passphrase-console.is-accepted { border-color:#67b7a2; box-shadow:inset 0 0 0 5px #090b09,inset 0 0 0 6px rgba(103,183,162,.25),0 0 32px rgba(103,183,162,.16); }
+.passphrase-console.is-accepted .passphrase-status { color:#9ad9c8!important; }
+.passphrase-console.is-denied { border-color:#8c493c; }
+.passphrase-console.is-denied .passphrase-status { color:#c68878!important; }
+
+@media (max-width:700px) {
+  .passphrase-console { padding:16px 13px; }
+  .passphrase-entry { grid-template-columns:1fr; }
+  .passphrase-entry button { min-height:48px; height:48px; }
+}
