@@ -323,19 +323,16 @@ function projectCard(project, index) {
 function passphraseCard(project, index) {
   return `<article class="card mechanism-card passphrase-card">
     <div class="module-serial">MECHANISM ${String(index + 1).padStart(2, "0")} <i></i> ACCESS TERMINAL</div>
-    <div class="card-top"><span class="category">${escapeHtml(project.category)}</span><span class="status">STANDBY</span></div>
     <h3>${escapeHtml(project.title)}</h3>
-    <p>${escapeHtml(project.description)}</p>
     <form id="passphrase-form" class="passphrase-console" autocomplete="off">
-      <div class="passphrase-reader" aria-hidden="true"><i></i><b></b><span>PHRASE READER / EA–009</span></div>
-      <label for="passphrase-input">合言葉</label>
+      <div class="passphrase-reader" aria-hidden="true"><i></i><b></b><span>EA–009 / PHRASE READER</span></div>
+      <label class="visually-hidden" for="passphrase-input">合言葉</label>
       <div class="passphrase-entry">
         <input id="passphrase-input" name="passphrase" type="password" inputmode="text" autocapitalize="characters" spellcheck="false" required aria-describedby="passphrase-status">
-        <button type="submit"><i></i><span>照合</span><small>VERIFY</small></button>
+        <button type="submit"><i></i><span>接続</span><small>CONNECT</small></button>
       </div>
-      <p id="passphrase-status" class="passphrase-status" aria-live="polite">専用書庫の接続符号を待機しています。</p>
+      <p id="passphrase-status" class="passphrase-status" aria-live="polite"></p>
     </form>
-    <div class="tech-list">${project.technologies.map(tech => `<span>${escapeHtml(tech)}</span>`).join("")}</div>
   </article>`;
 }
 
@@ -353,7 +350,7 @@ function initPassphraseGateway() {
     if (!phrase) return;
 
     form.classList.add("is-reading");
-    status.textContent = "接続符号を照合中…";
+    status.textContent = "VERIFYING…";
     machineClack("heavy");
 
     let digest = "";
@@ -368,15 +365,16 @@ function initPassphraseGateway() {
       form.classList.remove("is-reading", "is-accepted", "is-denied");
       if (route?.destination) {
         form.classList.add("is-accepted");
-        status.textContent = `${route.label || "専用書庫"}を確認。接続します。`;
+        status.textContent = `AUTHORIZED // ${route.label || "DOSSIER"}`;
+        try { window.sessionStorage.setItem("ea009-clearance", route.label || "AUTHORIZED"); } catch (_) { /* Storage is optional. */ }
         machineClack("heavy");
         window.setTimeout(() => window.location.assign(new URL(route.destination, window.location.href)), 900);
         return;
       }
       form.classList.add("is-denied");
       status.textContent = accessRoutes.length
-        ? "符号が一致しません。合言葉を確認してください。"
-        : "企業別書庫は現在準備中です。接続符号はまだ登録されていません。";
+        ? "ACCESS DENIED"
+        : "NO ROUTE ASSIGNED";
       machineClack("switch");
       input.select();
     }, 680);

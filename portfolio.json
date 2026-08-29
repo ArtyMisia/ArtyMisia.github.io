@@ -7,7 +7,13 @@
     "summary": "横浜を拠点に、会社経営、AI開発、映像制作、ゲーム、コミュニティ運営を横断。構想を言葉だけで終わらせず、手で触れられるプロトタイプへ変換し、現実の人と場所で確かめています。",
     "activities": ["会社経営・FPS学院運営", "プロトタイプ開発", "Lesathチャンネルプロデュース"]
   },
-  "accessRoutes": [],
+  "accessRoutes": [
+    {
+      "digest": "359b8fa404b77daa8f4ee96eddbfa8996cd015dc9ade1da8b0af77c8c5727ef2",
+      "destination": "dossier/poker-room/",
+      "label": "POKER ROOM"
+    }
+  ],
   "modes": {
     "all": {
       "label": "総合",
@@ -155,10 +161,10 @@
     {
       "id": "application-archive-gateway",
       "entryType": "passphrase",
-      "title": "合言葉入力 — 志望先別書庫",
-      "description": "応募先ごとに編集した志望動機・関連実績・提案を格納する独立書庫への接続端子です。URLとともに伝えられた合言葉を入力すると、対応する専用ページへ接続します。",
+      "title": "合言葉",
+      "description": "",
       "category": "Access",
-      "technologies": ["Application Archive", "Passphrase Routing", "GitHub Pages"],
+      "technologies": [],
       "evidence": [],
       "evidenceNote": "企業別書庫は個別に接続予定",
       "verification": "access-terminal",

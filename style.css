@@ -3379,13 +3379,16 @@ body[data-mode="poker"] .door-surface { box-shadow:inset 0 0 0 2px #9e6d32,inset
 
 /* EA-009 / company-specific application archive terminal */
 .passphrase-card {
+  justify-content:center;
   background:
     radial-gradient(circle at 78% 28%,rgba(97,193,169,.1),transparent 15rem),
     linear-gradient(145deg,rgba(215,159,70,.08),transparent 38%),#10120f;
 }
 .passphrase-card::after { border-color:rgba(112,201,177,.2); }
+.passphrase-card .module-serial { position:absolute; left:28px; right:28px; top:24px; }
+.archive-viewport .passphrase-card h3 { max-width:100%; margin:0 0 28px; color:#e5dcc1; font-size:clamp(2.3rem,6vw,4.6rem); text-align:center; letter-spacing:.08em; }
 .passphrase-console {
-  position:relative; z-index:2; margin:24px 0 4px; padding:20px;
+  position:relative; z-index:2; width:min(100%,590px); margin:0 auto; padding:20px;
   border:1px solid #5e4828; border-radius:3px 14px 3px 14px;
   background:linear-gradient(180deg,rgba(33,37,31,.96),rgba(7,9,8,.98));
   box-shadow:inset 0 0 0 5px #090b09,inset 0 0 0 6px rgba(215,159,70,.15),0 12px 28px #000;
@@ -3415,6 +3418,8 @@ body[data-mode="poker"] .door-surface { box-shadow:inset 0 0 0 2px #9e6d32,inset
 .passphrase-console.is-denied .passphrase-status { color:#c68878!important; }
 
 @media (max-width:700px) {
+  .passphrase-card .module-serial { left:17px; right:17px; top:18px; }
+  .archive-viewport .passphrase-card h3 { margin-bottom:22px; font-size:2.2rem; }
   .passphrase-console { padding:16px 13px; }
   .passphrase-entry { grid-template-columns:1fr; }
   .passphrase-entry button { min-height:48px; height:48px; }
