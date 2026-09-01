@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-7.800 -7.800 15.600 15.600" data-teeth="8" data-material="steel" role="img" aria-label="8-tooth steel mechanical watch gear">
+  <title>8 tooth steel SCIENTIA gear asset</title>
+  <metadata>Exact involute tooth count: 8; pressure angle: 20 degrees; module: 1 normalized; original deterministic artwork.</metadata>
+  <defs>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c1115"/><stop offset=".16" stop-color="#f2f6f5"/><stop offset=".36" stop-color="#263139"/><stop offset=".58" stop-color="#d9e6e8"/><stop offset=".8" stop-color="#77858c"/><stop offset="1" stop-color="#030506"/>
+    </linearGradient>
+    <radialGradient id="hub" cx="34%" cy="28%"><stop offset="0" stop-color="#f2f6f5"/><stop offset=".28" stop-color="#77858c"/><stop offset=".66" stop-color="#263139"/><stop offset="1" stop-color="#0c1115"/></radialGradient>
+    <radialGradient id="jewel" cx="32%" cy="25%"><stop offset="0" stop-color="#fff"/><stop offset=".18" stop-color="#8de8ff"/><stop offset=".55" stop-color="#0b286b"/><stop offset="1" stop-color="#050208"/></radialGradient>
+    <filter id="finish" x="-18%" y="-18%" width="136%" height="136%">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="8" result="grain"/>
+      <feComposite in="grain" in2="SourceAlpha" operator="in" result="cutGrain"/>
+      <feColorMatrix in="cutGrain" values="1 0 0 0 .25  0 1 0 0 .2  0 0 1 0 .12  0 0 0 .16 0" result="tintedGrain"/>
+      <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="tintedGrain"/></feMerge>
+      <feDropShadow dx=".25" dy=".5" stdDeviation=".55" flood-color="#000" flood-opacity=".72"/>
+    </filter>
+    <path id="tooth" d="M-1.0524 -2.5407L-0.5766 -2.6889L-0.7882 -3.6752L-0.7792 -3.9305L-0.7135 -4.1950L-0.6045 -4.4627L-0.4562 -4.7298L-0.2705 -4.9927L0.2705 -4.9927L0.2705 -4.9927L0.4562 -4.7298L0.6045 -4.4627L0.7135 -4.1950L0.7792 -3.9305L0.7882 -3.6752L0.5766 -2.6889L1.0524 -2.5407Z"/>
+    <g id="teeth"><use href="#tooth" transform="rotate(0.00000000)" /><use href="#tooth" transform="rotate(45.00000000)" /><use href="#tooth" transform="rotate(90.00000000)" /><use href="#tooth" transform="rotate(135.00000000)" /><use href="#tooth" transform="rotate(180.00000000)" /><use href="#tooth" transform="rotate(225.00000000)" /><use href="#tooth" transform="rotate(270.00000000)" /><use href="#tooth" transform="rotate(315.00000000)" /></g>
+    <g id="silhouette"><circle r="2.7500"/><use href="#teeth"/></g>
+    <mask id="skeleton">
+      <use href="#silhouette" fill="#fff"/>
+      <circle r="2.7000" fill="#000"/>
+      <g fill="#fff"><path d="M0 -1.800 C0.527 -1.134 0.595 -2.214 0 -2.808 C-0.612 -2.214 -0.527 -1.134 0 -1.800Z" transform="rotate(0)" /><path d="M0 -1.800 C0.527 -1.134 0.595 -2.214 0 -2.808 C-0.612 -2.214 -0.527 -1.134 0 -1.800Z" transform="rotate(90)" /><path d="M0 -1.800 C0.527 -1.134 0.595 -2.214 0 -2.808 C-0.612 -2.214 -0.527 -1.134 0 -1.800Z" transform="rotate(180)" /><path d="M0 -1.800 C0.527 -1.134 0.595 -2.214 0 -2.808 C-0.612 -2.214 -0.527 -1.134 0 -1.800Z" transform="rotate(270)" /><circle r="1.8000"/></g>
+    </mask>
+  </defs>
+  <g filter="url(#finish)">
+    <g mask="url(#skeleton)" fill="url(#metal)"><use href="#silhouette"/></g>
+    <circle r="2.6262" fill="none" stroke="#d9e6e8" stroke-width="0.2200" opacity=".82"/>
+    <circle r="2.7000" fill="none" stroke="#263139" stroke-width="0.2800"/>
+    <g fill="none" stroke="#d9e6e8" stroke-width="0.1300" opacity=".72"><path d="M0 -1.944 Q0.621 -1.458 0 -2.700 Q-0.621 -1.458 0 -1.944" transform="rotate(0)" /><path d="M0 -1.944 Q0.621 -1.458 0 -2.700 Q-0.621 -1.458 0 -1.944" transform="rotate(90)" /><path d="M0 -1.944 Q0.621 -1.458 0 -2.700 Q-0.621 -1.458 0 -1.944" transform="rotate(180)" /><path d="M0 -1.944 Q0.621 -1.458 0 -2.700 Q-0.621 -1.458 0 -1.944" transform="rotate(270)" /></g>
+    <circle r="2.0880" fill="url(#hub)" stroke="#d9e6e8" stroke-width="0.1980"/>
+    <circle r="0.8280" fill="url(#jewel)" stroke="#f2f6f5" stroke-width="0.1260"/>
+    <circle r="4.0000" fill="none" stroke="#f2f6f5" stroke-width=".12" opacity=".28" stroke-dasharray=".45 .8"/>
+  </g>
+</svg>

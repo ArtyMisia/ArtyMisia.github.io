@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-28.800 -28.800 57.600 57.600" data-teeth="50" data-material="rose" role="img" aria-label="50-tooth rose mechanical watch gear">
+  <title>50 tooth rose SCIENTIA gear asset</title>
+  <metadata>Exact involute tooth count: 50; pressure angle: 20 degrees; module: 1 normalized; original deterministic artwork.</metadata>
+  <defs>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#28100c"/><stop offset=".16" stop-color="#ffd0ad"/><stop offset=".36" stop-color="#6f2f22"/><stop offset=".58" stop-color="#ffe1c6"/><stop offset=".8" stop-color="#b8694d"/><stop offset="1" stop-color="#100403"/>
+    </linearGradient>
+    <radialGradient id="hub" cx="34%" cy="28%"><stop offset="0" stop-color="#ffd0ad"/><stop offset=".28" stop-color="#b8694d"/><stop offset=".66" stop-color="#6f2f22"/><stop offset="1" stop-color="#28100c"/></radialGradient>
+    <radialGradient id="jewel" cx="32%" cy="25%"><stop offset="0" stop-color="#fff"/><stop offset=".18" stop-color="#ff789d"/><stop offset=".55" stop-color="#6b0525"/><stop offset="1" stop-color="#050208"/></radialGradient>
+    <filter id="finish" x="-18%" y="-18%" width="136%" height="136%">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="50" result="grain"/>
+      <feComposite in="grain" in2="SourceAlpha" operator="in" result="cutGrain"/>
+      <feColorMatrix in="cutGrain" values="1 0 0 0 .25  0 1 0 0 .2  0 0 1 0 .12  0 0 0 .16 0" result="tintedGrain"/>
+      <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="tintedGrain"/></feMerge>
+      <feDropShadow dx=".25" dy=".5" stdDeviation=".55" flood-color="#000" flood-opacity=".72"/>
+    </filter>
+    <path id="tooth" d="M-1.4913 -23.7031L-1.0741 -23.7257L-1.0741 -23.7257L-1.0030 -24.1792L-0.8928 -24.6338L-0.7513 -25.0888L-0.5822 -25.5434L-0.3877 -25.9971L0.3877 -25.9971L0.3877 -25.9971L0.5822 -25.5434L0.7513 -25.0888L0.8928 -24.6338L1.0030 -24.1792L1.0741 -23.7257L1.0741 -23.7257L1.4913 -23.7031Z"/>
+    <g id="teeth"><use href="#tooth" transform="rotate(0.00000000)" /><use href="#tooth" transform="rotate(7.20000000)" /><use href="#tooth" transform="rotate(14.40000000)" /><use href="#tooth" transform="rotate(21.60000000)" /><use href="#tooth" transform="rotate(28.80000000)" /><use href="#tooth" transform="rotate(36.00000000)" /><use href="#tooth" transform="rotate(43.20000000)" /><use href="#tooth" transform="rotate(50.40000000)" /><use href="#tooth" transform="rotate(57.60000000)" /><use href="#tooth" transform="rotate(64.80000000)" /><use href="#tooth" transform="rotate(72.00000000)" /><use href="#tooth" transform="rotate(79.20000000)" /><use href="#tooth" transform="rotate(86.40000000)" /><use href="#tooth" transform="rotate(93.60000000)" /><use href="#tooth" transform="rotate(100.80000000)" /><use href="#tooth" transform="rotate(108.00000000)" /><use href="#tooth" transform="rotate(115.20000000)" /><use href="#tooth" transform="rotate(122.40000000)" /><use href="#tooth" transform="rotate(129.60000000)" /><use href="#tooth" transform="rotate(136.80000000)" /><use href="#tooth" transform="rotate(144.00000000)" /><use href="#tooth" transform="rotate(151.20000000)" /><use href="#tooth" transform="rotate(158.40000000)" /><use href="#tooth" transform="rotate(165.60000000)" /><use href="#tooth" transform="rotate(172.80000000)" /><use href="#tooth" transform="rotate(180.00000000)" /><use href="#tooth" transform="rotate(187.20000000)" /><use href="#tooth" transform="rotate(194.40000000)" /><use href="#tooth" transform="rotate(201.60000000)" /><use href="#tooth" transform="rotate(208.80000000)" /><use href="#tooth" transform="rotate(216.00000000)" /><use href="#tooth" transform="rotate(223.20000000)" /><use href="#tooth" transform="rotate(230.40000000)" /><use href="#tooth" transform="rotate(237.60000000)" /><use href="#tooth" transform="rotate(244.80000000)" /><use href="#tooth" transform="rotate(252.00000000)" /><use href="#tooth" transform="rotate(259.20000000)" /><use href="#tooth" transform="rotate(266.40000000)" /><use href="#tooth" transform="rotate(273.60000000)" /><use href="#tooth" transform="rotate(280.80000000)" /><use href="#tooth" transform="rotate(288.00000000)" /><use href="#tooth" transform="rotate(295.20000000)" /><use href="#tooth" transform="rotate(302.40000000)" /><use href="#tooth" transform="rotate(309.60000000)" /><use href="#tooth" transform="rotate(316.80000000)" /><use href="#tooth" transform="rotate(324.00000000)" /><use href="#tooth" transform="rotate(331.20000000)" /><use href="#tooth" transform="rotate(338.40000000)" /><use href="#tooth" transform="rotate(345.60000000)" /><use href="#tooth" transform="rotate(352.80000000)" /></g>
+    <g id="silhouette"><circle r="23.7500"/><use href="#teeth"/></g>
+    <mask id="skeleton">
+      <use href="#silhouette" fill="#fff"/>
+      <circle r="16.3875" fill="#000"/>
+      <g fill="#fff"><path d="M0 -3.800 C1.104 -6.883 1.247 -13.438 0 -17.043 C-1.282 -13.438 -1.104 -6.883 0 -3.800Z" transform="rotate(0)" /><path d="M0 -3.800 C1.104 -6.883 1.247 -13.438 0 -17.043 C-1.282 -13.438 -1.104 -6.883 0 -3.800Z" transform="rotate(60)" /><path d="M0 -3.800 C1.104 -6.883 1.247 -13.438 0 -17.043 C-1.282 -13.438 -1.104 -6.883 0 -3.800Z" transform="rotate(120)" /><path d="M0 -3.800 C1.104 -6.883 1.247 -13.438 0 -17.043 C-1.282 -13.438 -1.104 -6.883 0 -3.800Z" transform="rotate(180)" /><path d="M0 -3.800 C1.104 -6.883 1.247 -13.438 0 -17.043 C-1.282 -13.438 -1.104 -6.883 0 -3.800Z" transform="rotate(240)" /><path d="M0 -3.800 C1.104 -6.883 1.247 -13.438 0 -17.043 C-1.282 -13.438 -1.104 -6.883 0 -3.800Z" transform="rotate(300)" /><circle r="3.8000"/></g>
+    </mask>
+  </defs>
+  <g filter="url(#finish)">
+    <g mask="url(#skeleton)" fill="url(#metal)"><use href="#silhouette"/></g>
+    <circle r="22.6812" fill="none" stroke="#ffe1c6" stroke-width="0.2850" opacity=".82"/>
+    <circle r="16.3875" fill="none" stroke="#6f2f22" stroke-width="0.5225"/>
+    <g fill="none" stroke="#ffe1c6" stroke-width="0.1900" opacity=".72"><path d="M0 -4.104 Q2.902 -6.814 0 -12.618 Q-2.902 -6.814 0 -4.104" transform="rotate(0)" /><path d="M0 -4.104 Q2.902 -6.814 0 -12.618 Q-2.902 -6.814 0 -4.104" transform="rotate(60)" /><path d="M0 -4.104 Q2.902 -6.814 0 -12.618 Q-2.902 -6.814 0 -4.104" transform="rotate(120)" /><path d="M0 -4.104 Q2.902 -6.814 0 -12.618 Q-2.902 -6.814 0 -4.104" transform="rotate(180)" /><path d="M0 -4.104 Q2.902 -6.814 0 -12.618 Q-2.902 -6.814 0 -4.104" transform="rotate(240)" /><path d="M0 -4.104 Q2.902 -6.814 0 -12.618 Q-2.902 -6.814 0 -4.104" transform="rotate(300)" /></g>
+    <circle r="4.4080" fill="url(#hub)" stroke="#ffe1c6" stroke-width="0.4180"/>
+    <circle r="1.7480" fill="url(#jewel)" stroke="#ffd0ad" stroke-width="0.2660"/>
+    <circle r="25.0000" fill="none" stroke="#ffd0ad" stroke-width=".12" opacity=".28" stroke-dasharray=".45 .8"/>
+  </g>
+</svg>

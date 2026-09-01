@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-16.300 -16.300 32.600 32.600" data-teeth="25" data-material="gold" role="img" aria-label="25-tooth gold mechanical watch gear">
+  <title>25 tooth gold SCIENTIA gear asset</title>
+  <metadata>Exact involute tooth count: 25; pressure angle: 20 degrees; module: 1 normalized; original deterministic artwork.</metadata>
+  <defs>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2e1606"/><stop offset=".16" stop-color="#ffe6a0"/><stop offset=".36" stop-color="#6f3510"/><stop offset=".58" stop-color="#fff0b2"/><stop offset=".8" stop-color="#bd7428"/><stop offset="1" stop-color="#120704"/>
+    </linearGradient>
+    <radialGradient id="hub" cx="34%" cy="28%"><stop offset="0" stop-color="#ffe6a0"/><stop offset=".28" stop-color="#bd7428"/><stop offset=".66" stop-color="#6f3510"/><stop offset="1" stop-color="#2e1606"/></radialGradient>
+    <radialGradient id="jewel" cx="32%" cy="25%"><stop offset="0" stop-color="#fff"/><stop offset=".18" stop-color="#ffb570"/><stop offset=".55" stop-color="#8e180d"/><stop offset="1" stop-color="#050208"/></radialGradient>
+    <filter id="finish" x="-18%" y="-18%" width="136%" height="136%">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="25" result="grain"/>
+      <feComposite in="grain" in2="SourceAlpha" operator="in" result="cutGrain"/>
+      <feColorMatrix in="cutGrain" values="1 0 0 0 .25  0 1 0 0 .2  0 0 1 0 .12  0 0 0 .16 0" result="tintedGrain"/>
+      <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="tintedGrain"/></feMerge>
+      <feDropShadow dx=".25" dy=".5" stdDeviation=".55" flood-color="#000" flood-opacity=".72"/>
+    </filter>
+    <path id="tooth" d="M-1.4100 -11.1613L-0.8737 -11.2160L-0.9122 -11.7107L-0.8815 -12.0648L-0.8002 -12.4219L-0.6833 -12.7802L-0.5357 -13.1383L-0.3599 -13.4952L0.3599 -13.4952L0.3599 -13.4952L0.5357 -13.1383L0.6833 -12.7802L0.8002 -12.4219L0.8815 -12.0648L0.9122 -11.7107L0.8737 -11.2160L1.4100 -11.1613Z"/>
+    <g id="teeth"><use href="#tooth" transform="rotate(0.00000000)" /><use href="#tooth" transform="rotate(14.40000000)" /><use href="#tooth" transform="rotate(28.80000000)" /><use href="#tooth" transform="rotate(43.20000000)" /><use href="#tooth" transform="rotate(57.60000000)" /><use href="#tooth" transform="rotate(72.00000000)" /><use href="#tooth" transform="rotate(86.40000000)" /><use href="#tooth" transform="rotate(100.80000000)" /><use href="#tooth" transform="rotate(115.20000000)" /><use href="#tooth" transform="rotate(129.60000000)" /><use href="#tooth" transform="rotate(144.00000000)" /><use href="#tooth" transform="rotate(158.40000000)" /><use href="#tooth" transform="rotate(172.80000000)" /><use href="#tooth" transform="rotate(187.20000000)" /><use href="#tooth" transform="rotate(201.60000000)" /><use href="#tooth" transform="rotate(216.00000000)" /><use href="#tooth" transform="rotate(230.40000000)" /><use href="#tooth" transform="rotate(244.80000000)" /><use href="#tooth" transform="rotate(259.20000000)" /><use href="#tooth" transform="rotate(273.60000000)" /><use href="#tooth" transform="rotate(288.00000000)" /><use href="#tooth" transform="rotate(302.40000000)" /><use href="#tooth" transform="rotate(316.80000000)" /><use href="#tooth" transform="rotate(331.20000000)" /><use href="#tooth" transform="rotate(345.60000000)" /></g>
+    <g id="silhouette"><circle r="11.2500"/><use href="#teeth"/></g>
+    <mask id="skeleton">
+      <use href="#silhouette" fill="#fff"/>
+      <circle r="7.7625" fill="#000"/>
+      <g fill="#fff"><path d="M0 -1.800 C0.527 -3.260 0.595 -6.365 0 -8.073 C-0.612 -6.365 -0.527 -3.260 0 -1.800Z" transform="rotate(0)" /><path d="M0 -1.800 C0.527 -3.260 0.595 -6.365 0 -8.073 C-0.612 -6.365 -0.527 -3.260 0 -1.800Z" transform="rotate(72)" /><path d="M0 -1.800 C0.527 -3.260 0.595 -6.365 0 -8.073 C-0.612 -6.365 -0.527 -3.260 0 -1.800Z" transform="rotate(144)" /><path d="M0 -1.800 C0.527 -3.260 0.595 -6.365 0 -8.073 C-0.612 -6.365 -0.527 -3.260 0 -1.800Z" transform="rotate(216)" /><path d="M0 -1.800 C0.527 -3.260 0.595 -6.365 0 -8.073 C-0.612 -6.365 -0.527 -3.260 0 -1.800Z" transform="rotate(288)" /><circle r="1.8000"/></g>
+    </mask>
+  </defs>
+  <g filter="url(#finish)">
+    <g mask="url(#skeleton)" fill="url(#metal)"><use href="#silhouette"/></g>
+    <circle r="10.7438" fill="none" stroke="#fff0b2" stroke-width="0.2200" opacity=".82"/>
+    <circle r="7.7625" fill="none" stroke="#6f3510" stroke-width="0.2800"/>
+    <g fill="none" stroke="#fff0b2" stroke-width="0.1300" opacity=".72"><path d="M0 -1.944 Q1.375 -3.228 0 -5.977 Q-1.375 -3.228 0 -1.944" transform="rotate(0)" /><path d="M0 -1.944 Q1.375 -3.228 0 -5.977 Q-1.375 -3.228 0 -1.944" transform="rotate(72)" /><path d="M0 -1.944 Q1.375 -3.228 0 -5.977 Q-1.375 -3.228 0 -1.944" transform="rotate(144)" /><path d="M0 -1.944 Q1.375 -3.228 0 -5.977 Q-1.375 -3.228 0 -1.944" transform="rotate(216)" /><path d="M0 -1.944 Q1.375 -3.228 0 -5.977 Q-1.375 -3.228 0 -1.944" transform="rotate(288)" /></g>
+    <circle r="2.0880" fill="url(#hub)" stroke="#fff0b2" stroke-width="0.1980"/>
+    <circle r="0.8280" fill="url(#jewel)" stroke="#ffe6a0" stroke-width="0.1260"/>
+    <circle r="12.5000" fill="none" stroke="#ffe6a0" stroke-width=".12" opacity=".28" stroke-dasharray=".45 .8"/>
+  </g>
+</svg>

@@ -1,0 +1,1041 @@
+{
+  "schemaVersion": 1,
+  "assets": [
+    {
+      "filename": "gold-8t.svg",
+      "teeth": 8,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-8t.svg",
+      "teeth": 8,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-8t.svg",
+      "teeth": 8,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-8t.svg",
+      "teeth": 8,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-10t.svg",
+      "teeth": 10,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-10t.svg",
+      "teeth": 10,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-10t.svg",
+      "teeth": 10,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-10t.svg",
+      "teeth": 10,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-12t.svg",
+      "teeth": 12,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-12t.svg",
+      "teeth": 12,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-12t.svg",
+      "teeth": 12,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-12t.svg",
+      "teeth": 12,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-14t.svg",
+      "teeth": 14,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-14t.svg",
+      "teeth": 14,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-14t.svg",
+      "teeth": 14,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-14t.svg",
+      "teeth": 14,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-15t.svg",
+      "teeth": 15,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-15t.svg",
+      "teeth": 15,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-15t.svg",
+      "teeth": 15,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-15t.svg",
+      "teeth": 15,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-16t.svg",
+      "teeth": 16,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-16t.svg",
+      "teeth": 16,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-16t.svg",
+      "teeth": 16,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-16t.svg",
+      "teeth": 16,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-18t.svg",
+      "teeth": 18,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-18t.svg",
+      "teeth": 18,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-18t.svg",
+      "teeth": 18,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-18t.svg",
+      "teeth": 18,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-20t.svg",
+      "teeth": 20,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-20t.svg",
+      "teeth": 20,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-20t.svg",
+      "teeth": 20,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-20t.svg",
+      "teeth": 20,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-24t.svg",
+      "teeth": 24,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-24t.svg",
+      "teeth": 24,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-24t.svg",
+      "teeth": 24,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-24t.svg",
+      "teeth": 24,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-25t.svg",
+      "teeth": 25,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-25t.svg",
+      "teeth": 25,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-25t.svg",
+      "teeth": 25,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-25t.svg",
+      "teeth": 25,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-28t.svg",
+      "teeth": 28,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-28t.svg",
+      "teeth": 28,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-28t.svg",
+      "teeth": 28,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-28t.svg",
+      "teeth": 28,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-29t.svg",
+      "teeth": 29,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-29t.svg",
+      "teeth": 29,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-29t.svg",
+      "teeth": 29,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-29t.svg",
+      "teeth": 29,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-30t.svg",
+      "teeth": 30,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-30t.svg",
+      "teeth": 30,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-30t.svg",
+      "teeth": 30,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-30t.svg",
+      "teeth": 30,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-31t.svg",
+      "teeth": 31,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-31t.svg",
+      "teeth": 31,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-31t.svg",
+      "teeth": 31,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-31t.svg",
+      "teeth": 31,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-32t.svg",
+      "teeth": 32,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-32t.svg",
+      "teeth": 32,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-32t.svg",
+      "teeth": 32,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-32t.svg",
+      "teeth": 32,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-36t.svg",
+      "teeth": 36,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-36t.svg",
+      "teeth": 36,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-36t.svg",
+      "teeth": 36,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-36t.svg",
+      "teeth": 36,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-40t.svg",
+      "teeth": 40,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-40t.svg",
+      "teeth": 40,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-40t.svg",
+      "teeth": 40,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-40t.svg",
+      "teeth": 40,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-45t.svg",
+      "teeth": 45,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-45t.svg",
+      "teeth": 45,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-45t.svg",
+      "teeth": 45,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-45t.svg",
+      "teeth": 45,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-48t.svg",
+      "teeth": 48,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-48t.svg",
+      "teeth": 48,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-48t.svg",
+      "teeth": 48,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-48t.svg",
+      "teeth": 48,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-50t.svg",
+      "teeth": 50,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-50t.svg",
+      "teeth": 50,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-50t.svg",
+      "teeth": 50,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-50t.svg",
+      "teeth": 50,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-60t.svg",
+      "teeth": 60,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-60t.svg",
+      "teeth": 60,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-60t.svg",
+      "teeth": 60,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-60t.svg",
+      "teeth": 60,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-64t.svg",
+      "teeth": 64,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-64t.svg",
+      "teeth": 64,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-64t.svg",
+      "teeth": 64,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-64t.svg",
+      "teeth": 64,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-72t.svg",
+      "teeth": 72,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-72t.svg",
+      "teeth": 72,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-72t.svg",
+      "teeth": 72,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-72t.svg",
+      "teeth": 72,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-75t.svg",
+      "teeth": 75,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-75t.svg",
+      "teeth": 75,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-75t.svg",
+      "teeth": 75,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-75t.svg",
+      "teeth": 75,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-76t.svg",
+      "teeth": 76,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-76t.svg",
+      "teeth": 76,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-76t.svg",
+      "teeth": 76,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-76t.svg",
+      "teeth": 76,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-80t.svg",
+      "teeth": 80,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-80t.svg",
+      "teeth": 80,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-80t.svg",
+      "teeth": 80,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-80t.svg",
+      "teeth": 80,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-117t.svg",
+      "teeth": 117,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-117t.svg",
+      "teeth": 117,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-117t.svg",
+      "teeth": 117,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-117t.svg",
+      "teeth": 117,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-125t.svg",
+      "teeth": 125,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-125t.svg",
+      "teeth": 125,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-125t.svg",
+      "teeth": 125,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-125t.svg",
+      "teeth": 125,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-128t.svg",
+      "teeth": 128,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-128t.svg",
+      "teeth": 128,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-128t.svg",
+      "teeth": 128,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-128t.svg",
+      "teeth": 128,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-129t.svg",
+      "teeth": 129,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-129t.svg",
+      "teeth": 129,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-129t.svg",
+      "teeth": 129,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-129t.svg",
+      "teeth": 129,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-144t.svg",
+      "teeth": 144,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-144t.svg",
+      "teeth": 144,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-144t.svg",
+      "teeth": 144,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-144t.svg",
+      "teeth": 144,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-145t.svg",
+      "teeth": 145,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-145t.svg",
+      "teeth": 145,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-145t.svg",
+      "teeth": 145,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-145t.svg",
+      "teeth": 145,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-154t.svg",
+      "teeth": 154,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-154t.svg",
+      "teeth": 154,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-154t.svg",
+      "teeth": 154,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-154t.svg",
+      "teeth": 154,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-159t.svg",
+      "teeth": 159,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-159t.svg",
+      "teeth": 159,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-159t.svg",
+      "teeth": 159,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-159t.svg",
+      "teeth": 159,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-163t.svg",
+      "teeth": 163,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-163t.svg",
+      "teeth": 163,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-163t.svg",
+      "teeth": 163,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-163t.svg",
+      "teeth": 163,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-194t.svg",
+      "teeth": 194,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-194t.svg",
+      "teeth": 194,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-194t.svg",
+      "teeth": 194,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-194t.svg",
+      "teeth": 194,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "gold-199t.svg",
+      "teeth": 199,
+      "material": "gold",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "steel-199t.svg",
+      "teeth": 199,
+      "material": "steel",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "blued-199t.svg",
+      "teeth": 199,
+      "material": "blued",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    },
+    {
+      "filename": "rose-199t.svg",
+      "teeth": 199,
+      "material": "rose",
+      "pressureAngleDegrees": 20,
+      "normalizedModule": 1
+    }
+  ]
+}
