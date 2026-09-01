@@ -565,7 +565,7 @@ function moveProject(direction) {
 
 async function init() {
   try {
-    const response = await fetch("portfolio.json?v=20260901-consolidated-slots", { cache: "no-store" });
+    const response = await fetch("portfolio.json?v=20260901-sequential-slots", { cache: "no-store" });
     if (!response.ok) throw new Error(`portfolio.json: ${response.status}`);
     const data = await response.json();
     const modeKey = data.modes[selectedMode] ? selectedMode : "all";

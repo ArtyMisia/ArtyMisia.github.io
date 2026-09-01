@@ -62,7 +62,7 @@
     },
     {
       "id": "project-luna",
-      "slotNumber": 6,
+      "slotNumber": 3,
       "title": "Project LUNA — VR空間のAIインターフェース",
       "description": "UnityとVRMを使い、AIに視線・姿勢・リップシンクなどの身体性を与えるVR/MRプロジェクト。ローカル保存とBYOKを軸に、関係性が成長する体験を試作しています。",
       "category": "Tech",
@@ -75,7 +75,7 @@
     },
     {
       "id": "poamy",
-      "slotNumber": 7,
+      "slotNumber": 4,
       "title": "POAMY — 動画制作自動化パイプライン",
       "description": "テーマと本数から台本・音声・字幕・背景を統合し、縦型動画を一括生成するローカルシステム。公開版のLimited Editionでは、manifestを正本とした最大10本のバッチ生成、3種のテンプレート、音声差し替え、失敗ジョブの再実行を利用できます。",
       "category": "Tech",
@@ -89,7 +89,7 @@
     },
     {
       "id": "lesath-production",
-      "slotNumber": 4,
+      "slotNumber": 2,
       "title": "Lesath — チャンネルプロデュース／動画編集",
       "description": "2024年1月頃、登録者500人未満の段階から個人VTuber・Lesathのチャンネルをプロデュース。企画、運用改善、13本以上の動画編集を横断し、YouTube収益化を達成。2026年8月時点で登録者約888人まで成長しています。代表作4本を掲載しています。",
       "category": "Video",
@@ -108,7 +108,7 @@
     },
     {
       "id": "local-device-communication",
-      "slotNumber": 8,
+      "slotNumber": 5,
       "title": "Delta DQ9 — iPhone–Macローカル通信PoC",
       "description": "iPhone版DeltaとmacOS版melonDS 1.1を接続し、Dragon Quest IXのローカル通信を橋渡しする実験的PoC。認証・アソシエーション・マルチプレイ世界への参加と継続的なフレーム交換まで動作し、長時間安定性と音声・映像の滑らかさを継続調整しています。",
       "category": "Tech",
@@ -131,7 +131,7 @@
     },
     {
       "id": "fretmapper",
-      "slotNumber": 10,
+      "slotNumber": 6,
       "title": "FretMapper — 楽器の耳・ポジショントレーナー",
       "description": "ギター、ベース、ウクレレ、ピアノに対応した、ブラウザ内完結型の耳とポジションのトレーニングアプリ。Web Audio APIで楽器音を合成し、アカウント・APIキー・バックエンドなしで練習できます。",
       "category": "Tech",
@@ -150,7 +150,7 @@
     },
     {
       "id": "gas-sheet-server-byok",
-      "slotNumber": 11,
+      "slotNumber": 7,
       "title": "GAS Sheet Server BYOK — Google Sheets JSONバックエンド",
       "description": "Google Apps ScriptとGoogle Sheetsだけで動く、小規模用途向けのJSON CRUDバックエンド。可変スキーマ、論理削除・復元、差分同期、シート許可リスト、書き込み競合防止、監査ログを備え、利用者自身がデータと秘密トークンを管理するBYOK型で公開しています。",
       "category": "Tech",
@@ -164,7 +164,7 @@
     },
     {
       "id": "scientia-horologium-perpetuum",
-      "slotNumber": 12,
+      "slotNumber": 8,
       "title": "SCIENTIA Horologium Perpetuum — デジタル永久機械式時計",
       "description": "一本の機械時刻を正本に、3香箱並列差動、整数歯数比のスケルトン輪列、2.5 Hz脱進機、階層型9軸ジャイロ調速機、永久カレンダー、宝石オーラリーを同期するブラウザ上のデジタル機械式時計。204個の可動輪と9軸ケージを共通位相から駆動し、東京から観測対象になり得る彗星も歯車機構として表現しています。",
       "category": "Tech",
