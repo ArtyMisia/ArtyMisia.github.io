@@ -202,17 +202,18 @@
       "id": "scientia-horologium-perpetuum",
       "slotNumber": 12,
       "title": "SCIENTIA Horologium Perpetuum — デジタル永久機械式時計",
-      "description": "一本のゼンマイから香箱・輪列・脱進機・9軸トゥールビヨン・永久カレンダー・宝石オーラリー・自動巻き機構へ動力を伝える、スケルトン機械式時計のデジタル作品。各機能輪は歯数・半径・軸位置・回転方向・減速比を持ち、針と天体表示を共通のシミュレーション時刻から同期させています。",
+      "description": "一本の機械時刻を正本に、3香箱並列差動、整数歯数比のスケルトン輪列、2.5 Hz脱進機、階層型9軸ジャイロ調速機、永久カレンダー、宝石オーラリーを同期するブラウザ上のデジタル機械式時計。204個の可動輪と9軸ケージを共通位相から駆動し、東京から観測対象になり得る彗星も歯車機構として表現しています。",
       "category": "Tech",
-      "technologies": ["React", "TypeScript", "SVG", "Vite", "Kinematic Simulation", "Gear Ratio Modeling", "DeviceMotion"],
+      "technologies": ["React", "TypeScript", "SVG", "WebGL 2", "Vite", "Kinematic Simulation", "Gear Ratio Modeling", "Perpetual Calendar", "Orbital Mechanics", "DeviceMotion"],
       "primaryLink": {
         "label": "Horologium Perpetuumを起動",
-        "url": "horologium/"
+        "url": "https://eugenenumata.github.io/scientia-horologium/"
       },
       "evidence": [
-        { "label": "時計機構を観察する", "url": "horologium/" }
+        { "label": "公開サイト — 時計機構を観察する", "url": "https://eugenenumata.github.io/scientia-horologium/" },
+        { "label": "GitHub — ソースコード・設計書", "url": "https://github.com/EugeneNumata/scientia-horologium" }
       ],
-      "verification": "standalone-static-build-verified",
+      "verification": "live-site-mechanism-audited-source-linked",
       "publicationStatus": "published",
       "featured": true
     },
