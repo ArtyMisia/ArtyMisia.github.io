@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+JP:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cinzel:wght@600;700;800&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+JP:wght@400;700;900&family=Shippori+Mincho+B1:wght@400;600;700;800&display=swap');
 
 :root {
   color-scheme: dark;
@@ -12,6 +12,8 @@
   --verdigris: #65b59d;
   --line: rgba(213,154,59,.34);
   --max: 1220px;
+  --display-serif: "Cinzel", "Shippori Mincho B1", "YuMincho", "Yu Mincho", serif;
+  --reading-serif: "Shippori Mincho B1", "YuMincho", "Yu Mincho", serif;
 }
 
 /* Mobile cockpit ---------------------------------------------------------- */
@@ -3717,4 +3719,152 @@ body[data-mode="poker"] .door-surface { box-shadow:inset 0 0 0 2px #9e6d32,inset
 
 @media (prefers-reduced-motion:reduce) {
   .card-slot-dial::before,.card-slot-ratchet { animation:none; }
+}
+
+/* Slot 09 is an intentional permanent vacancy, not a missing record. */
+.gear-node.null-node,
+.card-slot-node.null-node {
+  border-color:#785046;
+  background:radial-gradient(circle at 38% 30%,#3a2823,#0b0d0b 68%);
+  color:#c78f79;
+}
+.gear-node.null-node span { font-size:.48rem; letter-spacing:.03em; }
+.card-slot-node.null-node span { font-size:.34rem; letter-spacing:-.03em; }
+.gear-node.null-node:hover,
+.gear-node.null-node.active,
+.card-slot-node.null-node:hover,
+.card-slot-node.null-node:focus-visible,
+.card-slot-node.null-node.active {
+  border-color:#e1a184;
+  background:radial-gradient(circle at 38% 30%,#d09a80,#66352e 72%);
+  color:#160e0c;
+  box-shadow:0 0 0 2px #070907,0 0 18px rgba(197,113,86,.48);
+}
+.vault-dial-console .dial-core i.null-label { font-size:.57rem; letter-spacing:.025em; }
+.card-slot-core.is-null { border-color:rgba(192,109,84,.72); background:radial-gradient(circle,rgba(173,86,66,.28),#100b0a 29%,#050706 68%); }
+.card-slot-core.is-null strong { color:#d69a81; font:700 .74rem/1 "IBM Plex Mono",monospace; letter-spacing:.02em; }
+.card-slot-core.is-null small,.card-slot-core.is-null em { color:#9a695c; }
+
+.null-slot-card {
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle at 50% 48%,rgba(112,35,27,.11),transparent 42%),
+    repeating-linear-gradient(135deg,rgba(255,255,255,.012) 0 1px,transparent 1px 7px),
+    #0b0d0b;
+}
+.null-slot-card .module-serial { position:absolute; left:30px; right:30px; top:27px; }
+.null-slot-chamber {
+  position:relative;
+  z-index:2;
+  width:min(72%,520px);
+  min-height:330px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #4e3029;
+  background:radial-gradient(circle,#090b09 0 28%,#120e0d 29% 31%,#070907 32% 100%);
+  box-shadow:0 0 0 7px #070907,0 0 0 8px rgba(118,71,54,.35),inset 0 0 70px #000,0 28px 70px #000;
+  clip-path:polygon(8% 0,92% 0,100% 12%,100% 88%,92% 100%,8% 100%,0 88%,0 12%);
+  text-align:center;
+}
+.null-slot-chamber::before {
+  content:"";
+  position:absolute;
+  inset:18px;
+  border:1px dashed rgba(179,102,77,.28);
+  background:repeating-conic-gradient(from 9deg,rgba(173,99,73,.16) 0 2deg,transparent 2deg 14deg);
+  -webkit-mask:radial-gradient(circle,transparent 0 60%,#000 61% 67%,transparent 68%);
+  mask:radial-gradient(circle,transparent 0 60%,#000 61% 67%,transparent 68%);
+  animation:null-index-ring 28s linear infinite reverse;
+}
+.null-slot-chamber::after {
+  content:"09";
+  position:absolute;
+  right:23px;
+  bottom:18px;
+  color:rgba(185,103,80,.2);
+  font:700 3.6rem/1 Georgia,serif;
+}
+.null-slot-chamber > span,.null-slot-chamber > small { position:relative; z-index:3; color:#79564c; font:700 .48rem/1.4 "IBM Plex Mono",monospace; letter-spacing:.2em; }
+.null-slot-chamber > strong { position:relative; z-index:3; margin:18px 0 14px; color:#d29b82; font:700 clamp(3.2rem,8vw,6.4rem)/.9 "IBM Plex Mono",monospace; letter-spacing:.04em; text-shadow:0 0 28px rgba(191,92,67,.22); }
+.null-aperture {
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:220px;
+  height:220px;
+  border:8px double #51362c;
+  border-radius:50%;
+  background:radial-gradient(circle,#020302 0 42%,#1a110f 43% 46%,#050605 47%);
+  box-shadow:inset 0 0 34px #000,0 0 0 7px #060706,0 0 24px rgba(171,80,58,.12);
+  transform:translate(-50%,-50%);
+}
+.null-aperture i,.null-aperture b,.null-aperture em {
+  position:absolute;
+  inset:-18px;
+  border:9px dotted rgba(142,84,65,.42);
+  border-radius:50%;
+  animation:null-index-ring 13s steps(24,end) infinite;
+}
+.null-aperture b { inset:20px; border-width:5px; animation-direction:reverse; animation-duration:8s; }
+.null-aperture em { inset:54px; border:1px solid rgba(203,121,94,.24); box-shadow:0 0 30px rgba(166,74,52,.14); animation-duration:19s; }
+@keyframes null-index-ring { to { transform:rotate(360deg); } }
+
+@media (max-width:700px) {
+  .gear-node.null-node span { font-size:.42rem; }
+  .card-slot-node.null-node span { font-size:.28rem; }
+  .null-slot-card .module-serial { left:18px; right:18px; top:20px; }
+  .null-slot-chamber { width:92%; min-height:360px; margin-bottom:84px; }
+  .null-aperture { width:178px; height:178px; }
+  .null-slot-chamber > strong { font-size:clamp(2.65rem,15vw,4.2rem); }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .null-slot-chamber::before,.null-aperture i,.null-aperture b,.null-aperture em { animation:none; }
+}
+
+/* Horological typography: sharp engraved Mincho for records, mono for instruments. */
+body {
+  font-family:var(--reading-serif);
+  font-feature-settings:"palt" 1;
+}
+.archive-nameplate h1,
+.powerhead-plaque b,
+.door-inscription b,
+.archive-viewport .card h3,
+.active-module strong,
+.archive-lock b,
+.hero-name,
+.footer-mark {
+  font-family:var(--display-serif);
+  font-weight:700;
+}
+.archive-nameplate h1,
+.powerhead-plaque b,
+.door-inscription b {
+  letter-spacing:.075em;
+  text-shadow:0 1px 0 #050605,0 0 18px rgba(223,173,83,.08);
+}
+.archive-viewport .card h3 {
+  font-weight:700;
+  letter-spacing:.015em;
+  line-height:1.42;
+}
+.archive-viewport .card > p,
+.archive-nameplate .lead,
+.activity-list li,
+.footer > div:first-child p:last-child {
+  font-family:var(--reading-serif);
+  font-weight:400;
+  letter-spacing:.025em;
+}
+.archive-viewport .card > p,
+.archive-nameplate .lead { line-height:1.95; }
+.primary-project-link b { font-family:var(--reading-serif); font-weight:700; letter-spacing:.04em; }
+
+@media (max-width:700px) {
+  .archive-nameplate h1,.powerhead-plaque b,.door-inscription b { letter-spacing:.045em; }
+  .archive-viewport .card h3 { line-height:1.48; }
 }

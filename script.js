@@ -337,31 +337,39 @@ function mechanismNumber(project, index) {
   return String(number).padStart(2, "0");
 }
 
+function mechanismLabel(project, index) {
+  return project?.entryType === "null" ? "NULL" : mechanismNumber(project, index);
+}
+
 function cardSlotDial(index) {
   const current = projects[index];
   const count = Math.max(projects.length, 1);
   const nodes = projects.map((project, projectIndex) => {
     const angle = (360 / count) * projectIndex;
-    const number = mechanismNumber(project, projectIndex);
-    return `<button type="button" class="card-slot-node ${projectIndex === index ? "active" : ""}" style="--angle:${angle}deg;--counter:${-angle}deg" data-card-slot-index="${projectIndex}" aria-label="${number} ${escapeHtml(project.title)}へ切り替え" ${projectIndex === index ? 'aria-current="true"' : ""}><span>${number}</span></button>`;
+    const label = mechanismLabel(project, projectIndex);
+    return `<button type="button" class="card-slot-node ${project.entryType === "null" ? "null-node" : ""} ${projectIndex === index ? "active" : ""}" style="--angle:${angle}deg;--counter:${-angle}deg" data-card-slot-index="${projectIndex}" aria-label="${label} ${escapeHtml(project.title)}へ切り替え" ${projectIndex === index ? 'aria-current="true"' : ""}><span>${label}</span></button>`;
   }).join("");
 
   return `<div class="card-slot-dial" role="group" aria-label="実績スロット切替ダイヤル">
     <span class="card-slot-caption">QUICK SLOT</span>
     <div class="card-slot-ratchet" aria-hidden="true"><i></i><b></b></div>
     <div class="card-slot-nodes">${nodes}</div>
-    <div class="card-slot-core" aria-hidden="true"><small>SLOT</small><strong>${mechanismNumber(current, index)}</strong><em>ONLINE</em></div>
+    <div class="card-slot-core ${current?.entryType === "null" ? "is-null" : ""}" aria-hidden="true"><small>SLOT</small><strong>${mechanismLabel(current, index)}</strong><em>${current?.entryType === "null" ? "VACANT" : "ONLINE"}</em></div>
   </div>`;
 }
 
 function projectCard(project, index) {
+  if (project.entryType === "null") return nullSlotCard(project, index);
   if (project.entryType === "passphrase") return passphraseCard(project, index);
   const media = project.media
     ? `<figure class="card-media"><img src="${escapeHtml(project.media.src)}" alt="${escapeHtml(project.media.alt)}" loading="lazy"><figcaption>${escapeHtml(project.media.caption || "")}</figcaption></figure>`
     : "";
+  const evidenceNote = project.evidenceNote
+    ? `<p class="evidence-note">${escapeHtml(project.evidenceNote)}</p>`
+    : "";
   const evidence = project.evidence?.length
-    ? `<div class="evidence-links">${project.evidence.map(link => `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.label)} ↗</a>`).join("")}</div>`
-    : `<p class="evidence-note">${escapeHtml(project.evidenceNote || "証拠リンク準備中")}</p>`;
+    ? `<div class="evidence-links">${project.evidence.map(link => `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.label)} ↗</a>`).join("")}</div>${evidenceNote}`
+    : evidenceNote || '<p class="evidence-note">証拠リンク準備中</p>';
   const primaryUrl = project.primaryLink?.url || "";
   const primaryTarget = /^https?:\/\//i.test(primaryUrl) ? ' target="_blank" rel="noopener noreferrer"' : "";
   const primaryLink = primaryUrl
@@ -377,6 +385,19 @@ function projectCard(project, index) {
     <p>${escapeHtml(project.description)}</p>
     <div class="tech-list">${project.technologies.map(tech => `<span>${escapeHtml(tech)}</span>`).join("")}</div>
     <div class="evidence"><span class="evidence-label">EVIDENCE PORT</span>${evidence}</div>
+    ${cardSlotDial(index)}
+  </article>`;
+}
+
+function nullSlotCard(project, index) {
+  return `<article class="card mechanism-card null-slot-card">
+    <div class="module-serial">MECHANISM ${mechanismNumber(project, index)} <i></i> PERMANENT NULL</div>
+    <div class="null-slot-chamber" role="img" aria-label="永久欠番 NULL">
+      <span>NO MODULE ASSIGNED</span>
+      <div class="null-aperture" aria-hidden="true"><i></i><b></b><em></em></div>
+      <strong>NULL</strong>
+      <small>EA–009 // PERMANENTLY UNASSIGNED</small>
+    </div>
     ${cardSlotDial(index)}
   </article>`;
 }
@@ -458,16 +479,19 @@ function renderGearNodes() {
   const nodes = document.getElementById("gear-nodes");
   nodes.innerHTML = projects.map((project, index) => {
     const angle = (360 / projects.length) * index;
-    return `<button type="button" role="tab" class="gear-node ${index === activeIndex ? "active" : ""}" style="--angle:${angle}deg;--counter:${-angle}deg" aria-selected="${index === activeIndex}" aria-label="${escapeHtml(project.title)}" data-index="${index}"><span>${mechanismNumber(project, index)}</span></button>`;
+    return `<button type="button" role="tab" class="gear-node ${project.entryType === "null" ? "null-node" : ""} ${index === activeIndex ? "active" : ""}" style="--angle:${angle}deg;--counter:${-angle}deg" aria-selected="${index === activeIndex}" aria-label="${escapeHtml(project.title)}" data-index="${index}"><span>${mechanismLabel(project, index)}</span></button>`;
   }).join("");
   nodes.querySelectorAll(".gear-node").forEach(button => button.addEventListener("click", () => selectProject(Number(button.dataset.index))));
 }
 
 function updateModuleLabels() {
   const project = projects[activeIndex];
-  document.getElementById("module-count").textContent = `${mechanismNumber(project, activeIndex)} / ${String(projects.length).padStart(2, "0")}`;
+  const label = mechanismLabel(project, activeIndex);
+  document.getElementById("module-count").textContent = `${label} / ${String(projects.length).padStart(2, "0")}`;
   document.getElementById("module-title").textContent = project.title;
-  document.getElementById("dial-number").textContent = mechanismNumber(project, activeIndex);
+  const dialNumber = document.getElementById("dial-number");
+  dialNumber.textContent = label;
+  dialNumber.classList.toggle("null-label", project.entryType === "null");
   document.querySelectorAll(".gear-node").forEach((button, index) => {
     button.classList.toggle("active", index === activeIndex);
     button.setAttribute("aria-selected", String(index === activeIndex));
@@ -516,7 +540,8 @@ function selectProject(index) {
   toggle.setAttribute("aria-expanded", "false");
   toggle.querySelector("b").textContent = "番号照合中";
   toggle.querySelector("small").textContent = "DIALING MODULE";
-  dialNumber.textContent = mechanismNumber(projects[targetIndex], targetIndex);
+  dialNumber.textContent = mechanismLabel(projects[targetIndex], targetIndex);
+  dialNumber.classList.toggle("null-label", projects[targetIndex].entryType === "null");
   const step = targetIndex === activeIndex ? 1 : targetIndex - activeIndex;
   gearTurns += step * (360 / projects.length);
   document.getElementById("gear-core").style.transform = `translate(-50%, -50%) rotate(${gearTurns}deg)`;
@@ -540,7 +565,7 @@ function moveProject(direction) {
 
 async function init() {
   try {
-    const response = await fetch("portfolio.json");
+    const response = await fetch("portfolio.json?v=20260901-consolidated-slots", { cache: "no-store" });
     if (!response.ok) throw new Error(`portfolio.json: ${response.status}`);
     const data = await response.json();
     const modeKey = data.modes[selectedMode] ? selectedMode : "all";
@@ -559,7 +584,13 @@ async function init() {
     document.getElementById("mode-nav").innerHTML = Object.entries(data.modes).map(([key, item]) => `<a class="mode-link" href="?mode=${encodeURIComponent(key)}" ${key === modeKey ? 'aria-current="page"' : ""}>${escapeHtml(item.label)}</a>`).join("");
 
     const order = new Map(mode.order.map((category, index) => [category, index]));
-    projects = data.projects.filter(project => project.publicationStatus === "published").sort((a, b) => (order.get(a.category) ?? 99) - (order.get(b.category) ?? 99));
+    const routeOrder = project => {
+      const categories = Array.isArray(project.routingCategories) && project.routingCategories.length
+        ? project.routingCategories
+        : [project.category];
+      return Math.min(...categories.map(category => order.get(category) ?? 99));
+    };
+    projects = data.projects.filter(project => project.publicationStatus === "published").sort((a, b) => routeOrder(a) - routeOrder(b));
     document.getElementById("project-stage").innerHTML = projectCard(projects[0], 0);
     renderGearNodes();
     updateModuleLabels();

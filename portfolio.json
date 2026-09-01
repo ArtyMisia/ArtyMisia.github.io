@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastReviewed": "2026-08-29",
+  "lastReviewed": "2026-09-01",
   "profile": {
     "name": "Eugene / ArtyMisia",
     "headline": "未実装の未来を、動くものにする。",
@@ -47,11 +47,12 @@
   "projects": [
     {
       "id": "fps-academy",
-      "slotNumber": 2,
-      "title": "FPS学院 — AIと学ぶ地域コミュニティ",
-      "description": "AIと一緒にゲームや仕組みを作り、自分のペースで技術を磨く学びの場を設計・運営。近隣の子どもとの実地活動までつなげています。",
-      "category": "Community",
-      "technologies": ["AI-assisted development", "Community Design", "Game Design"],
+      "slotNumber": 1,
+      "title": "FPS学院 — 会社経営・学習コミュニティ運営",
+      "description": "会社経営の実践として、AIと一緒にゲームや仕組みを作る学びの場をゼロから立ち上げ。コンセプト設計、教育方針、Web導線、オンラインコミュニティ、日々の運営、地域の子どもとの実地活動まで一貫して担っています。",
+      "category": "Business",
+      "routingCategories": ["Business", "Community"],
+      "technologies": ["Business Design", "Education Design", "Community Operations", "AI-assisted Development", "Game Design", "Project Management"],
       "evidence": [
         { "label": "FPS学院 公式サイト", "url": "https://eiq-fps.github.io/FPS/" }
       ],
@@ -87,12 +88,12 @@
       "featured": true
     },
     {
-      "id": "vtuber-editing",
+      "id": "lesath-production",
       "slotNumber": 4,
-      "title": "Lesath — VTuber動画編集",
-      "description": "個人VTuber・Lesathのチャンネルで13本以上の動画編集を担当。企画意図を踏まえた構成、カット、映像演出まで制作しています。代表作として4本を掲載しています。",
+      "title": "Lesath — チャンネルプロデュース／動画編集",
+      "description": "2024年1月頃、登録者500人未満の段階から個人VTuber・Lesathのチャンネルをプロデュース。企画、運用改善、13本以上の動画編集を横断し、YouTube収益化を達成。2026年8月時点で登録者約888人まで成長しています。代表作4本を掲載しています。",
       "category": "Video",
-      "technologies": ["DaVinci Resolve", "Video Editing", "YouTube"],
+      "technologies": ["Channel Produce", "Content Planning", "DaVinci Resolve", "Video Editing", "YouTube Analytics", "YouTube Monetization"],
       "evidence": [
         { "label": "Lesath チャンネル", "url": "https://www.youtube.com/@lesath_sco0" },
         { "label": "担当動画 1", "url": "https://youtu.be/V_FLtAP93jk" },
@@ -100,22 +101,8 @@
         { "label": "担当動画 3", "url": "https://youtu.be/-DslflOkpBU" },
         { "label": "担当動画 4", "url": "https://youtu.be/mx1ylmMTD84" }
       ],
-      "verification": "user-confirmed-samples-linked",
-      "publicationStatus": "published",
-      "featured": true
-    },
-    {
-      "id": "channel-production",
-      "slotNumber": 5,
-      "title": "Lesath — YouTubeチャンネルプロデュース",
-      "description": "2024年1月頃、登録者500人未満の段階から個人VTuber・Lesathのチャンネルをプロデュース。企画、動画編集、運用改善を横断し、YouTube収益化を達成。2026年8月時点で登録者約888人まで成長しています。",
-      "category": "Video",
-      "technologies": ["Channel Produce", "YouTube Monetization", "Content Planning", "Video Production", "YouTube Analytics"],
-      "evidence": [
-        { "label": "Lesath チャンネル", "url": "https://www.youtube.com/@lesath_sco0" }
-      ],
       "evidenceNote": "登録者数は変動するため約888人として掲載",
-      "verification": "user-confirmed-and-linked",
+      "verification": "user-confirmed-samples-linked",
       "publicationStatus": "published",
       "featured": true
     },
@@ -126,45 +113,21 @@
       "description": "iPhone版DeltaとmacOS版melonDS 1.1を接続し、Dragon Quest IXのローカル通信を橋渡しする実験的PoC。認証・アソシエーション・マルチプレイ世界への参加と継続的なフレーム交換まで動作し、長時間安定性と音声・映像の滑らかさを継続調整しています。",
       "category": "Tech",
       "technologies": ["iOS", "macOS", "Delta", "melonDS", "ENet", "802.11", "Local Networking"],
+      "primaryLink": {
+        "label": "DQ9通信PoCのリポジトリを開く",
+        "url": "https://github.com/EugeneNumata/delta-dq9-local-multiplayer"
+      },
       "media": {
         "src": "assets/iphone-mac-local-communication.png",
         "alt": "携帯ゲーム機風の画面で動作するローカル通信プロトタイプ",
         "caption": "iPhone–Mac間ローカル通信プロトタイプの動作画面"
       },
       "evidence": [
-        { "label": "GitHub — working proof of concept", "url": "https://github.com/EugeneNumata/delta-dq9-local-multiplayer" }
+        { "label": "GitHub — DQ9ローカル通信成功PoC", "url": "https://github.com/EugeneNumata/delta-dq9-local-multiplayer" }
       ],
       "verification": "linked-working-poc",
       "publicationStatus": "published",
       "featured": true
-    },
-    {
-      "id": "business-launch",
-      "slotNumber": 1,
-      "title": "FPS学院 — 会社経営・ゼロイチ立ち上げ",
-      "description": "会社経営の実践として、AIと一緒にゲームや仕組みを作る学びの場をゼロから立ち上げ。コンセプト設計、教育方針、Web導線、日々の運営、地域での実地活動まで一貫して担っています。",
-      "category": "Business",
-      "technologies": ["Business Design", "Education Design", "Community Operations", "Project Management"],
-      "evidence": [
-        { "label": "FPS学院 公式サイト", "url": "https://eiq-fps.github.io/FPS/" }
-      ],
-      "verification": "linked",
-      "publicationStatus": "published",
-      "featured": true
-    },
-    {
-      "id": "online-community",
-      "slotNumber": 3,
-      "title": "FPS学院 — オンライン／地域コミュニティ運営",
-      "description": "FPS学院として、AIを活用したゲーム制作と技術学習のコミュニティを運営。オンラインでの交流と、地域の子どもとの実地活動をつないでいます。",
-      "category": "Community",
-      "technologies": ["Community Operations", "Education Design", "Facilitation"],
-      "evidence": [
-        { "label": "FPS学院 公式サイト", "url": "https://eiq-fps.github.io/FPS/" }
-      ],
-      "verification": "linked",
-      "publicationStatus": "published",
-      "featured": false
     },
     {
       "id": "fretmapper",
@@ -174,10 +137,11 @@
       "category": "Tech",
       "technologies": ["React", "TypeScript", "Vite", "Web Audio API", "Tailwind CSS", "Motion"],
       "primaryLink": {
-        "label": "FretMapperを開く",
+        "label": "FretMapperを起動",
         "url": "https://eugenenumata.github.io/FretMapper/"
       },
       "evidence": [
+        { "label": "公開アプリ — FretMapper", "url": "https://eugenenumata.github.io/FretMapper/" },
         { "label": "GitHub — FretMapper", "url": "https://github.com/EugeneNumata/FretMapper" }
       ],
       "verification": "live-demo-and-public-repository",
@@ -218,16 +182,16 @@
       "featured": true
     },
     {
-      "id": "application-archive-gateway",
+      "id": "null-slot-09",
       "slotNumber": 9,
-      "entryType": "passphrase",
-      "title": "合言葉",
+      "entryType": "null",
+      "title": "NULL",
       "description": "",
-      "category": "Access",
+      "category": "Null",
       "technologies": [],
       "evidence": [],
-      "evidenceNote": "企業別書庫は個別に接続予定",
-      "verification": "access-terminal",
+      "evidenceNote": "",
+      "verification": "permanently-unassigned",
       "publicationStatus": "published",
       "featured": false
     }
