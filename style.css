@@ -3570,3 +3570,151 @@ body[data-mode="poker"] .door-surface { box-shadow:inset 0 0 0 2px #9e6d32,inset
 @media (prefers-reduced-motion:reduce) {
   .horologium-transition::before,.horologium-transition::after,.horologium-transition-rotor { transition-duration:.01ms; }
 }
+
+/* Opened archive card: a working duplicate of the main module dial replaces the passive corner number. */
+.mechanism-card::before { display:none; }
+.mechanism-card .evidence { padding-right:174px; }
+.card-slot-dial {
+  position:absolute;
+  z-index:8;
+  right:24px;
+  bottom:20px;
+  width:150px;
+  height:150px;
+  border:1px solid rgba(190,132,61,.74);
+  border-radius:50%;
+  background:radial-gradient(circle,#090b09 0 22%,#382a19 23% 26%,#090b09 27% 53%,#72502a 54% 57%,#0b0d0b 58%);
+  box-shadow:0 0 0 6px #060806,0 0 0 7px rgba(213,154,59,.2),0 14px 30px #000,inset 0 0 30px #000;
+  isolation:isolate;
+  transition:opacity .35s ease,transform .55s cubic-bezier(.2,.9,.25,1.15),filter .25s ease;
+}
+.card-slot-dial::before {
+  content:"";
+  position:absolute;
+  inset:8px;
+  border-radius:50%;
+  background:repeating-conic-gradient(from 0deg,rgba(213,154,59,.88) 0 3deg,transparent 3deg 15deg);
+  -webkit-mask:radial-gradient(circle,transparent 0 65%,#000 66% 76%,transparent 77%);
+  mask:radial-gradient(circle,transparent 0 65%,#000 66% 76%,transparent 77%);
+  animation:card-slot-index 34s linear infinite;
+}
+.card-slot-dial::after {
+  content:"";
+  position:absolute;
+  z-index:1;
+  inset:43px;
+  border:5px double #805a2d;
+  border-radius:50%;
+  background:radial-gradient(circle,#162a24 0 12%,#070908 13% 57%,#4a341c 58% 65%,#060807 66%);
+  box-shadow:0 0 0 4px #050706,0 0 18px rgba(101,181,157,.24),inset 0 0 14px #000;
+}
+.card-slot-caption {
+  position:absolute;
+  z-index:5;
+  left:50%;
+  top:-16px;
+  min-width:92px;
+  padding:4px 8px;
+  border:1px solid rgba(150,103,49,.48);
+  background:#080a08;
+  color:#756c59;
+  font:700 .42rem/1 "IBM Plex Mono",monospace;
+  letter-spacing:.14em;
+  text-align:center;
+  transform:translateX(-50%);
+  white-space:nowrap;
+}
+.card-slot-ratchet {
+  position:absolute;
+  z-index:2;
+  inset:29px;
+  border:6px double rgba(132,91,42,.72);
+  border-radius:50%;
+  background:repeating-conic-gradient(from 8deg,rgba(176,120,52,.56) 0 5deg,transparent 5deg 20deg);
+  -webkit-mask:radial-gradient(circle,transparent 0 56%,#000 57% 78%,transparent 79%);
+  mask:radial-gradient(circle,transparent 0 56%,#000 57% 78%,transparent 79%);
+  animation:card-slot-ratchet 7s steps(12,end) infinite reverse;
+}
+.card-slot-ratchet i,.card-slot-ratchet b {
+  position:absolute;
+  width:8px;
+  height:8px;
+  border:1px solid #b27a37;
+  border-radius:50%;
+  background:#76c7b0;
+  box-shadow:0 0 9px rgba(118,199,176,.62);
+}
+.card-slot-ratchet i { left:7px; top:9px; }
+.card-slot-ratchet b { right:7px; bottom:9px; background:#c48642; box-shadow:0 0 8px rgba(196,134,66,.58); }
+.card-slot-nodes { position:absolute; z-index:4; inset:0; border-radius:50%; }
+.card-slot-node {
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:24px;
+  height:24px;
+  margin:0;
+  padding:0;
+  display:grid;
+  place-items:center;
+  border:1px solid #5f4525;
+  border-radius:50%;
+  background:radial-gradient(circle at 38% 30%,#3d3220,#10120e 67%);
+  color:#82765f;
+  box-shadow:0 0 0 2px #070907,inset 0 0 8px #000;
+  transform:translate(-50%,-50%) rotate(var(--angle)) translateY(-59px);
+  cursor:pointer;
+  transition:filter .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+.card-slot-node span { display:block; font:700 .46rem/1 "IBM Plex Mono",monospace; transform:rotate(var(--counter)); }
+.card-slot-node:hover,.card-slot-node:focus-visible,.card-slot-node.active {
+  border-color:#e0b65f;
+  background:radial-gradient(circle at 38% 30%,#f0cc7a,#9b5529 72%);
+  color:#17130b;
+  box-shadow:0 0 0 2px #070907,0 0 13px rgba(224,182,95,.5);
+  filter:brightness(1.06);
+}
+.card-slot-node:focus-visible { outline:2px solid #76c7b0; outline-offset:3px; }
+.card-slot-core {
+  position:absolute;
+  z-index:5;
+  left:50%;
+  top:50%;
+  width:56px;
+  height:56px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(101,181,157,.6);
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(101,181,157,.34),#0a100d 27%,#060807 68%);
+  box-shadow:0 0 14px rgba(101,181,157,.27),inset 0 0 14px #000;
+  transform:translate(-50%,-50%);
+  text-align:center;
+}
+.card-slot-core small,.card-slot-core em { font:700 .32rem/1 "IBM Plex Mono",monospace; font-style:normal; letter-spacing:.11em; }
+.card-slot-core small { color:#76c7b0; }
+.card-slot-core strong { margin:3px 0;color:#efd184;font:700 1.2rem/.9 Georgia,serif;text-shadow:0 0 8px rgba(213,150,68,.6); }
+.card-slot-core em { color:#7f755f; }
+.is-switching .card-slot-dial { opacity:.28; transform:scale(.72) rotate(22deg); filter:blur(2px); }
+@keyframes card-slot-index { to { transform:rotate(360deg); } }
+@keyframes card-slot-ratchet { to { transform:rotate(360deg); } }
+
+@media (max-width:700px) {
+  .mechanism-card .evidence { padding-right:0; padding-bottom:128px; }
+  .card-slot-dial { right:15px; bottom:16px; width:108px; height:108px; }
+  .card-slot-dial::before { inset:6px; }
+  .card-slot-dial::after { inset:31px; border-width:3px; }
+  .card-slot-caption { top:-13px; min-width:74px; padding:3px 6px; font-size:.34rem; }
+  .card-slot-ratchet { inset:22px; border-width:4px; }
+  .card-slot-node { width:19px; height:19px; transform:translate(-50%,-50%) rotate(var(--angle)) translateY(-42px); }
+  .card-slot-node span { font-size:.36rem; }
+  .card-slot-core { width:41px; height:41px; }
+  .card-slot-core strong { margin:1px 0;font-size:.9rem; }
+  .card-slot-core small,.card-slot-core em { font-size:.25rem; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .card-slot-dial::before,.card-slot-ratchet { animation:none; }
+}

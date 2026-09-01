@@ -337,6 +337,23 @@ function mechanismNumber(project, index) {
   return String(number).padStart(2, "0");
 }
 
+function cardSlotDial(index) {
+  const current = projects[index];
+  const count = Math.max(projects.length, 1);
+  const nodes = projects.map((project, projectIndex) => {
+    const angle = (360 / count) * projectIndex;
+    const number = mechanismNumber(project, projectIndex);
+    return `<button type="button" class="card-slot-node ${projectIndex === index ? "active" : ""}" style="--angle:${angle}deg;--counter:${-angle}deg" data-card-slot-index="${projectIndex}" aria-label="${number} ${escapeHtml(project.title)}へ切り替え" ${projectIndex === index ? 'aria-current="true"' : ""}><span>${number}</span></button>`;
+  }).join("");
+
+  return `<div class="card-slot-dial" role="group" aria-label="実績スロット切替ダイヤル">
+    <span class="card-slot-caption">QUICK SLOT</span>
+    <div class="card-slot-ratchet" aria-hidden="true"><i></i><b></b></div>
+    <div class="card-slot-nodes">${nodes}</div>
+    <div class="card-slot-core" aria-hidden="true"><small>SLOT</small><strong>${mechanismNumber(current, index)}</strong><em>ONLINE</em></div>
+  </div>`;
+}
+
 function projectCard(project, index) {
   if (project.entryType === "passphrase") return passphraseCard(project, index);
   const media = project.media
@@ -360,6 +377,7 @@ function projectCard(project, index) {
     <p>${escapeHtml(project.description)}</p>
     <div class="tech-list">${project.technologies.map(tech => `<span>${escapeHtml(tech)}</span>`).join("")}</div>
     <div class="evidence"><span class="evidence-label">EVIDENCE PORT</span>${evidence}</div>
+    ${cardSlotDial(index)}
   </article>`;
 }
 
@@ -376,7 +394,19 @@ function passphraseCard(project, index) {
       </div>
       <p id="passphrase-status" class="passphrase-status" aria-live="polite"></p>
     </form>
+    ${cardSlotDial(index)}
   </article>`;
+}
+
+function initCardSlotDial() {
+  const stage = document.getElementById("project-stage");
+  if (!stage) return;
+  stage.addEventListener("click", event => {
+    const button = event.target.closest?.(".card-slot-node");
+    if (!button) return;
+    const index = Number(button.dataset.cardSlotIndex);
+    if (Number.isInteger(index)) selectProject(index);
+  });
 }
 
 function initPassphraseGateway() {
@@ -554,4 +584,5 @@ initHorologiumRoute();
 initMovementRig();
 initPageMachine();
 initPassphraseGateway();
+initCardSlotDial();
 init();

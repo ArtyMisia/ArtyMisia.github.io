@@ -18,16 +18,6 @@
       .archive-return-label::before{content:"↶";margin-right:.55em;color:#69b5a3;text-shadow:0 0 8px rgba(105,181,163,.6)}
       .archive-return:hover{transform:translateY(-2px);filter:brightness(1.1) drop-shadow(0 8px 9px #000)}.archive-return:focus-visible{outline:2px solid #69b5a3;outline-offset:7px}
       @keyframes archive-index{to{transform:rotate(360deg)}}
-      .archive-return-dial{position:fixed;z-index:9998;right:clamp(12px,1.8vw,26px);bottom:clamp(12px,1.8vw,26px);width:128px;aspect-ratio:1;display:grid;place-items:center;border:1px solid rgba(195,139,65,.72);border-radius:50%;background:radial-gradient(circle,#080a08 0 22%,#342718 23% 26%,#090b09 27% 53%,#76532c 54% 57%,#0b0d0b 58%);box-shadow:0 0 0 6px #050706,0 0 0 7px rgba(213,154,59,.24),0 18px 34px #000,inset 0 0 28px #000;color:#d9c17e;text-decoration:none;filter:drop-shadow(0 0 12px rgba(0,0,0,.92));isolation:isolate;transition:transform .24s ease,filter .24s ease}
-      .archive-return-dial::before{content:"";position:absolute;inset:8px;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(213,154,59,.9) 0 3deg,transparent 3deg 15deg);-webkit-mask:radial-gradient(circle,transparent 0 65%,#000 66% 76%,transparent 77%);mask:radial-gradient(circle,transparent 0 65%,#000 66% 76%,transparent 77%);animation:return-dial-wheel 28s linear infinite}
-      .archive-return-dial::after{content:"";position:absolute;inset:37px;border:5px double #805a2d;border-radius:50%;background:radial-gradient(circle,#172c26 0 13%,#070908 14% 58%,#49331c 59% 66%,#060807 67%);box-shadow:0 0 0 4px #050706,0 0 18px rgba(105,181,163,.25),inset 0 0 15px #000}
-      .return-dial-numbers{position:absolute;z-index:2;inset:0;border-radius:50%}
-      .return-dial-numbers i{position:absolute;left:50%;top:50%;width:18px;margin:-5px 0 0 -9px;color:#85785d;font:700 7px/10px ui-monospace,SFMono-Regular,Menlo,monospace;font-style:normal;text-align:center;transform:rotate(calc(var(--n) * 30deg)) translateY(-48px) rotate(calc(var(--n) * -30deg));transform-origin:9px 5px}
-      .return-dial-numbers i:nth-child(12){color:#f0d48c;text-shadow:0 0 8px #d59644}
-      .return-dial-core{position:relative;z-index:4;width:47px;height:47px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid rgba(105,181,163,.62);border-radius:50%;background:radial-gradient(circle,rgba(105,181,163,.36),#0a100d 26%,#060807 67%);box-shadow:0 0 13px rgba(105,181,163,.3),inset 0 0 13px #000;text-align:center}
-      .return-dial-core small,.return-dial-core em{font:700 5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;font-style:normal;letter-spacing:.12em}.return-dial-core small{color:#69b5a3}.return-dial-core strong{margin:2px 0;color:#f0d48c;font:700 16px/.95 Georgia,serif;text-shadow:0 0 8px rgba(213,150,68,.62)}.return-dial-core em{color:#8f8367}
-      .archive-return-dial:hover{transform:translateY(-3px) rotate(2deg);filter:brightness(1.16) drop-shadow(0 0 16px rgba(213,154,59,.18))}.archive-return-dial:focus-visible{outline:2px solid #69b5a3;outline-offset:8px}
-      @keyframes return-dial-wheel{to{transform:rotate(360deg)}}
       .calibre-menu-trigger{transform:translateX(236px)}
       .archive-return-transition{position:fixed;z-index:10000;inset:0;overflow:hidden;background:#020504;opacity:0;visibility:hidden;pointer-events:none;isolation:isolate;transition:opacity .18s ease,visibility 0s linear 1.25s}
       .archive-return-transition::before{content:"";position:absolute;z-index:0;inset:0;background:radial-gradient(circle at 50% 50%,rgba(106,181,161,.15),transparent 24rem),repeating-linear-gradient(90deg,transparent 0 42px,rgba(228,200,117,.025) 43px 44px),#030606}
@@ -44,25 +34,17 @@
       .archive-return-transition p{position:absolute;z-index:5;left:50%;top:calc(50% + clamp(112px,15vw,160px));margin:0;color:#88b8ab;font:700 clamp(8px,1vw,11px)/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.18em;white-space:nowrap;opacity:0;transform:translate(-50%,14px);transition:opacity .2s linear .86s,transform .25s ease .86s}
       .return-route-engaged{overflow:hidden}.return-route-engaged .archive-return-transition{opacity:1;visibility:visible;transition-delay:0s}.return-route-engaged .return-door{transform:translateX(0)}.return-route-engaged .return-door-left::before{transform:translateY(-50%) rotate(86deg)}.return-route-engaged .return-door-right::before{transform:translateY(-50%) rotate(-72deg)}.return-route-engaged .return-coupler{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(0deg)}.return-route-engaged .archive-return-transition p{opacity:1;transform:translate(-50%,0)}
       @keyframes return-pin-index{to{transform:rotate(360deg)}}
-      @media(max-width:680px){.archive-return{left:7px;top:7px;width:184px;height:61px}.archive-return::before{left:4px;top:6px;bottom:5px;width:48px}.archive-return img{width:56px;height:61px}.archive-return-code{left:28px;bottom:-8px;min-width:49px;font-size:7px}.archive-return-label{left:63px;top:11px;min-width:115px;padding:10px 8px 9px;border-width:2px;font-size:9px;letter-spacing:.04em}.archive-return-dial{right:9px;bottom:9px;width:96px}.archive-return-dial::before{inset:6px}.archive-return-dial::after{inset:28px;border-width:3px}.return-dial-numbers i{font-size:6px;transform:rotate(calc(var(--n) * 30deg)) translateY(-36px) rotate(calc(var(--n) * -30deg))}.return-dial-core{width:36px;height:36px}.return-dial-core small,.return-dial-core em{font-size:4px}.return-dial-core strong{font-size:13px}.calibre-menu-trigger{transform:translateX(178px)}}
+      @media(max-width:680px){.archive-return{left:7px;top:7px;width:184px;height:61px}.archive-return::before{left:4px;top:6px;bottom:5px;width:48px}.archive-return img{width:56px;height:61px}.archive-return-code{left:28px;bottom:-8px;min-width:49px;font-size:7px}.archive-return-label{left:63px;top:11px;min-width:115px;padding:10px 8px 9px;border-width:2px;font-size:9px;letter-spacing:.04em}.calibre-menu-trigger{transform:translateX(178px)}}
       @media(max-width:680px){.return-door::before{width:84vw;border-width:11px}.return-door-left::before{right:-55%}.return-door-right::before{left:-55%}.return-door::after{width:17px}.return-coupler{width:145px;border-width:10px}.archive-return-transition p{top:calc(50% + 105px);font-size:7px}}
-      @media(prefers-reduced-motion:reduce){.archive-return::before,.archive-return-dial::before,.return-lock-pins{animation:none}.archive-return-transition,.return-door,.return-coupler,.archive-return-transition p{transition-duration:.01ms!important;transition-delay:0s!important}}
+      @media(prefers-reduced-motion:reduce){.archive-return::before,.return-lock-pins{animation:none}.archive-return-transition,.return-door,.return-coupler,.archive-return-transition p{transition-duration:.01ms!important;transition-delay:0s!important}}
     </style>
   </head>
   <body>
     <div id="root"></div>
-    <a id="archive-return" class="archive-return" data-archive-return href="../#works" aria-label="総合実績金庫へ戻る">
+    <a id="archive-return" class="archive-return" href="../#works" aria-label="総合実績金庫へ戻る">
       <img src="./scientia-emblem.png" alt="">
       <span class="archive-return-code">EA–001</span>
       <span class="archive-return-label">実績ダイヤルへ戻る</span>
-    </a>
-    <a id="archive-return-dial" class="archive-return-dial" data-archive-return href="../#works" aria-label="実績ダイヤル12番へ戻る">
-      <span class="return-dial-numbers" aria-hidden="true">
-        <i style="--n:0">01</i><i style="--n:1">02</i><i style="--n:2">03</i><i style="--n:3">04</i>
-        <i style="--n:4">05</i><i style="--n:5">06</i><i style="--n:6">07</i><i style="--n:7">08</i>
-        <i style="--n:8">09</i><i style="--n:9">10</i><i style="--n:10">11</i><i style="--n:11">12</i>
-      </span>
-      <b class="return-dial-core"><small>VAULT</small><strong>12</strong><em>RETURN</em></b>
     </a>
     <div id="archive-return-transition" class="archive-return-transition" aria-hidden="true">
       <div class="return-door return-door-left" aria-hidden="true"></div>
@@ -75,25 +57,23 @@
     </div>
     <script>
       (() => {
-        const returnLinks = [...document.querySelectorAll('[data-archive-return]')];
+        const returnLink = document.getElementById('archive-return');
         const transition = document.getElementById('archive-return-transition');
         const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
         let navigating = false;
         const mode = new URLSearchParams(location.search).get('from');
-        returnLinks.forEach(returnLink => {
-          if (['all', 'poker', 'video', 'tech'].includes(mode)) {
-            returnLink.href = `../?mode=${mode}#works`;
-          }
-          returnLink.addEventListener('click', event => {
-            if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || navigating) return;
-            const destination = new URL(returnLink.href, location.href);
-            if (destination.origin !== location.origin || reducedMotion.matches) return;
-            event.preventDefault();
-            navigating = true;
-            transition.setAttribute('aria-hidden', 'false');
-            document.body.classList.add('return-route-engaged');
-            setTimeout(() => location.assign(destination), 1320);
-          });
+        if (['all', 'poker', 'video', 'tech'].includes(mode)) {
+          returnLink.href = `../?mode=${mode}#works`;
+        }
+        returnLink.addEventListener('click', event => {
+          if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || navigating) return;
+          const destination = new URL(returnLink.href, location.href);
+          if (destination.origin !== location.origin || reducedMotion.matches) return;
+          event.preventDefault();
+          navigating = true;
+          transition.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('return-route-engaged');
+          setTimeout(() => location.assign(destination), 1320);
         });
         addEventListener('pageshow', () => {
           navigating = false;
