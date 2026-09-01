@@ -565,7 +565,7 @@ function moveProject(direction) {
 
 async function init() {
   try {
-    const response = await fetch("portfolio.json?v=20260901-sequential-slots", { cache: "no-store" });
+    const response = await fetch("portfolio.json?v=20260901-rhythm-chain", { cache: "no-store" });
     if (!response.ok) throw new Error(`portfolio.json: ${response.status}`);
     const data = await response.json();
     const modeKey = data.modes[selectedMode] ? selectedMode : "all";
@@ -590,7 +590,10 @@ async function init() {
         : [project.category];
       return Math.min(...categories.map(category => order.get(category) ?? 99));
     };
-    projects = data.projects.filter(project => project.publicationStatus === "published").sort((a, b) => routeOrder(a) - routeOrder(b));
+    projects = data.projects.filter(project => project.publicationStatus === "published").sort((a, b) => {
+      if (modeKey === "all") return Number(a.slotNumber) - Number(b.slotNumber);
+      return routeOrder(a) - routeOrder(b);
+    });
     document.getElementById("project-stage").innerHTML = projectCard(projects[0], 0);
     renderGearNodes();
     updateModuleLabels();

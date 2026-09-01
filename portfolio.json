@@ -182,6 +182,26 @@
       "featured": true
     },
     {
+      "id": "rhythm-chain",
+      "slotNumber": 10,
+      "title": "Rhythm Chain — 音の形から言葉を探す作詞支援PWA",
+      "description": "高・中・低の音高形状を3×10グリッドへ入力し、2,008語のローカル辞書から次の言葉を探す作詞支援PWA。Rhythm / Rhyme / Meaning / Linkの4軸で候補を順位付けし、歌詞ストック、IndexedDB自動保存、JSONバックアップ、Service Workerによるオフライン起動に対応しています。",
+      "category": "Tech",
+      "technologies": ["React", "TypeScript", "Vite", "PWA", "IndexedDB", "Service Worker", "Local JSON", "JMdict", "UniDic Lite"],
+      "primaryLink": {
+        "label": "Rhythm Chainを起動",
+        "url": "https://eugenenumata.github.io/Rhythm-Chain/"
+      },
+      "evidence": [
+        { "label": "公開アプリ — Rhythm Chain", "url": "https://eugenenumata.github.io/Rhythm-Chain/" },
+        { "label": "GitHub — Rhythm Chain", "url": "https://github.com/EugeneNumata/Rhythm-Chain" }
+      ],
+      "evidenceNote": "音高形状は正式なアクセントの断定ではなく、辞書データから生成した検索用の近似値として扱っています。",
+      "verification": "live-demo-and-public-repository",
+      "publicationStatus": "published",
+      "featured": true
+    },
+    {
       "id": "null-slot-09",
       "slotNumber": 9,
       "entryType": "null",
