@@ -3868,3 +3868,197 @@ body {
   .archive-nameplate h1,.powerhead-plaque b,.door-inscription b { letter-spacing:.045em; }
   .archive-viewport .card h3 { line-height:1.48; }
 }
+
+/* Record carriage: the paper moves; the instruments stay on their own fixed plate.
+   Keep 3D transforms on the doors, never on the reading/scrolling surface. */
+.is-open .archive-viewport { z-index:18; }
+.is-open .vault-door-left { transform:translateX(-24%) translateZ(30px) rotateY(108deg); }
+.is-open .vault-door-right { transform:translateX(24%) translateZ(30px) rotateY(-108deg); }
+.archive-viewport .project-stage {
+  inset:38px 26px 24px;
+  min-width:0;
+  min-height:0;
+  overflow:visible;
+  transform-style:flat;
+}
+.archive-viewport .scrollable-card,
+.archive-viewport .scrollable-card:hover {
+  display:grid;
+  grid-template-rows:minmax(0,1fr) auto;
+  align-items:stretch;
+  justify-content:normal;
+  width:100%;
+  height:100%;
+  min-height:0;
+  padding:10px;
+  transform:none;
+  border-radius:2px 18px 2px 18px;
+  box-shadow:inset 0 0 0 5px #090c09,inset 0 0 0 6px rgba(213,154,59,.2),0 10px 28px #000;
+}
+.card-scroll-region {
+  position:relative;
+  min-height:0;
+  min-width:0;
+  overflow:auto;
+  overscroll-behavior-y:contain;
+  scrollbar-gutter:stable;
+  scrollbar-width:thin;
+  scrollbar-color:#b38a46 #0b0e0b;
+  scroll-padding:20px;
+  border:1px solid rgba(213,154,59,.16);
+  border-radius:2px 8px 0 0;
+  background:linear-gradient(115deg,rgba(20,25,19,.9),rgba(7,10,8,.96));
+}
+.card-scroll-region::-webkit-scrollbar { width:8px; height:8px; }
+.card-scroll-region::-webkit-scrollbar-track { background:#0b0e0b; }
+.card-scroll-region::-webkit-scrollbar-thumb { background:#a58042; border:2px solid #0b0e0b; border-radius:4px; }
+.card-scroll-region:focus-visible { outline:2px solid #76c7b0; outline-offset:-3px; }
+.card-scroll-content {
+  display:flow-root;
+  min-width:0;
+  padding:clamp(18px,2.6vw,28px);
+  overflow-wrap:anywhere;
+}
+.archive-viewport .card-scroll-content h3 { max-width:100%; margin:18px 0; }
+.archive-viewport .card-scroll-content > p {
+  margin:0;
+  color:#d4cbb2;
+  font-family:var(--reading-serif);
+  font-size:.96rem;
+  font-weight:400;
+  letter-spacing:.025em;
+  line-height:1.95;
+}
+.scrollable-card .evidence { margin-top:0; padding:26px 0 6px; }
+.scrollable-card .evidence a { min-height:44px; }
+.card-scroll-content .primary-project-link {
+  grid-template-columns:10px minmax(0,1fr) 20px;
+  gap:6px 12px;
+}
+.card-scroll-content .primary-project-link::before { grid-column:1; grid-row:1 / 3; }
+.card-scroll-content .primary-project-link span { grid-column:2; grid-row:1; }
+.card-scroll-content .primary-project-link b { grid-column:2; grid-row:2; min-width:0; }
+.card-scroll-content .primary-project-link i { grid-column:3; grid-row:1 / 3; }
+.card-instrument-dock {
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  min-width:0;
+  padding:16px 22px 10px;
+  border-top:3px double #6a512e;
+  background:repeating-linear-gradient(90deg,transparent 0 8px,rgba(213,154,59,.035) 8px 9px),linear-gradient(#171c15,#090c09);
+  box-shadow:0 -8px 22px rgba(0,0,0,.55),inset 0 1px rgba(244,213,153,.15);
+}
+.card-instrument-dock::before {
+  content:"RECORD FEED // INDEX DRIVE";
+  position:absolute;
+  left:50%;
+  top:50%;
+  max-width:110px;
+  color:#71664e;
+  font:.48rem/1.8 "IBM Plex Mono",monospace;
+  letter-spacing:.2em;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.card-instrument-dock .card-slot-dial { position:relative; flex:0 0 auto; right:auto; bottom:auto; margin:8px 0 0; }
+.record-feed { position:relative; flex:0 0 100px; display:grid; justify-items:center; gap:4px; }
+.record-scroll-gear {
+  --record-turn:0deg;
+  position:relative;
+  display:grid;
+  place-items:center;
+  width:88px;
+  height:88px;
+  border-radius:50%;
+  cursor:grab;
+  touch-action:none;
+  user-select:none;
+  -webkit-user-select:none;
+}
+.record-scroll-gear img {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  filter:sepia(.5) saturate(.7) brightness(.85) drop-shadow(0 4px 3px #000);
+  transform:rotate(var(--record-turn));
+  pointer-events:none;
+}
+.record-scroll-gear > span {
+  position:relative;
+  display:grid;
+  align-content:center;
+  gap:3px;
+  width:47px;
+  height:47px;
+  text-align:center;
+  border:2px solid #916f35;
+  border-radius:50%;
+  background:radial-gradient(circle,#183027,#080c09 72%);
+  box-shadow:0 0 0 3px #090b08,inset 0 0 10px #000;
+  pointer-events:none;
+}
+.record-scroll-gear small { color:#9cb5a4; font:600 .39rem/1 "IBM Plex Mono",monospace; letter-spacing:.08em; }
+.record-scroll-value { color:#efd184; font:600 .75rem/1.2 "IBM Plex Mono",monospace; }
+.record-feed-pawl {
+  position:absolute;
+  right:-4px;
+  top:18px;
+  width:20px;
+  height:6px;
+  border:1px solid #c7a45f;
+  border-radius:3px;
+  background:#654b28;
+  transform:rotate(-32deg);
+  transform-origin:right;
+  pointer-events:none;
+}
+.record-scroll-gear.is-cranking { cursor:grabbing; }
+.record-scroll-gear.is-cranking .record-feed-pawl { animation:record-pawl .12s steps(2,end) infinite; }
+.record-scroll-gear[aria-disabled="true"] { cursor:default; opacity:.6; }
+.record-feed-buttons { display:flex; gap:5px; }
+.record-feed-buttons button {
+  width:44px;
+  height:44px;
+  padding:0;
+  border:1px solid #76582d;
+  border-radius:4px;
+  background:linear-gradient(#2b2b1e,#0d100c);
+  color:#e2c583;
+  font-size:.7rem;
+  cursor:pointer;
+  box-shadow:inset 0 1px #6b5530,0 3px 0 #030503;
+  touch-action:manipulation;
+}
+.record-feed-buttons button:hover:not(:disabled) { background:#333c29; }
+.record-feed-buttons button:disabled { opacity:.3; cursor:default; }
+.record-scroll-gear:focus-visible,.record-feed-buttons button:focus-visible { outline:2px solid #76c7b0; outline-offset:3px; }
+.scrollable-card .module-serial { position:relative; inset:auto; flex-wrap:wrap; line-height:1.5; }
+.scrollable-card .null-slot-chamber { width:100%; min-height:300px; margin:0; }
+.scrollable-card .passphrase-console { width:100%; }
+@keyframes record-pawl { to { transform:rotate(-23deg); } }
+
+@media (max-width:980px) {
+  .card-instrument-dock::before { display:none; }
+}
+@media (max-width:700px) {
+  .archive-viewport .project-stage { inset:34px 9px 16px; }
+  .archive-viewport .scrollable-card { padding:7px; }
+  .card-scroll-content { padding:18px 14px; }
+  .archive-viewport .card-scroll-content h3 { font-size:1.35rem; line-height:1.48; }
+  .archive-viewport .card-scroll-content > p { font-size:.94rem; line-height:1.9; }
+  .card-instrument-dock { padding:10px 12px 8px; gap:12px; }
+  .card-instrument-dock .card-slot-dial { margin:8px 2px 0 0; }
+  .scrollable-card .null-slot-chamber { min-height:270px; }
+}
+@media (max-width:360px) {
+  .card-instrument-dock { padding-inline:4px; gap:4px; }
+  .record-feed { flex-basis:91px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .record-scroll-gear.is-cranking .record-feed-pawl { animation:none; }
+}

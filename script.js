@@ -358,6 +358,28 @@ function cardSlotDial(index) {
   </div>`;
 }
 
+function cardFrame(project, index, content, className = "") {
+  return `<article class="card mechanism-card scrollable-card ${className}">
+    <div id="archive-record" class="card-scroll-region" role="region" aria-label="${escapeHtml(project.title)}の本文" tabindex="0">
+      <div class="card-scroll-content">${content}</div>
+    </div>
+    <div class="card-instrument-dock">
+      <div class="record-feed" role="group" aria-label="本文のスクロール操作">
+        <div class="record-scroll-gear" role="slider" tabindex="0" aria-label="歯車で本文をスクロール" aria-controls="archive-record" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" title="歯車を回す・ホイール・上下キーで本文を送る">
+          <img src="assets/gear-wheel-pixabay.png" alt="" draggable="false">
+          <span aria-hidden="true"><small>SCROLL</small><b class="record-scroll-value">0%</b></span>
+          <i class="record-feed-pawl" aria-hidden="true"></i>
+        </div>
+        <div class="record-feed-buttons">
+          <button type="button" data-record-step="-1" aria-label="本文を上へ送る" aria-controls="archive-record">▲</button>
+          <button type="button" data-record-step="1" aria-label="本文を下へ送る" aria-controls="archive-record">▼</button>
+        </div>
+      </div>
+      ${cardSlotDial(index)}
+    </div>
+  </article>`;
+}
+
 function projectCard(project, index) {
   if (project.entryType === "null") return nullSlotCard(project, index);
   if (project.entryType === "passphrase") return passphraseCard(project, index);
@@ -376,7 +398,7 @@ function projectCard(project, index) {
     ? `<a class="primary-project-link" href="${escapeHtml(primaryUrl)}"${primaryTarget}><span>EXTERNAL SITE</span><b>${escapeHtml(project.primaryLink.label || "サイトを開く")}</b><i aria-hidden="true">↗</i></a>`
     : "";
 
-  return `<article class="card mechanism-card ${project.publicationStatus === "draft" ? "draft" : ""}">
+  return cardFrame(project, index, `
     <div class="module-serial">MECHANISM ${mechanismNumber(project, index)} <i></i> ${escapeHtml(project.verification || "recorded")}</div>
     <div class="card-top"><span class="category">${escapeHtml(project.category)}</span>${project.publicationStatus === "draft" ? '<span class="status">要確認・非公開</span>' : ""}</div>
     <h3>${escapeHtml(project.title)}</h3>
@@ -385,12 +407,11 @@ function projectCard(project, index) {
     <p>${escapeHtml(project.description)}</p>
     <div class="tech-list">${project.technologies.map(tech => `<span>${escapeHtml(tech)}</span>`).join("")}</div>
     <div class="evidence"><span class="evidence-label">EVIDENCE PORT</span>${evidence}</div>
-    ${cardSlotDial(index)}
-  </article>`;
+  `, project.publicationStatus === "draft" ? "draft" : "");
 }
 
 function nullSlotCard(project, index) {
-  return `<article class="card mechanism-card null-slot-card">
+  return cardFrame(project, index, `
     <div class="module-serial">MECHANISM ${mechanismNumber(project, index)} <i></i> PERMANENT NULL</div>
     <div class="null-slot-chamber" role="img" aria-label="永久欠番 NULL">
       <span>NO MODULE ASSIGNED</span>
@@ -398,12 +419,11 @@ function nullSlotCard(project, index) {
       <strong>NULL</strong>
       <small>EA–009 // PERMANENTLY UNASSIGNED</small>
     </div>
-    ${cardSlotDial(index)}
-  </article>`;
+  `, "null-slot-card");
 }
 
 function passphraseCard(project, index) {
-  return `<article class="card mechanism-card passphrase-card">
+  return cardFrame(project, index, `
     <div class="module-serial">MECHANISM ${mechanismNumber(project, index)} <i></i> ACCESS TERMINAL</div>
     <h3>${escapeHtml(project.title)}</h3>
     <form id="passphrase-form" class="passphrase-console" autocomplete="off">
@@ -415,8 +435,112 @@ function passphraseCard(project, index) {
       </div>
       <p id="passphrase-status" class="passphrase-status" aria-live="polite"></p>
     </form>
-    ${cardSlotDial(index)}
-  </article>`;
+  `, "passphrase-card");
+}
+
+let disposeRecordScroll = () => {};
+
+function initRecordScroll() {
+  // Replacing a module must release observers and pointer listeners from the old one.
+  disposeRecordScroll();
+  const stage = document.getElementById("project-stage");
+  const region = stage.querySelector(".card-scroll-region");
+  const content = stage.querySelector(".card-scroll-content");
+  const gear = stage.querySelector(".record-scroll-gear");
+  if (!region || !content || !gear) return;
+  const controller = new AbortController();
+  const { signal } = controller;
+  const buttons = [...stage.querySelectorAll("[data-record-step]")];
+  const readout = gear.querySelector(".record-scroll-value");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let pointerId = null;
+  let angle = 0;
+  let dragged = false;
+  let lastClack = 0;
+  const range = () => Math.max(0, region.scrollHeight - region.clientHeight);
+
+  const sync = () => {
+    const maximum = range();
+    const position = Math.max(0, Math.min(maximum, region.scrollTop));
+    const percent = maximum > 1 ? Math.round(position / maximum * 100) : 100;
+    gear.style.setProperty("--record-turn", `${position / 3}deg`);
+    gear.setAttribute("aria-valuenow", String(percent));
+    gear.setAttribute("aria-valuetext", maximum > 1 ? `本文 ${percent}%` : "全文を表示中");
+    gear.setAttribute("aria-disabled", String(maximum <= 1));
+    readout.textContent = maximum > 1 ? `${percent}%` : "全文";
+    buttons[0].disabled = position <= 1;
+    buttons[1].disabled = position >= maximum - 1;
+    region.classList.toggle("has-overflow", maximum > 1);
+  };
+  const clack = () => {
+    if (performance.now() - lastClack < 110) return;
+    lastClack = performance.now();
+    machineClack("light");
+  };
+  const feed = (amount, smooth = true) => {
+    if (range() <= 1) return;
+    region.scrollBy({ top: amount, behavior: smooth && !reducedMotion.matches ? "smooth" : "instant" });
+    clack();
+  };
+  buttons.forEach(button => button.addEventListener("click", () => {
+    feed(Number(button.dataset.recordStep) * region.clientHeight * 0.7);
+  }, { signal }));
+  gear.addEventListener("keydown", event => {
+    const distance = { ArrowUp: -64, ArrowDown: 64, ArrowLeft: -64, ArrowRight: 64,
+      PageUp: -region.clientHeight * 0.8, PageDown: region.clientHeight * 0.8,
+      Home: -range(), End: range() }[event.key];
+    if (distance === undefined) return;
+    event.preventDefault();
+    event.stopPropagation();
+    feed(distance);
+  }, { signal });
+  gear.addEventListener("wheel", event => {
+    if (range() <= 1) return;
+    event.preventDefault();
+    const unit = event.deltaMode === 1 ? 20 : event.deltaMode === 2 ? region.clientHeight : 1;
+    feed(event.deltaY * unit, false);
+  }, { passive: false, signal });
+
+  const pointerAngle = event => {
+    const rect = gear.getBoundingClientRect();
+    return Math.atan2(event.clientY - rect.top - rect.height / 2, event.clientX - rect.left - rect.width / 2) * 180 / Math.PI;
+  };
+  gear.addEventListener("pointerdown", event => {
+    if (event.button !== 0 || pointerId !== null || range() <= 1) return;
+    pointerId = event.pointerId;
+    angle = pointerAngle(event);
+    dragged = false;
+    gear.setPointerCapture(pointerId);
+    gear.focus({ preventScroll: true });
+    gear.classList.add("is-cranking");
+  }, { signal });
+  gear.addEventListener("pointermove", event => {
+    if (event.pointerId !== pointerId) return;
+    const nextAngle = pointerAngle(event);
+    const delta = (nextAngle - angle + 540) % 360 - 180;
+    if (!dragged && Math.abs(delta) < 3) return;
+    dragged = true;
+    angle = nextAngle;
+    feed(delta * 3, false);
+  }, { signal });
+  const release = event => {
+    if (event.pointerId !== pointerId) return;
+    if (event.type === "pointerup" && !dragged) {
+      const rect = gear.getBoundingClientRect();
+      feed((event.clientY < rect.top + rect.height / 2 ? -1 : 1) * region.clientHeight * 0.7);
+    }
+    if (gear.hasPointerCapture(pointerId)) gear.releasePointerCapture(pointerId);
+    pointerId = null;
+    gear.classList.remove("is-cranking");
+  };
+  ["pointerup", "pointercancel", "lostpointercapture"].forEach(type => gear.addEventListener(type, release, { signal }));
+  region.addEventListener("scroll", sync, { passive: true, signal });
+  const observer = new ResizeObserver(sync);
+  observer.observe(region);
+  observer.observe(content);
+  region.scrollTop = 0;
+  sync();
+  disposeRecordScroll = () => { controller.abort(); observer.disconnect(); };
 }
 
 function initCardSlotDial() {
@@ -520,6 +644,15 @@ function revealArchive() {
     archiveOpen = true;
     shell.classList.remove("is-unlocking", "is-unbolted");
     shell.classList.add("is-open");
+    const stage = document.getElementById("project-stage");
+    stage.inert = false;
+    stage.querySelector(".card-scroll-region")?.focus({ preventScroll: true });
+    // Only scroll the document. scrollIntoView would also scroll the clipped door frame.
+    const bounds = stage.getBoundingClientRect();
+    if (bounds.top < 16 || bounds.bottom > window.innerHeight - 16) {
+      window.scrollTo({ top: Math.max(0, window.scrollY + bounds.top - 16),
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+    }
     toggle.setAttribute("aria-expanded", "true");
     toggle.querySelector("b").textContent = "記憶庫 稼働中";
     toggle.querySelector("small").textContent = "ARCHIVE ONLINE";
@@ -536,6 +669,8 @@ function selectProject(index) {
   const dialNumber = document.getElementById("dial-number");
   shell.classList.remove("is-open", "is-unlocking", "is-unbolted");
   shell.classList.add("is-switching");
+  shell.setAttribute("aria-busy", "true");
+  document.getElementById("project-stage").inert = true;
   archiveOpen = false;
   toggle.setAttribute("aria-expanded", "false");
   toggle.querySelector("b").textContent = "番号照合中";
@@ -550,11 +685,15 @@ function selectProject(index) {
   window.setTimeout(() => {
     activeIndex = targetIndex;
     document.getElementById("project-stage").innerHTML = projectCard(projects[activeIndex], activeIndex);
+    initRecordScroll();
     updateModuleLabels();
     window.setTimeout(() => {
       revealArchive();
       machineClack("light");
-      window.setTimeout(() => { switching = false; }, 1450);
+      window.setTimeout(() => {
+        switching = false;
+        shell.setAttribute("aria-busy", "false");
+      }, 1450);
     }, 120);
   }, 760);
 }
@@ -595,6 +734,7 @@ async function init() {
       return routeOrder(a) - routeOrder(b);
     });
     document.getElementById("project-stage").innerHTML = projectCard(projects[0], 0);
+    initRecordScroll();
     renderGearNodes();
     updateModuleLabels();
 
