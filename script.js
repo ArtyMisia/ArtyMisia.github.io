@@ -730,6 +730,9 @@ async function init() {
       return Math.min(...categories.map(category => order.get(category) ?? 99));
     };
     projects = data.projects.filter(project => project.publicationStatus === "published").sort((a, b) => {
+      // NULL keeps its reserved number, but occupies the final dial position.
+      const nullOrder = Number(a.entryType === "null") - Number(b.entryType === "null");
+      if (nullOrder) return nullOrder;
       if (modeKey === "all") return Number(a.slotNumber) - Number(b.slotNumber);
       return routeOrder(a) - routeOrder(b);
     });
