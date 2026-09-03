@@ -354,7 +354,7 @@ function cardSlotDial(index) {
     <span class="card-slot-caption">QUICK SLOT</span>
     <div class="card-slot-ratchet" aria-hidden="true"><i></i><b></b></div>
     <div class="card-slot-nodes">${nodes}</div>
-    <div class="card-slot-core ${current?.entryType === "null" ? "is-null" : ""}" aria-hidden="true"><small>SLOT</small><strong>${mechanismLabel(current, index)}</strong><em>${current?.entryType === "null" ? "VACANT" : "ONLINE"}</em></div>
+    <button type="button" class="card-slot-core ${current?.entryType === "null" ? "is-null" : ""}" aria-label="${mechanismLabel(current, index)} 金庫を閉じる" aria-controls="project-stage" title="金庫を閉じる"><small>SLOT</small><strong>${mechanismLabel(current, index)}</strong><em>CLOSE</em></button>
   </div>`;
 }
 
@@ -547,6 +547,10 @@ function initCardSlotDial() {
   const stage = document.getElementById("project-stage");
   if (!stage) return;
   stage.addEventListener("click", event => {
+    if (event.target.closest?.(".card-slot-core")) {
+      closeArchive();
+      return;
+    }
     const button = event.target.closest?.(".card-slot-node");
     if (!button) return;
     const index = Number(button.dataset.cardSlotIndex);
@@ -658,6 +662,38 @@ function revealArchive() {
     toggle.querySelector("small").textContent = "ARCHIVE ONLINE";
     machineClack("heavy");
   }, 880);
+}
+
+function closeArchive() {
+  if (!archiveOpen || switching) return;
+  archiveOpen = false;
+  switching = true;
+  const shell = document.getElementById("mechanism-shell");
+  const stage = document.getElementById("project-stage");
+  const toggle = document.getElementById("archive-toggle");
+  shell.classList.remove("is-open", "is-unlocking", "is-unbolted");
+  shell.classList.add("is-switching");
+  shell.setAttribute("aria-busy", "true");
+  stage.inert = true;
+  toggle.setAttribute("aria-expanded", "false");
+  toggle.querySelector("b").textContent = "主錠施錠中";
+  toggle.querySelector("small").textContent = "SEALING ARCHIVE";
+  toggle.focus({ preventScroll: true });
+  const bounds = document.getElementById("archive-viewport").getBoundingClientRect();
+  if (bounds.top < 16 || bounds.bottom > window.innerHeight - 16) {
+    window.scrollTo({ top: Math.max(0, window.scrollY + bounds.top - 16),
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+  }
+  machineClack("heavy");
+  [180, 380, 620].forEach(delay => window.setTimeout(() => machineClack("switch"), delay));
+  window.setTimeout(() => {
+    shell.classList.remove("is-switching");
+    shell.setAttribute("aria-busy", "false");
+    toggle.querySelector("b").textContent = "指定番号を開錠";
+    toggle.querySelector("small").textContent = "PRESS TO UNSEAL";
+    switching = false;
+    machineClack("heavy");
+  }, 900);
 }
 
 function selectProject(index) {
