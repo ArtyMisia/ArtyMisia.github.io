@@ -756,7 +756,7 @@ function moveProject(direction) {
 
 async function init() {
   try {
-    const response = await fetch("portfolio.json?v=20260903-lesath-thumbnail-credit", { cache: "no-store" });
+    const response = await fetch("portfolio.json?v=20260903-fixed-slot-order", { cache: "no-store" });
     if (!response.ok) throw new Error(`portfolio.json: ${response.status}`);
     const data = await response.json();
     const modeKey = data.modes[selectedMode] ? selectedMode : "all";
@@ -774,19 +774,11 @@ async function init() {
     document.title = `${data.profile.name} — ${mode.label} Portfolio`;
     document.getElementById("mode-nav").innerHTML = Object.entries(data.modes).map(([key, item]) => `<a class="mode-link" href="?mode=${encodeURIComponent(key)}" ${key === modeKey ? 'aria-current="page"' : ""}>${escapeHtml(item.label)}</a>`).join("");
 
-    const order = new Map(mode.order.map((category, index) => [category, index]));
-    const routeOrder = project => {
-      const categories = Array.isArray(project.routingCategories) && project.routingCategories.length
-        ? project.routingCategories
-        : [project.category];
-      return Math.min(...categories.map(category => order.get(category) ?? 99));
-    };
     projects = data.projects.filter(project => project.publicationStatus === "published").sort((a, b) => {
-      // NULL keeps its reserved number, but occupies the final dial position.
+      // Dial positions and NEXT/PREV stay numeric in every mode; NULL remains last.
       const nullOrder = Number(a.entryType === "null") - Number(b.entryType === "null");
       if (nullOrder) return nullOrder;
-      if (modeKey === "all") return Number(a.slotNumber) - Number(b.slotNumber);
-      return routeOrder(a) - routeOrder(b);
+      return Number(a.slotNumber) - Number(b.slotNumber);
     });
     document.getElementById("project-stage").innerHTML = projectCard(projects[0], 0);
     initRecordScroll();

@@ -26,21 +26,21 @@
       "label": "Poker",
       "archiveTitle": "総合実績金庫",
       "route": "EXPERIENCE & COMMUNITY ROUTE",
-      "intro": "場づくり・初心者対応・映像発信・技術実装の実績を優先表示。未完成の構想は実績に混ぜず、確認できる活動から開錠します。",
+      "intro": "場づくり・初心者対応・映像発信・技術実装の記録。ダイヤルは番号順で共通です。確認できる活動から開錠してください。",
       "order": ["Poker", "Community", "Tech", "Video", "Business"]
     },
     "video": {
       "label": "Video",
       "archiveTitle": "総合実績金庫",
       "route": "VIDEO PRODUCTION ROUTE",
-      "intro": "動画編集とチャンネルプロデュースを先頭に、企画から公開までの制作記録を表示します。",
+      "intro": "動画編集・サムネイル制作・チャンネルプロデュースは02へ。ダイヤルは番号順で共通です。",
       "order": ["Video", "Business", "Community", "Tech", "Poker"]
     },
     "tech": {
       "label": "Tech",
       "archiveTitle": "総合実績金庫",
       "route": "TECHNICAL DEVELOPMENT ROUTE",
-      "intro": "動作するプロトタイプと制作自動化を先頭に、実装内容と公開可能な証拠を表示します。",
+      "intro": "動作するプロトタイプと制作自動化の記録。ダイヤルは番号順で共通です。実装内容と公開可能な証拠を表示します。",
       "order": ["Tech", "Business", "Community", "Poker", "Video"]
     }
   },

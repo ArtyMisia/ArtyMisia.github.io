@@ -8,7 +8,7 @@ const source = fs.readFileSync(path.join(__dirname, "../script.js"), "utf8");
 const data = JSON.parse(fs.readFileSync(path.join(__dirname, "../portfolio.json"), "utf8"));
 
 // Load the actual browser functions without starting audio, animation loops or fetch.
-function fixture() {
+function fixture(mode = "all") {
   const elements = new Map();
   const timers = [];
   let time = 0;
@@ -43,8 +43,11 @@ function fixture() {
       return element;
     }
   };
+  document.body = document.getElementById("body");
+  document.body.dataset = {};
   const context = vm.createContext({
-    document, URLSearchParams, location: { search: "" },
+    document, URLSearchParams, location: { search: `?mode=${mode}` },
+    fetch: async () => ({ ok: true, json: async () => data }),
     window: {
       innerHeight: 900, scrollY: 0, scrollTo: () => {},
       matchMedia: () => ({ matches: false }),
@@ -66,27 +69,38 @@ function fixture() {
   return { document, context, run, flush, timers };
 }
 
-function ordered(modeKey) {
-  const order = new Map(data.modes[modeKey].order.map((category, index) => [category, index]));
-  const routeOrder = project => Math.min(...(project.routingCategories?.length
-    ? project.routingCategories : [project.category]).map(category => order.get(category) ?? 99));
+function ordered() {
   const expression = source.match(/projects = (data\.projects\.filter[\s\S]*?\n    \}\));/)[1];
-  return new Function("data", "modeKey", "routeOrder", `return ${expression}`)(data, modeKey, routeOrder);
+  return new Function("data", `return ${expression}`)(data);
 }
 
-test("main and quick dials share the order; NULL is last without renumbering records", () => {
-  for (const modeKey of Object.keys(data.modes)) {
-    const f = fixture();
-    f.context.records = ordered(modeKey);
-    f.run("projects = records; renderGearNodes(); quickDial = cardSlotDial(0);");
-    const labels = f.context.records.map(project => project.entryType === "null" ? "NULL" : String(project.slotNumber).padStart(2, "0"));
+test("every mode starts at 01 with numeric order on both dials and navigation", async () => {
+  for (const modeKey of [...Object.keys(data.modes), "unknown"]) {
+    const f = fixture(modeKey);
+    await f.run("init();");
+    f.run("quickDial = cardSlotDial(0);");
+    const labels = Array.from(f.run("projects.map(mechanismLabel)"));
     assert.equal(labels.at(-1), "NULL");
-    if (modeKey === "all") assert.deepEqual(labels, ["01", "02", "03", "04", "05", "06", "07", "08", "10", "NULL"]);
+    assert.deepEqual(labels, ["01", "02", "03", "04", "05", "06", "07", "08", "10", "NULL"], modeKey);
+    assert.equal(f.document.getElementById("dial-number").textContent, "01", modeKey);
+    assert.equal(f.document.body.dataset.mode, modeKey === "unknown" ? "all" : modeKey);
     for (const html of [f.document.getElementById("gear-nodes").innerHTML, f.context.quickDial]) {
       assert.deepEqual([...html.matchAll(/<span>([^<]+)<\/span>/g)].map(match => match[1]), labels);
+      assert.match(html, /--angle:0deg;--counter:0deg[^>]*><span>01<\/span>/);
     }
     assert.match(f.context.quickDial, /<button type="button" class="card-slot-core/);
     assert.match(f.context.quickDial, /aria-label="[^"]+ 金庫を閉じる"/);
+    for (const label of labels.slice(1)) {
+      f.run("moveProject(1);");
+      f.flush();
+      assert.equal(f.document.getElementById("dial-number").textContent, label, modeKey);
+    }
+    f.run("moveProject(1);");
+    f.flush();
+    assert.equal(f.document.getElementById("dial-number").textContent, "01", "wrap to 01");
+    f.run("moveProject(-1);");
+    f.flush();
+    assert.equal(f.document.getElementById("dial-number").textContent, "NULL", "wrap back to NULL");
   }
   assert.equal(data.projects.find(project => project.entryType === "null").slotNumber, 9);
   assert.equal(data.projects.find(project => project.id === "rhythm-chain").slotNumber, 10);
@@ -95,7 +109,7 @@ test("main and quick dials share the order; NULL is last without renumbering rec
 test("central number closes the vault, restores focus and allows reopening the same record", () => {
   for (const index of [0, 4, 8, 9]) {
     const f = fixture();
-    f.context.records = ordered("all");
+    f.context.records = ordered();
     f.run(`projects = records; activeIndex = ${index}; archiveOpen = true; switching = false; initCardSlotDial();`);
     const stage = f.document.getElementById("project-stage");
     const shell = f.document.getElementById("mechanism-shell");
@@ -128,7 +142,7 @@ test("central number closes the vault, restores focus and allows reopening the s
 
 test("NEXT/PREV moves between slot 10 and NULL in the new order", () => {
   const f = fixture();
-  f.context.records = ordered("all");
+  f.context.records = ordered();
   f.run("projects = records; activeIndex = 8; moveProject(1);");
   f.flush();
   assert.equal(f.run("projects[activeIndex].entryType"), "null");
