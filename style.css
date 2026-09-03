@@ -3942,6 +3942,30 @@ body {
 }
 .scrollable-card .evidence { margin-top:0; padding:26px 0 6px; }
 .scrollable-card .evidence a { min-height:44px; }
+.work-gallery { margin:6px 0 28px; }
+.work-gallery-heading { display:flex; align-items:baseline; flex-wrap:wrap; justify-content:space-between; gap:8px; margin-bottom:12px; }
+.work-gallery-heading h4 { margin:0; color:#e5d8b5; font:700 1rem/1.6 var(--reading-serif); }
+.work-gallery-heading > span { color:#9e9279; font:.75rem/1.5 "IBM Plex Mono",monospace; letter-spacing:.08em; }
+.work-gallery-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.work-preview {
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  border:1px solid #79603a;
+  border-radius:3px;
+  background:#0d120e;
+  color:#e4d8ba;
+  text-decoration:none;
+  box-shadow:inset 0 0 0 3px #080b08,0 5px 14px rgba(0,0,0,.3);
+  transition:border-color .18s ease,box-shadow .18s ease;
+}
+.work-preview:hover { border-color:#d9b96b; box-shadow:0 0 0 1px #aa8243,0 5px 16px rgba(0,0,0,.5); }
+.work-preview:focus-visible { outline:2px solid #76c7b0; outline-offset:3px; }
+.work-preview-image { position:relative; display:block; aspect-ratio:16/9; margin:4px 4px 0; background:#050705; }
+.work-preview-image img { display:block; width:100%; height:100%; object-fit:contain; filter:none; }
+.work-preview-caption { display:grid; gap:7px; padding:13px 14px 16px; }
+.work-preview-caption small { display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px; color:#a99d82; font:.75rem/1.4 "IBM Plex Mono",monospace; letter-spacing:.05em; }
+.work-preview-caption b { color:#e4d8ba; font:600 .9rem/1.65 var(--reading-serif); overflow-wrap:anywhere; }
 .card-scroll-content .primary-project-link {
   grid-template-columns:10px minmax(0,1fr) 20px;
   gap:6px 12px;
@@ -4060,6 +4084,7 @@ body {
   .archive-viewport .project-stage { inset:34px 9px 16px; }
   .archive-viewport .scrollable-card { padding:7px; }
   .card-scroll-content { padding:18px 14px; }
+  .work-gallery-grid { grid-template-columns:minmax(0,1fr); gap:14px; }
   .archive-viewport .card-scroll-content h3 { font-size:1.35rem; line-height:1.48; }
   .archive-viewport .card-scroll-content > p { font-size:.94rem; line-height:1.9; }
   .card-instrument-dock { padding:10px 12px 8px; gap:12px; }

@@ -380,6 +380,21 @@ function cardFrame(project, index, content, className = "") {
   </article>`;
 }
 
+function projectGallery(project) {
+  if (!Array.isArray(project.gallery) || !project.gallery.length) return "";
+  const label = escapeHtml(project.galleryLabel || "制作実績");
+  return `<section class="work-gallery" aria-label="${label}">
+    <div class="work-gallery-heading"><h4>${label}</h4><span>SELECTED WORKS</span></div>
+    <div class="work-gallery-grid">${project.gallery.map((item, index) => `
+      <a class="work-preview" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(item.title)}（YouTube・新しいタブ）">
+        <span class="work-preview-image">
+          <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}のサムネイル" width="1280" height="720" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+        </span>
+        <span class="work-preview-caption"><small aria-hidden="true"><span>${String(index + 1).padStart(2, "0")} / VIDEO</span><span>YouTube ↗</span></small><b>${escapeHtml(item.title)}</b></span>
+      </a>`).join("")}</div>
+  </section>`;
+}
+
 function projectCard(project, index) {
   if (project.entryType === "null") return nullSlotCard(project, index);
   if (project.entryType === "passphrase") return passphraseCard(project, index);
@@ -404,6 +419,7 @@ function projectCard(project, index) {
     <h3>${escapeHtml(project.title)}</h3>
     ${primaryLink}
     ${media}
+    ${projectGallery(project)}
     <p>${escapeHtml(project.description)}</p>
     <div class="tech-list">${project.technologies.map(tech => `<span>${escapeHtml(tech)}</span>`).join("")}</div>
     <div class="evidence"><span class="evidence-label">EVIDENCE PORT</span>${evidence}</div>
@@ -740,7 +756,7 @@ function moveProject(direction) {
 
 async function init() {
   try {
-    const response = await fetch("portfolio.json?v=20260901-rhythm-chain", { cache: "no-store" });
+    const response = await fetch("portfolio.json?v=20260903-lesath-thumbnails", { cache: "no-store" });
     if (!response.ok) throw new Error(`portfolio.json: ${response.status}`);
     const data = await response.json();
     const modeKey = data.modes[selectedMode] ? selectedMode : "all";

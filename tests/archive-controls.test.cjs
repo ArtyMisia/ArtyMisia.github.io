@@ -136,3 +136,27 @@ test("NEXT/PREV moves between slot 10 and NULL in the new order", () => {
   f.flush();
   assert.equal(f.run("projects[activeIndex].id"), "rhythm-chain");
 });
+
+test("Lesath previews use the supplied videos, real thumbnails and safe external links", () => {
+  const f = fixture();
+  const project = data.projects.find(item => item.id === "lesath-production");
+  f.context.project = project;
+  const html = f.run("projectGallery(project)");
+  assert.equal(project.gallery.length, 4);
+  assert.equal([...html.matchAll(/class="work-preview"/g)].length, 4);
+  assert.equal([...html.matchAll(/loading="lazy"/g)].length, 4);
+  assert.equal([...html.matchAll(/rel="noopener noreferrer"/g)].length, 4);
+  for (const item of project.gallery) {
+    const videoId = new URL(item.url).pathname.slice(1);
+    assert.equal(item.image, `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`);
+    assert.ok(project.evidence.some(link => link.url === item.url));
+    assert.ok(html.includes(item.image));
+    assert.ok(html.includes(item.title));
+  }
+  assert.ok(project.technologies.includes("Thumbnail Design"));
+  assert.equal(f.run("projectGallery({})"), "");
+  assert.equal(f.run("projectGallery({ gallery: [] })"), "");
+  const escaped = f.run('projectGallery({ galleryLabel: "<test>", gallery: [{ title: "<script> & \\\"", url: "https://example.com/?a=1&b=2", image: "https://example.com/image.jpg" }] })');
+  assert.ok(!escaped.includes("<script>"));
+  assert.ok(escaped.includes("&lt;script&gt; &amp; &quot;"));
+});

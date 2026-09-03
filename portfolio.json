@@ -90,10 +90,33 @@
     {
       "id": "lesath-production",
       "slotNumber": 2,
-      "title": "Lesath — チャンネルプロデュース／動画編集",
-      "description": "2024年1月頃、登録者500人未満の段階から個人VTuber・Lesathのチャンネルをプロデュース。企画、運用改善、13本以上の動画編集を横断し、YouTube収益化を達成。2026年8月時点で登録者約888人まで成長しています。代表作4本を掲載しています。",
+      "title": "Lesath — チャンネルプロデュース／動画・サムネイル制作",
+      "description": "2024年1月頃、登録者500人未満の段階から個人VTuber・Lesathのチャンネルをプロデュース。企画、運用改善、サムネイル制作、13本以上の動画編集を横断し、YouTube収益化を達成。2026年8月時点で登録者約888人まで成長しています。代表動画4本をサムネイル付きで掲載しています。",
       "category": "Video",
-      "technologies": ["Channel Produce", "Content Planning", "DaVinci Resolve", "Video Editing", "YouTube Analytics", "YouTube Monetization"],
+      "technologies": ["Channel Produce", "Content Planning", "DaVinci Resolve", "Video Editing", "Thumbnail Design", "YouTube Analytics", "YouTube Monetization"],
+      "galleryLabel": "担当動画",
+      "gallery": [
+        {
+          "title": "【なかよシ】絶叫系男子ｓ【スーパーバニーマン実況】with だいのじ",
+          "image": "https://i.ytimg.com/vi/V_FLtAP93jk/maxresdefault.jpg",
+          "url": "https://youtu.be/V_FLtAP93jk"
+        },
+        {
+          "title": "【なかよシ】クリア出来ない男共【スーパーバニーマン実況】",
+          "image": "https://i.ytimg.com/vi/GEZ1UGtK5J8/maxresdefault.jpg",
+          "url": "https://youtu.be/GEZ1UGtK5J8"
+        },
+        {
+          "title": "メン限マリパジャンボリー！チラ見せ！！",
+          "image": "https://i.ytimg.com/vi/-DslflOkpBU/maxresdefault.jpg",
+          "url": "https://youtu.be/-DslflOkpBU"
+        },
+        {
+          "title": "【リトルナイトメア 初見実況 キッド編】人魚ハゲ強すぎぃぃ！！！！【Part2】",
+          "image": "https://i.ytimg.com/vi/mx1ylmMTD84/maxresdefault.jpg",
+          "url": "https://youtu.be/mx1ylmMTD84"
+        }
+      ],
       "evidence": [
         { "label": "Lesath チャンネル", "url": "https://www.youtube.com/@lesath_sco0" },
         { "label": "担当動画 1", "url": "https://youtu.be/V_FLtAP93jk" },

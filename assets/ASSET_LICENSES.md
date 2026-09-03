@@ -32,3 +32,14 @@
   - Eugene / ArtyMisiaによる過去の自作デザイン
   - 背景透過版
   - サイト上部の識別章および統合実績機関の認証紋章として使用
+
+## YouTubeの公開サムネイル（外部参照）
+
+Lesathの担当動画一覧は、YouTubeの公開サムネイルを `i.ytimg.com` から読み込み、各動画へリンクしています。画像はリポジトリへ複製せず、元の色・構図を保って表示します。これらをフリー素材として配布するものではありません。
+
+- https://youtu.be/V_FLtAP93jk
+- https://youtu.be/GEZ1UGtK5J8
+- https://youtu.be/-DslflOkpBU
+- https://youtu.be/mx1ylmMTD84
+
+動画タイトル・チャンネル・サムネイルURLは、2026-09-03にYouTubeの公開メタデータと照合しました。
