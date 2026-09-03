@@ -1,6 +1,11 @@
 {
   "schemaVersion": 1,
-  "lastReviewed": "2026-09-01",
+  "lastReviewed": "2026-09-04",
+  "slotPolicy": {
+    "strategy": "append-only",
+    "reservedSlots": [9],
+    "nextAvailableSlot": 12
+  },
   "profile": {
     "name": "Eugene / ArtyMisia",
     "headline": "未実装の未来を、動くものにする。",
@@ -221,6 +226,19 @@
       ],
       "evidenceNote": "音高形状は正式なアクセントの断定ではなく、辞書データから生成した検索用の近似値として扱っています。",
       "verification": "live-demo-and-public-repository",
+      "publicationStatus": "published",
+      "featured": true
+    },
+    {
+      "id": "rereversi",
+      "slotNumber": 11,
+      "title": "リリバーシ（ReReversi）— 2〜8人対応の多人数対戦ゲーム",
+      "description": "2〜8人で遊べる多人数リバーシ。人数に応じた盤面で、1台を囲むローカル対戦とCPU戦に対応しています。オンライン版はFirebaseを使わず、Google Apps Scriptがプレイヤートークン、現在の手番、盤面バージョン、合法手、反転、パス、勝敗を検証し、Google Sheetsへ保存する構成で実装しています。",
+      "category": "Tech",
+      "technologies": ["React", "TypeScript", "Vite", "Google Apps Script", "Google Sheets", "Turn-based Multiplayer", "Server-authoritative Game Logic", "BYOK"],
+      "evidence": [],
+      "evidenceNote": "ゲームロジックの自動テストと本番ビルドを2026年9月4日に確認。GitHub PagesとGAS Web Appの公開、実機でのオンライン対戦確認は準備中です。",
+      "verification": "local-build-and-game-logic-tested-publication-pending",
       "publicationStatus": "published",
       "featured": true
     },
