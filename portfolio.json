@@ -91,10 +91,10 @@
       "id": "lesath-production",
       "slotNumber": 2,
       "title": "Lesath — チャンネルプロデュース／動画・サムネイル制作",
-      "description": "2024年1月頃、登録者500人未満の段階から個人VTuber・Lesathのチャンネルをプロデュース。企画、運用改善、サムネイル制作、13本以上の動画編集を横断し、YouTube収益化を達成。2026年8月時点で登録者約888人まで成長しています。代表動画4本をサムネイル付きで掲載しています。",
+      "description": "2024年1月頃、登録者500人未満の段階から個人VTuber・Lesathのチャンネルをプロデュース。企画、運用改善、サムネイル制作、13本以上の動画編集を横断し、YouTube収益化を達成。2026年8月時点で登録者約888人まで成長しています。掲載している代表動画4本は、動画編集とサムネイル制作の両方を担当しています。",
       "category": "Video",
       "technologies": ["Channel Produce", "Content Planning", "DaVinci Resolve", "Video Editing", "Thumbnail Design", "YouTube Analytics", "YouTube Monetization"],
-      "galleryLabel": "担当動画",
+      "galleryLabel": "動画編集・サムネイル制作",
       "gallery": [
         {
           "title": "【なかよシ】絶叫系男子ｓ【スーパーバニーマン実況】with だいのじ",

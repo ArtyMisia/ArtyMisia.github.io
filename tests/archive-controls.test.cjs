@@ -154,6 +154,8 @@ test("Lesath previews use the supplied videos, real thumbnails and safe external
     assert.ok(html.includes(item.title));
   }
   assert.ok(project.technologies.includes("Thumbnail Design"));
+  assert.equal(project.galleryLabel, "動画編集・サムネイル制作");
+  assert.ok(project.description.includes("動画編集とサムネイル制作の両方を担当"));
   assert.equal(f.run("projectGallery({})"), "");
   assert.equal(f.run("projectGallery({ gallery: [] })"), "");
   const escaped = f.run('projectGallery({ galleryLabel: "<test>", gallery: [{ title: "<script> & \\\"", url: "https://example.com/?a=1&b=2", image: "https://example.com/image.jpg" }] })');
