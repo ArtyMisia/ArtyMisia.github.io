@@ -5,6 +5,7 @@ const path = require("node:path");
 const vm = require("node:vm");
 
 const source = fs.readFileSync(path.join(__dirname, "../script.js"), "utf8");
+const styles = fs.readFileSync(path.join(__dirname, "../style.css"), "utf8");
 const data = JSON.parse(fs.readFileSync(path.join(__dirname, "../portfolio.json"), "utf8"));
 const stableSlots = {
   "fps-academy": 1,
@@ -16,8 +17,7 @@ const stableSlots = {
   "gas-sheet-server-byok": 7,
   "scientia-horologium-perpetuum": 8,
   "null-slot-09": 9,
-  "rhythm-chain": 10,
-  "rereversi": 11
+  "rhythm-chain": 10
 };
 
 // Load the actual browser functions without starting audio, animation loops or fetch.
@@ -94,7 +94,7 @@ test("every mode starts at 01 with numeric order on both dials and navigation", 
     f.run("quickDial = cardSlotDial(0);");
     const labels = Array.from(f.run("projects.map(mechanismLabel)"));
     assert.equal(labels.at(-1), "NULL");
-    assert.deepEqual(labels, ["01", "02", "03", "04", "05", "06", "07", "08", "10", "11", "NULL"], modeKey);
+    assert.deepEqual(labels, ["01", "02", "03", "04", "05", "06", "07", "08", "10", "NULL"], modeKey);
     assert.equal(f.document.getElementById("dial-number").textContent, "01", modeKey);
     assert.equal(f.document.body.dataset.mode, modeKey === "unknown" ? "all" : modeKey);
     for (const html of [f.document.getElementById("gear-nodes").innerHTML, f.context.quickDial]) {
@@ -117,21 +117,38 @@ test("every mode starts at 01 with numeric order on both dials and navigation", 
   }
   assert.equal(data.projects.find(project => project.entryType === "null").slotNumber, 9);
   assert.equal(data.projects.find(project => project.id === "rhythm-chain").slotNumber, 10);
-  assert.equal(data.projects.find(project => project.id === "rereversi").slotNumber, 11);
 });
 
 test("existing slot numbers are immutable and new work is append-only", () => {
   assert.equal(data.slotPolicy.strategy, "append-only");
   assert.deepEqual(data.slotPolicy.reservedSlots, [9]);
-  assert.equal(data.slotPolicy.nextAvailableSlot, 12);
+  assert.equal(data.slotPolicy.nextAvailableSlot, 11);
   assert.deepEqual(Object.fromEntries(data.projects.map(project => [project.id, project.slotNumber])), stableSlots);
   const slots = data.projects.map(project => project.slotNumber);
   assert.equal(new Set(slots).size, slots.length, "slot numbers must remain unique");
   assert.ok(slots.every(slot => Number.isInteger(slot) && slot > 0));
 });
 
+test("private work is absent from the public portfolio payload", () => {
+  assert.equal(data.projects.some(project => project.id === "rereversi"), false);
+  assert.equal(JSON.stringify(data).includes("ReReversi"), false);
+  assert.equal(JSON.stringify(data).includes("リリバーシ"), false);
+});
+
+test("the central vault dial is hidden while mobile slot navigation closes the doors", () => {
+  const transitionRules = [...styles.matchAll(/\.is-open \.vault-dial-console,\s*\.is-switching \.vault-dial-console\s*\{([^}]*)\}/g)];
+  assert.ok(transitionRules.length >= 1, "a transition visibility rule must exist");
+  for (const [, declarations] of transitionRules) {
+    assert.match(declarations, /opacity\s*:\s*0/);
+    assert.match(declarations, /visibility\s*:\s*hidden/);
+    assert.match(declarations, /pointer-events\s*:\s*none/);
+  }
+  assert.match(styles, /\.is-switching \.archive-lock\s*\{[^}]*opacity\s*:\s*0[^}]*visibility\s*:\s*hidden[^}]*pointer-events\s*:\s*none[^}]*\}/);
+  assert.match(styles, /\.is-open \.vault-crosslock \.vault-dial-console,\s*\.is-switching \.vault-crosslock \.vault-dial-console\s*\{\s*pointer-events\s*:\s*none/);
+});
+
 test("central number closes the vault, restores focus and allows reopening the same record", () => {
-  for (const index of [0, 4, 8, 9, 10]) {
+  for (const index of [0, 4, 8, 9]) {
     const f = fixture();
     f.context.records = ordered();
     f.run(`projects = records; activeIndex = ${index}; archiveOpen = true; switching = false; initCardSlotDial();`);
@@ -164,36 +181,15 @@ test("central number closes the vault, restores focus and allows reopening the s
   }
 });
 
-test("NEXT/PREV moves through slot 10, slot 11 and NULL without renumbering", () => {
+test("NEXT/PREV moves through slot 10 and NULL without renumbering", () => {
   const f = fixture();
   f.context.records = ordered();
   f.run("projects = records; activeIndex = 8; moveProject(1);");
   f.flush();
-  assert.equal(f.run("projects[activeIndex].id"), "rereversi");
-  f.run("moveProject(1);");
-  f.flush();
   assert.equal(f.run("projects[activeIndex].entryType"), "null");
   f.run("moveProject(-1);");
   f.flush();
-  assert.equal(f.run("projects[activeIndex].id"), "rereversi");
-  f.run("moveProject(-1);");
-  f.flush();
   assert.equal(f.run("projects[activeIndex].id"), "rhythm-chain");
-});
-
-test("ReReversi is published as slot 11 with verified local scope only", () => {
-  const project = data.projects.find(item => item.id === "rereversi");
-  assert.equal(project.slotNumber, 11);
-  assert.equal(project.publicationStatus, "published");
-  assert.equal(project.category, "Tech");
-  assert.match(project.title, /^リリバーシ（ReReversi）/);
-  assert.match(project.description, /2〜8人/);
-  assert.match(project.description, /Google Apps Script/);
-  assert.match(project.description, /Google Sheets/);
-  assert.deepEqual(project.evidence, []);
-  assert.match(project.evidenceNote, /本番ビルド/);
-  assert.match(project.evidenceNote, /公開.*準備中/);
-  assert.equal(project.primaryLink, undefined);
 });
 
 test("Lesath previews use the supplied videos, real thumbnails and safe external links", () => {
