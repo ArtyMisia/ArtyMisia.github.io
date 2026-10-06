@@ -135,16 +135,16 @@ test("private work is absent from the public portfolio payload", () => {
   assert.equal(JSON.stringify(data).includes("リリバーシ"), false);
 });
 
-test("the central vault dial is hidden while mobile slot navigation closes the doors", () => {
-  const transitionRules = [...styles.matchAll(/\.is-open \.vault-dial-console,\s*\.is-switching \.vault-dial-console\s*\{([^}]*)\}/g)];
+test("the central vault dial stays hidden through the complete mobile slot transition", () => {
+  const transitionRules = [...styles.matchAll(/\.is-open \.vault-dial-console,\s*\.is-switching \.vault-dial-console,\s*\.is-unlocking \.vault-dial-console,\s*\.is-unbolted \.vault-dial-console\s*\{([^}]*)\}/g)];
   assert.ok(transitionRules.length >= 1, "a transition visibility rule must exist");
   for (const [, declarations] of transitionRules) {
     assert.match(declarations, /opacity\s*:\s*0/);
     assert.match(declarations, /visibility\s*:\s*hidden/);
     assert.match(declarations, /pointer-events\s*:\s*none/);
   }
-  assert.match(styles, /\.is-switching \.archive-lock\s*\{[^}]*opacity\s*:\s*0[^}]*visibility\s*:\s*hidden[^}]*pointer-events\s*:\s*none[^}]*\}/);
-  assert.match(styles, /\.is-open \.vault-crosslock \.vault-dial-console,\s*\.is-switching \.vault-crosslock \.vault-dial-console\s*\{\s*pointer-events\s*:\s*none/);
+  assert.match(styles, /\.is-open \.archive-lock,\s*\.is-switching \.archive-lock,\s*\.is-unlocking \.archive-lock,\s*\.is-unbolted \.archive-lock\s*\{[^}]*opacity\s*:\s*0[^}]*visibility\s*:\s*hidden[^}]*pointer-events\s*:\s*none[^}]*\}/);
+  assert.match(styles, /\.is-open \.vault-crosslock \.vault-dial-console,\s*\.is-switching \.vault-crosslock \.vault-dial-console,\s*\.is-unlocking \.vault-crosslock \.vault-dial-console,\s*\.is-unbolted \.vault-crosslock \.vault-dial-console\s*\{\s*pointer-events\s*:\s*none/);
 });
 
 test("central number closes the vault, restores focus and allows reopening the same record", () => {
