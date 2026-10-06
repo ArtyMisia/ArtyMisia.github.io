@@ -155,6 +155,7 @@ test("central number closes the vault, restores focus and allows reopening the s
     const stage = f.document.getElementById("project-stage");
     const shell = f.document.getElementById("mechanism-shell");
     const toggle = f.document.getElementById("archive-toggle");
+    const dialConsole = f.document.getElementById("vault-dial-console");
     shell.classList.add("is-open");
     stage.listeners.click({ target: { closest: selector => selector === ".card-slot-core" ? {} : null } });
     assert.equal(f.run("archiveOpen"), false);
@@ -163,6 +164,7 @@ test("central number closes the vault, restores focus and allows reopening the s
     assert.equal(shell.classList.contains("is-open"), false);
     assert.equal(shell.getAttribute("aria-busy"), "true");
     assert.equal(toggle.getAttribute("aria-expanded"), "false");
+    assert.equal(dialConsole.hidden, true);
     assert.equal(f.document.activeElement, toggle);
     const pending = f.timers.length;
     f.run("closeArchive();");
@@ -171,12 +173,14 @@ test("central number closes the vault, restores focus and allows reopening the s
     assert.equal(f.run("switching"), false);
     assert.equal(shell.getAttribute("aria-busy"), "false");
     assert.equal(toggle.querySelector("b").textContent, "指定番号を開錠");
+    assert.equal(dialConsole.hidden, false);
     f.run("selectProject(activeIndex);");
     f.flush();
     assert.equal(f.run("archiveOpen"), true);
     assert.equal(f.run("activeIndex"), index);
     assert.equal(stage.inert, false);
     assert.equal(toggle.getAttribute("aria-expanded"), "true");
+    assert.equal(dialConsole.hidden, true);
     assert.equal(shell.classList.contains("is-open"), true);
   }
 });

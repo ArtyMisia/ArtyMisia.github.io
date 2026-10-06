@@ -642,9 +642,17 @@ function updateModuleLabels() {
   });
 }
 
+function setVaultDialVisible(visible) {
+  const dial = document.getElementById("vault-dial-console");
+  if (!dial) return;
+  dial.hidden = !visible;
+  dial.setAttribute("aria-hidden", String(!visible));
+}
+
 function revealArchive() {
   const shell = document.getElementById("mechanism-shell");
   const toggle = document.getElementById("archive-toggle");
+  setVaultDialVisible(false);
   shell.classList.remove("is-switching", "is-open", "is-unbolted");
   shell.classList.add("is-unlocking");
   toggle.setAttribute("aria-expanded", "false");
@@ -687,6 +695,7 @@ function closeArchive() {
   const shell = document.getElementById("mechanism-shell");
   const stage = document.getElementById("project-stage");
   const toggle = document.getElementById("archive-toggle");
+  setVaultDialVisible(false);
   shell.classList.remove("is-open", "is-unlocking", "is-unbolted");
   shell.classList.add("is-switching");
   shell.setAttribute("aria-busy", "true");
@@ -707,6 +716,7 @@ function closeArchive() {
     shell.setAttribute("aria-busy", "false");
     toggle.querySelector("b").textContent = "指定番号を開錠";
     toggle.querySelector("small").textContent = "PRESS TO UNSEAL";
+    setVaultDialVisible(true);
     switching = false;
     machineClack("heavy");
   }, 900);
@@ -719,6 +729,7 @@ function selectProject(index) {
   const shell = document.getElementById("mechanism-shell");
   const toggle = document.getElementById("archive-toggle");
   const dialNumber = document.getElementById("dial-number");
+  setVaultDialVisible(false);
   shell.classList.remove("is-open", "is-unlocking", "is-unbolted");
   shell.classList.add("is-switching");
   shell.setAttribute("aria-busy", "true");
@@ -784,6 +795,7 @@ async function init() {
     initRecordScroll();
     renderGearNodes();
     updateModuleLabels();
+    setVaultDialVisible(true);
 
     document.getElementById("archive-toggle").addEventListener("click", () => selectProject(activeIndex));
     document.getElementById("prev-project").addEventListener("click", () => moveProject(-1));
@@ -798,6 +810,40 @@ async function init() {
   }
 }
 
+let assetFreshnessCheck = null;
+
+function ensureCurrentSiteAssets() {
+  if (assetFreshnessCheck) return assetFreshnessCheck;
+  assetFreshnessCheck = (async () => {
+    try {
+      const checkUrl = new URL("index.html", window.location.href);
+      checkUrl.searchParams.set("asset-check", String(Date.now()));
+      const response = await fetch(checkUrl, { cache: "no-store" });
+      if (!response.ok) return;
+      const freshDocument = new DOMParser().parseFromString(await response.text(), "text/html");
+      const freshStyle = freshDocument.querySelector('link[rel="stylesheet"][href*="style.css"]')?.getAttribute("href");
+      const freshScript = [...freshDocument.scripts].find(script => script.getAttribute("src")?.includes("script.js"))?.getAttribute("src");
+      const currentStyle = document.querySelector('link[rel="stylesheet"][href*="style.css"]')?.getAttribute("href");
+      const currentScript = [...document.scripts].find(script => script.getAttribute("src")?.includes("script.js"))?.getAttribute("src");
+      if (!freshStyle || !freshScript || (freshStyle === currentStyle && freshScript === currentScript)) return;
+      const nextUrl = new URL(window.location.href);
+      const build = new URL(freshScript, window.location.href).searchParams.get("v") || String(Date.now());
+      nextUrl.searchParams.set("v", build);
+      window.location.replace(nextUrl);
+    } catch (_) {
+      // Offline and transient network failures must not block the local archive.
+    }
+  })().finally(() => { assetFreshnessCheck = null; });
+  return assetFreshnessCheck;
+}
+
+function initAssetFreshnessCheck() {
+  window.addEventListener("pageshow", ensureCurrentSiteAssets);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) ensureCurrentSiteAssets();
+  });
+}
+
 initMechanicalAudio();
 initCrestControl();
 initSecretLatch();
@@ -806,4 +852,5 @@ initMovementRig();
 initPageMachine();
 initPassphraseGateway();
 initCardSlotDial();
+initAssetFreshnessCheck();
 init();
