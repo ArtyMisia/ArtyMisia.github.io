@@ -649,10 +649,18 @@ function setVaultDialVisible(visible) {
   dial.setAttribute("aria-hidden", String(!visible));
 }
 
+function setCardSlotDialVisible(visible) {
+  const dial = document.getElementById("project-stage")?.querySelector(".card-slot-dial");
+  if (!dial) return;
+  dial.hidden = !visible;
+  dial.setAttribute("aria-hidden", String(!visible));
+}
+
 function revealArchive() {
   const shell = document.getElementById("mechanism-shell");
   const toggle = document.getElementById("archive-toggle");
   setVaultDialVisible(false);
+  setCardSlotDialVisible(false);
   shell.classList.remove("is-switching", "is-open", "is-unbolted");
   shell.classList.add("is-unlocking");
   toggle.setAttribute("aria-expanded", "false");
@@ -674,6 +682,7 @@ function revealArchive() {
     shell.classList.add("is-open");
     const stage = document.getElementById("project-stage");
     stage.inert = false;
+    setCardSlotDialVisible(true);
     stage.querySelector(".card-scroll-region")?.focus({ preventScroll: true });
     // Only scroll the document. scrollIntoView would also scroll the clipped door frame.
     const bounds = stage.getBoundingClientRect();
@@ -696,6 +705,7 @@ function closeArchive() {
   const stage = document.getElementById("project-stage");
   const toggle = document.getElementById("archive-toggle");
   setVaultDialVisible(false);
+  setCardSlotDialVisible(false);
   shell.classList.remove("is-open", "is-unlocking", "is-unbolted");
   shell.classList.add("is-switching");
   shell.setAttribute("aria-busy", "true");
@@ -730,6 +740,7 @@ function selectProject(index) {
   const toggle = document.getElementById("archive-toggle");
   const dialNumber = document.getElementById("dial-number");
   setVaultDialVisible(false);
+  setCardSlotDialVisible(false);
   shell.classList.remove("is-open", "is-unlocking", "is-unbolted");
   shell.classList.add("is-switching");
   shell.setAttribute("aria-busy", "true");
@@ -748,6 +759,7 @@ function selectProject(index) {
   window.setTimeout(() => {
     activeIndex = targetIndex;
     document.getElementById("project-stage").innerHTML = projectCard(projects[activeIndex], activeIndex);
+    setCardSlotDialVisible(false);
     initRecordScroll();
     updateModuleLabels();
     window.setTimeout(() => {
@@ -792,6 +804,7 @@ async function init() {
       return Number(a.slotNumber) - Number(b.slotNumber);
     });
     document.getElementById("project-stage").innerHTML = projectCard(projects[0], 0);
+    setCardSlotDialVisible(false);
     initRecordScroll();
     renderGearNodes();
     updateModuleLabels();

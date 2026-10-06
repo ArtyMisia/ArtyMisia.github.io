@@ -147,6 +147,25 @@ test("the central vault dial stays hidden through the complete mobile slot trans
   assert.match(styles, /\.is-open \.vault-crosslock \.vault-dial-console,\s*\.is-switching \.vault-crosslock \.vault-dial-console,\s*\.is-unlocking \.vault-crosslock \.vault-dial-console,\s*\.is-unbolted \.vault-crosslock \.vault-dial-console\s*\{\s*pointer-events\s*:\s*none/);
 });
 
+test("the card quick-slot dial stays absent until the replacement record is fully open", () => {
+  assert.match(styles, /\.card-slot-dial\[hidden\]\s*\{\s*display\s*:\s*none\s*!important\s*;?\s*\}/);
+  assert.match(styles, /\.is-switching \.card-slot-dial,\s*\.is-unlocking \.card-slot-dial,\s*\.is-unbolted \.card-slot-dial\s*\{[^}]*opacity\s*:\s*0[^}]*visibility\s*:\s*hidden[^}]*pointer-events\s*:\s*none[^}]*\}/);
+
+  const f = fixture();
+  f.context.records = ordered();
+  f.run("projects = records; activeIndex = 0; archiveOpen = true; switching = false;");
+  const stage = f.document.getElementById("project-stage");
+  const quickDial = stage.querySelector(".card-slot-dial");
+  f.run("setCardSlotDialVisible(true); selectProject(1);");
+  assert.equal(quickDial.hidden, true, "old record dial is hidden immediately");
+  assert.equal(quickDial.getAttribute("aria-hidden"), "true");
+  f.flush();
+  assert.equal(f.run("activeIndex"), 1);
+  assert.equal(f.run("archiveOpen"), true);
+  assert.equal(quickDial.hidden, false, "new record dial appears only after opening completes");
+  assert.equal(quickDial.getAttribute("aria-hidden"), "false");
+});
+
 test("central number closes the vault, restores focus and allows reopening the same record", () => {
   for (const index of [0, 4, 8, 9]) {
     const f = fixture();
@@ -156,6 +175,8 @@ test("central number closes the vault, restores focus and allows reopening the s
     const shell = f.document.getElementById("mechanism-shell");
     const toggle = f.document.getElementById("archive-toggle");
     const dialConsole = f.document.getElementById("vault-dial-console");
+    const quickDial = stage.querySelector(".card-slot-dial");
+    f.run("setCardSlotDialVisible(true);");
     shell.classList.add("is-open");
     stage.listeners.click({ target: { closest: selector => selector === ".card-slot-core" ? {} : null } });
     assert.equal(f.run("archiveOpen"), false);
@@ -165,6 +186,7 @@ test("central number closes the vault, restores focus and allows reopening the s
     assert.equal(shell.getAttribute("aria-busy"), "true");
     assert.equal(toggle.getAttribute("aria-expanded"), "false");
     assert.equal(dialConsole.hidden, true);
+    assert.equal(quickDial.hidden, true);
     assert.equal(f.document.activeElement, toggle);
     const pending = f.timers.length;
     f.run("closeArchive();");
@@ -174,6 +196,7 @@ test("central number closes the vault, restores focus and allows reopening the s
     assert.equal(shell.getAttribute("aria-busy"), "false");
     assert.equal(toggle.querySelector("b").textContent, "指定番号を開錠");
     assert.equal(dialConsole.hidden, false);
+    assert.equal(quickDial.hidden, true, "closed vault does not expose the card dial");
     f.run("selectProject(activeIndex);");
     f.flush();
     assert.equal(f.run("archiveOpen"), true);
@@ -181,6 +204,7 @@ test("central number closes the vault, restores focus and allows reopening the s
     assert.equal(stage.inert, false);
     assert.equal(toggle.getAttribute("aria-expanded"), "true");
     assert.equal(dialConsole.hidden, true);
+    assert.equal(quickDial.hidden, false);
     assert.equal(shell.classList.contains("is-open"), true);
   }
 });
