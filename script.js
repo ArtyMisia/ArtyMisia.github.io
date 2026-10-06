@@ -12,6 +12,8 @@ let switching = false;
 let gearTurns = 0;
 let scrollTicking = false;
 let accessRoutes = [];
+let detachedVaultDial = null;
+let vaultDialAnchor = null;
 
 function machineClack(kind = "light") {
   document.dispatchEvent(new CustomEvent("machine-clack", { detail: { kind } }));
@@ -633,20 +635,47 @@ function updateModuleLabels() {
   const label = mechanismLabel(project, activeIndex);
   document.getElementById("module-count").textContent = `${label} / ${String(projects.length).padStart(2, "0")}`;
   document.getElementById("module-title").textContent = project.title;
-  const dialNumber = document.getElementById("dial-number");
+  const dialNumber = vaultDialElementById("dial-number");
   dialNumber.textContent = label;
   dialNumber.classList.toggle("null-label", project.entryType === "null");
-  document.querySelectorAll(".gear-node").forEach((button, index) => {
+  const gearNodes = vaultDialElementById("gear-nodes")?.querySelectorAll(".gear-node") || [];
+  gearNodes.forEach((button, index) => {
     button.classList.toggle("active", index === activeIndex);
     button.setAttribute("aria-selected", String(index === activeIndex));
   });
 }
 
+function vaultDialElementById(id) {
+  return document.getElementById(id)
+    || (detachedVaultDial?.id === id ? detachedVaultDial : detachedVaultDial?.querySelector(`#${id}`))
+    || null;
+}
+
 function setVaultDialVisible(visible) {
-  const dial = document.getElementById("vault-dial-console");
+  const dial = vaultDialElementById("vault-dial-console");
   if (!dial) return;
-  dial.hidden = !visible;
-  dial.setAttribute("aria-hidden", String(!visible));
+  if (!visible) {
+    dial.hidden = true;
+    dial.setAttribute("aria-hidden", "true");
+    if (!detachedVaultDial && typeof document.createComment === "function" && dial.before && dial.remove) {
+      vaultDialAnchor = document.createComment("vault-dial-mount");
+      dial.before(vaultDialAnchor);
+      dial.remove();
+      detachedVaultDial = dial;
+      // Commit the layer removal before the rotating doors start. This avoids
+      // an iPhone Safari compositor ghost from the animated selector.
+      void document.getElementById("archive-viewport")?.offsetHeight;
+    }
+    return;
+  }
+
+  if (detachedVaultDial && vaultDialAnchor?.replaceWith) {
+    vaultDialAnchor.replaceWith(detachedVaultDial);
+    detachedVaultDial = null;
+    vaultDialAnchor = null;
+  }
+  dial.hidden = false;
+  dial.setAttribute("aria-hidden", "false");
 }
 
 function setCardSlotDialVisible(visible) {
@@ -658,7 +687,7 @@ function setCardSlotDialVisible(visible) {
 
 function revealArchive() {
   const shell = document.getElementById("mechanism-shell");
-  const toggle = document.getElementById("archive-toggle");
+  const toggle = vaultDialElementById("archive-toggle");
   setVaultDialVisible(false);
   setCardSlotDialVisible(false);
   shell.classList.remove("is-switching", "is-open", "is-unbolted");
@@ -703,7 +732,7 @@ function closeArchive() {
   switching = true;
   const shell = document.getElementById("mechanism-shell");
   const stage = document.getElementById("project-stage");
-  const toggle = document.getElementById("archive-toggle");
+  const toggle = vaultDialElementById("archive-toggle");
   setVaultDialVisible(false);
   setCardSlotDialVisible(false);
   shell.classList.remove("is-open", "is-unlocking", "is-unbolted");
@@ -713,7 +742,6 @@ function closeArchive() {
   toggle.setAttribute("aria-expanded", "false");
   toggle.querySelector("b").textContent = "主錠施錠中";
   toggle.querySelector("small").textContent = "SEALING ARCHIVE";
-  toggle.focus({ preventScroll: true });
   const bounds = document.getElementById("archive-viewport").getBoundingClientRect();
   if (bounds.top < 16 || bounds.bottom > window.innerHeight - 16) {
     window.scrollTo({ top: Math.max(0, window.scrollY + bounds.top - 16),
@@ -727,6 +755,7 @@ function closeArchive() {
     toggle.querySelector("b").textContent = "指定番号を開錠";
     toggle.querySelector("small").textContent = "PRESS TO UNSEAL";
     setVaultDialVisible(true);
+    toggle.focus({ preventScroll: true });
     switching = false;
     machineClack("heavy");
   }, 900);
@@ -737,8 +766,9 @@ function selectProject(index) {
   const targetIndex = (index + projects.length) % projects.length;
   switching = true;
   const shell = document.getElementById("mechanism-shell");
-  const toggle = document.getElementById("archive-toggle");
-  const dialNumber = document.getElementById("dial-number");
+  const toggle = vaultDialElementById("archive-toggle");
+  const dialNumber = vaultDialElementById("dial-number");
+  const gearCore = vaultDialElementById("gear-core");
   setVaultDialVisible(false);
   setCardSlotDialVisible(false);
   shell.classList.remove("is-open", "is-unlocking", "is-unbolted");
@@ -753,7 +783,7 @@ function selectProject(index) {
   dialNumber.classList.toggle("null-label", projects[targetIndex].entryType === "null");
   const step = targetIndex === activeIndex ? 1 : targetIndex - activeIndex;
   gearTurns += step * (360 / projects.length);
-  document.getElementById("gear-core").style.transform = `translate(-50%, -50%) rotate(${gearTurns}deg)`;
+  gearCore.style.transform = `translate(-50%, -50%) rotate(${gearTurns}deg)`;
   machineClack("heavy");
 
   window.setTimeout(() => {

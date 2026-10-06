@@ -145,6 +145,9 @@ test("the central vault dial stays hidden through the complete mobile slot trans
   }
   assert.match(styles, /\.is-open \.archive-lock,\s*\.is-switching \.archive-lock,\s*\.is-unlocking \.archive-lock,\s*\.is-unbolted \.archive-lock\s*\{[^}]*opacity\s*:\s*0[^}]*visibility\s*:\s*hidden[^}]*pointer-events\s*:\s*none[^}]*\}/);
   assert.match(styles, /\.is-open \.vault-crosslock \.vault-dial-console,\s*\.is-switching \.vault-crosslock \.vault-dial-console,\s*\.is-unlocking \.vault-crosslock \.vault-dial-console,\s*\.is-unbolted \.vault-crosslock \.vault-dial-console\s*\{\s*pointer-events\s*:\s*none/);
+  assert.match(source, /dial\.before\(vaultDialAnchor\)[\s\S]*dial\.remove\(\)[\s\S]*detachedVaultDial\s*=\s*dial/);
+  assert.match(source, /vaultDialAnchor\.replaceWith\(detachedVaultDial\)/);
+  assert.match(source, /detachedVaultDial\?\.id\s*===\s*id\s*\?\s*detachedVaultDial/);
 });
 
 test("the card quick-slot dial stays absent until the replacement record is fully open", () => {
@@ -187,7 +190,6 @@ test("central number closes the vault, restores focus and allows reopening the s
     assert.equal(toggle.getAttribute("aria-expanded"), "false");
     assert.equal(dialConsole.hidden, true);
     assert.equal(quickDial.hidden, true);
-    assert.equal(f.document.activeElement, toggle);
     const pending = f.timers.length;
     f.run("closeArchive();");
     assert.equal(f.timers.length, pending, "rapid repeat clicks do not queue more transitions");
@@ -197,6 +199,7 @@ test("central number closes the vault, restores focus and allows reopening the s
     assert.equal(toggle.querySelector("b").textContent, "指定番号を開錠");
     assert.equal(dialConsole.hidden, false);
     assert.equal(quickDial.hidden, true, "closed vault does not expose the card dial");
+    assert.equal(f.document.activeElement, toggle);
     f.run("selectProject(activeIndex);");
     f.flush();
     assert.equal(f.run("archiveOpen"), true);
